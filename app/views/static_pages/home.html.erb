@@ -1,0 +1,44 @@
+<h1>Mobtown Ballroom</h1>
+
+<div id="heroCarousel" class="carousel slide">
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+    <div class="active item">
+      <div class="overflow-box">
+        <%= image_tag "carousel1.jpg" %>
+      </div>
+      <div class="carousel-caption">
+        <p>Hey turkeys</p>
+      </div>
+    </div>
+    <div class="item">
+      <div class="overflow-box">
+        <%= image_tag "carousel2.jpg" %>
+      </div>
+      <div class="carousel-caption">
+        <p>Hey turkeys 2</p>
+      </div>
+    </div>
+    <div class="item">
+      <div class="overflow-box">
+        <%= image_tag "carousel3.jpg" %>
+      </div>
+      <div class="carousel-caption">
+        <p>Hey turkeys 3</p>
+      </div>
+    </div>
+  </div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#heroCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#heroCarousel" data-slide="next">&rsaquo;</a>
+</div>
+
+<% content_for :javascript do %>
+  <script>
+      $(document).ready(function(){
+        $('.carousel').carousel({
+          interval: 5000
+        });
+      });
+  </script>
+<% end %>
