@@ -1,5 +1,7 @@
 Mobtown::Application.routes.draw do
   root to: 'static_pages#home'
+  match '/venue', to: 'static_pages#venue'
+  match '/the-location', to: 'static_pages#venue'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

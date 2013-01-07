@@ -1,29 +1,63 @@
+/* Import bootstrap AFTER overriding some color variables. */
+
+/* color */
+/* http://www.colourlovers.com/palette/1620866/Milan_1920 */
+$framboesa: rgb(199, 54, 54);
+$nothing: rgb(171, 151, 138);
+$chocolate: rgb(66, 42, 42);
+$blue_green: rgb(91, 128, 123); 
+$dark: rgb(26, 26, 26);
+
+$navbarLinkColor: $chocolate;
+$navbarLinkColorActive: white;
+$navbarLinkColorHover: white;
+$navbarText: $chocolate;
+$navbarBrandColor: $chocolate;
+$navbarBackground: $nothing;
+$navbarBackgroundHighlight: $nothing;
+
+$linkColor: $chocolate;
+
 @import "bootstrap";
 @import "bootstrap-responsive";
 
+/* Some overrides must be done after the import. */
+
+.nav-pills {
+  .active > a, .active > a:hover , li > a:hover {
+    background: $nothing;
+    color: white;
+  }
+}
+
 #heroCarousel {
-  max-width: 800px;
+  width: 100%;
   margin: auto;
 }
 
-.overflow-box {
-  width: 800px;
-  height: 400px; 
-  display:block; 
-  position:relative;
-  overflow:hidden;
-}
-.overflow-box img {
-  position:absolute;
-  top:0;
-  left:0; 
-  min-height: 400px;
-  min-width: 800px;
+.carousel-inner .item {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
 }
 
-.carousel-caption p .event-title {
-  display: block;
-  font-weight: bold;
+.overflow-box {
+  width: 100%; 
+  height: 400px; 
+  display: table-cell;
+  vertical-align: middle;
+}
+.overflow-box img {
+  height: auto; 
+  width: 100%;
+}
+
+.carousel-caption p {
+  color: $framboesa;
+  .event-title {
+    display: block;
+    font-weight: bold;
+  }
 }
 
 footer {
@@ -42,3 +76,10 @@ footer {
 .center {
   text-align: center;
 }
+
+body {
+  background-color: $blue_green;
+  font-color: $dark;
+}
+
+
