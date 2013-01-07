@@ -9,9 +9,10 @@
 <body>
 <%= render 'layouts/header' %>
 
-<%= yield %>
-
-<%= render 'layouts/footer' %>
+<div class='container'>
+  <%= yield %>
+  <%= render 'layouts/footer' %>
+</div><!-- container -->
 <%= yield(:javascript) %>
 </body>
 </html>

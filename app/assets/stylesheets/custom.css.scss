@@ -100,4 +100,39 @@ body {
   font-color: $dark;
 }
 
-
+/* Pad container. */
+.container,
+.navbar-fixed-top .container,
+.navbar-fixed-bottom .container {
+	width: 940px;
+	padding: 10px;
+	border:1px solid #cecece;
+	border-top:0px none;
+	background:#fff;
+}
+@media (max-width: 767px) {
+  body{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .container{
+    padding:5px 19px;
+    width: auto;
+  }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  .container,
+  .navbar-fixed-top .container,
+  .navbar-fixed-bottom .container {
+    width: 724px;
+    padding:10px 14px;
+  }
+}
+@media (min-width: 1200px) {
+  .container,
+  .navbar-fixed-top .container,
+  .navbar-fixed-bottom .container {
+    width: 1170px;
+    padding:10px 14px;
+  }
+}
