@@ -18,6 +18,8 @@ $navbarBackgroundHighlight: $nothing;
 
 $linkColor: $chocolate;
 
+$btnPrimaryBackground: $nothing;
+
 @import "bootstrap";
 @import "bootstrap-responsive";
 
@@ -30,26 +32,42 @@ $linkColor: $chocolate;
   }
 }
 
+.btn-dirtydog {
+  /* using http://charliepark.org/bootstrap_buttons/ */
+  background-color: hsl(20, 23%, 63%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ddd0c9", endColorstr="#b6998a");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ddd0c9), to(#b6998a));
+  background-image: -moz-linear-gradient(top, #ddd0c9, #b6998a);
+  background-image: -ms-linear-gradient(top, #ddd0c9, #b6998a);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ddd0c9), color-stop(100%, #b6998a));
+  background-image: -webkit-linear-gradient(top, #ddd0c9, #b6998a);
+  background-image: -o-linear-gradient(top, #ddd0c9, #b6998a);
+  background-image: linear-gradient(#ddd0c9, #b6998a);
+  border-color: #b6998a #b6998a hsl(20, 23%, 58%);
+  color: $chocolate !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.33);
+  -webkit-font-smoothing: antialiased;
+}
+
 #heroCarousel {
-  width: 100%;
+  width: 800px; 
   margin: auto;
 }
 
 .carousel-inner .item {
-  width: 100%;
   height: 400px;
   overflow: hidden;
 }
 
 .overflow-box {
-  width: 100%; 
   height: 400px; 
   display: table-cell;
   vertical-align: middle;
 }
 .overflow-box img {
   height: auto; 
-  width: 100%;
+  width: 800px;
 }
 
 .carousel-caption p {
