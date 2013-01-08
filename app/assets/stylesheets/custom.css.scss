@@ -99,9 +99,15 @@ footer {
   }
 }
 
+.nav-tabs > li > a:hover {
+  color: white;
+  border-color: $nothing;
+  border-bottom-color: white;
+  background-color: $nothing;
+}
 .nav-tabs > .active > a,
 .nav-tabs > .active > a:hover {
-  color: white;
+  color: $white;
 }
 
 .center {
