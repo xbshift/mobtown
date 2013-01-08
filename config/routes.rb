@@ -10,6 +10,10 @@ Mobtown::Application.routes.draw do
   match '/classes/new', to: 'dance_classes#new'
   match '/classes/lindy-hop', to: 'dance_classes#lindy'
   match '/classes/lindy', to: 'dance_classes#lindy'
+  match '/classes/swing', to: 'dance_classes#swing'
+  match '/classes/salsa', to: 'dance_classes#salsa'
+  match '/classes/west-coast', to: 'dance_classes#westcoast'
+  match '/classes/belly-dancing', to: 'dance_classes#bellydancing'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

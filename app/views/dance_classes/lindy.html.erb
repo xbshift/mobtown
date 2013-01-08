@@ -1,29 +1,4 @@
 <h4>Lindy Hop & East Coast Swing</h4>
 <p>At the Mobtown Ballroom we offer regular six-week series in Lindy Hop and East Coast Swing. Lindy Hop is the most interesting, complex, and expressive of the swing dances, and can be danced to a wide range of musical styles and tempos. Developing out of Charleston in the 1920s Lindy hop incorporates a number of other dances, and has endless opportunities for improvisation and development. Everyone has a different style, and everyone can dance with each other.</p>
 
-<div class="tabbable">
-  <ul class="nav nav-tabs" id="dance-classes">
-<% @dance_classes.each do |dance_class| %>
-    <li><a href="#tab<%= dance_class.id %>" data-toggle="tab"><%= dance_class.name %></a></li>
-<% end %>
-  </ul>
-  <div class="tab-content">
-<% @dance_classes.each do |dance_class| %>
-    <div class="tab-pane" id="tab<%= dance_class.id %>">
-      <p><%= dance_class.description %></p>
-    </div>
-<% end %>
-  </div>
-</div>
-
-<% content_for :javascript do %>
-  <script>
-  $('#dance-classes a').click(function(e) {
-      e.preventDefault();
-      $(this).tab('show');
-  })  
-
-  $('#dance-classes a:first').tab('show');
-  </script>
-<% end %>
-
+<%= render 'dance_classes/content_tabs' %>
