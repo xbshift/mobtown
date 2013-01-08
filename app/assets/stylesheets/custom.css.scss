@@ -110,11 +110,18 @@ footer {
 
 .content img {
   &.pull-right {
-    padding: 5px 0px 5px 10px;
+    margin: 5px 0px 5px 10px;
   }
   &.pull-left {
-    padding: 5px 10px 5px 0px;
+    margin: 5px 10px 5px 0px;
   }
+}
+
+.bio-pic {
+  width: 200px;
+  height: auto;
+  float: left;
+  margin: 5px 10px 5px 0px;
 }
 
 /* Pad container. */
