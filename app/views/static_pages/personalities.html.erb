@@ -1,0 +1,39 @@
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs" id="personalities">
+    <li class="active"><a href="#dorry-sommer-tab" data-toggle="tab">Dorry & Sommer</a></li>
+    <li><a href="#nina-tab" data-toggle="tab">Nina</a></li>
+    <li><a href="#michael-tab" data-toggle="tab">Michael</a></li>
+    <li><a href="#tabitha-tab" data-toggle="tab">Tabitha</a></li>
+    <li><a href="#diana-tab" data-toggle="tab">Diana</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="dorry-sommer-tab">
+      <p>Dorry Segev and Sommer Gentry met dancing in 1999, and in 2005 they founded Charm City Swing, because they wanted a place to dance in their hometown. They have taught and competed all over the world and brought home plenty of glory, but their real commitment is to the Baltimore dance scene. Although both of them have full-on careers (she’s a mathematician at the Naval Academy, and he’s a transplant surgeon at Johns-Hopkins), they steadily built the scene from the ground up, investing in local dancers and making Charm City Swing a thriving, friendly organization. In 2010 Dorry, Sommer, Nina, and Michael decided it was high time to invest in a home for Baltimore dancing. They deputized Nina and Michael to oversee the transition and, after a year of wheedling, searching, and scheming, a deal was struck. The first piece of dance floor was laid in late August, and the space was ready in time for the grand opening on September 24th, 2011. If you come out on a Monday or Friday, you’ll be sure to see Sommer doing ridiculous solo moves across the dance floor and Dorry making profane announcements on the microphone.</p>
+    </div>
+    <div class="tab-pane" id="nina-tab">
+      <p>Nina Gilkenson is, to put it simply, the talent. She teaches more classes at the ballroom than anyone, and she does so with a kindness and wit that puts her students at ease and keeps them laughing. Nina started dancing in 1997, and by 2000 she was a full-time travelling instructor. She has taught all over North America as well as France, Germany, the UK, Japan, Sweden, Italy, Budapest, Russia, Norway, Scotland, Lithuania, and more countries than she can remember. She is booked a year in advance, and has to turn down the vast majority of gigs. She partners with Michael to teach Lindy Hop &amp; Swing and manage the ballroom, but she handles Belly Dance and Burlesque by herself. She also made the massive velvet curtains that adorn the stage. Nina founded the International Lindy Hop Championships, the premier Lindy Hop event in the country, which attracts hundreds of the world's best dancers.</p>
+    </div>
+    <div class="tab-pane" id="michael-tab">
+      <p>Michael Seguin started dancing in Seattle in 1999, and helped build the swing and Lindy Hop Program at the world famous Century Ballroom. In 2008 he moved to Baltimore to chase down Nina. He began working on the dance scene by teaching classes and drinking with students on his porch. He is known for throwing wild parties, and for entering contests under the influence.  Michael has competed and taught all across the country, but he is devoted to the Baltimore dance scene and hopes to leave as little as possible. He is noted for a snarky style that only thinly veils how much he cares about his students. You can find him at the ballroom every night of the week, sometimes wearing a red sequin jacket when it’s time for announcements.</p>
+    </div>
+    <div class="tab-pane" id="tabitha-tab">
+      <p>Tabitha Hitchye-Hollida is a proud Dominican, Haitian, Caucasian, and African American–and she heads up the Mobtown Ballroom’s Latin dance wing, The Baltimore Salsa Dance Company.  Tabitha is a certified Salsa and Zumba instructor with a combination of 14 years of dancing, instructing, and performing.  She currently teaches private & group lessons in Latin Dance such as Salsa, Merengue, Bachata, and Cha-Cha.  She is also a current member of the Dance In Time Professional Rueda Team, Salsa Now Performance Team, and Expression Latina Dance Team.
+
+Baltimore Salsa Dance Company Inc. was founded in 2008 as part of her love for Latin Dance and to spread the joy of dance to all.  The company has participated in numerous events and charities throughout the Baltimore/DC area:  The Annual Polar Bear Plunge, Federal Hill Fest-of-All, Channel 45 appearance, Performance/lessons for The Army National Guard in DC, Baltimore City Association of School Psychologists-Charity Event, Avon Walk for Breast Cancer, March of Dimes Fundraiser, Downtown Baltimore Family Alliance 3rd &amp; 4th Annual School and Children’s Programming Fair, Parks &amp; People’s Foundation Community Greening Celebration, Lessons for The Center Club, to name a few. The Mobtown Ballroom considers Tabitha a tremendous casting coup, and is extremely proud to have her on staff.</p>
+    </div>
+    <div class="tab-pane" id="diana-tab">
+      <p>Diana Schenck Chapin has been swing dancing since 1993 and has been a part of the Baltimore scene for more than a decade. For years, she has been a DJ, instructor, and organizer for both local and national Baltimore events, including Thursday Swing, Tuesday Blues, and Hi-De-Hon, Baltimore’s Lindy exchange. She can also be found teaching and DJing for local and national events in neighbor scenes like D.C. (Back Room Blues, Red Hot Blues ‘n BBQ), York (YSDC workshops), and Philly (Powerhouse Blues). Diana is the driving force behind Baltimore’s growing blues scene. She is the creator and organizer of the Baltimore Blues Summits, which bring together DJs, instructors, and dancers from across the mid-Atlantic and all over the East Coast. She is also behind the Baltimore Swing, Soul, and Blues Parties, which draw dancers from a variety of communities, including blues, Lindy hop, and West Coast Swing. In July of 2011, she founded Nevermore Blues to give a proper home to these events and to continue to develop the blues scene in Baltimore.</p>
+    </div>
+  </div>
+</div>
+
+<% content_for :javascript do %>
+<script>
+$('#personalities a').click(function(e) {
+    e.preventDefault();
+    $(this).tab('show');
+})
+
+$('#personalities a:first').tab('show');
+</script>
+<% end %>

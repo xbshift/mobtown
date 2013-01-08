@@ -4,4 +4,10 @@ class StaticPagesController < ApplicationController
 
   def venue
   end
+
+  def map
+  end
+
+  def personalities
+  end
 end

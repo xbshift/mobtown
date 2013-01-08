@@ -8,6 +8,14 @@ $chocolate: rgb(66, 42, 42);
 $blue_green: rgb(91, 128, 123); 
 $dark: rgb(26, 26, 26);
 
+$bodyBackground: $blue_green;
+$textColor: $dark;
+
+$serifFontFamily: Georgia, 'Times New Roman';
+$baseFontFamily: $serifFontFamily;
+$baseFontSize: 15px;
+$baseLineHeight: 22px;
+
 $navbarLinkColor: $chocolate;
 $navbarLinkColorActive: white;
 $navbarLinkColorHover: white;
@@ -91,13 +99,22 @@ footer {
   }
 }
 
+.nav-tabs > .active > a,
+.nav-tabs > .active > a:hover {
+  color: white;
+}
+
 .center {
   text-align: center;
 }
 
-body {
-  background-color: $blue_green;
-  font-color: $dark;
+.content img {
+  &.pull-right {
+    padding: 5px 0px 5px 10px;
+  }
+  &.pull-left {
+    padding: 5px 10px 5px 0px;
+  }
 }
 
 /* Pad container. */
@@ -106,9 +123,6 @@ body {
 .navbar-fixed-bottom .container {
 	width: 940px;
 	padding: 10px;
-	border:1px solid #cecece;
-	border-top:0px none;
-	background:#fff;
 }
 @media (max-width: 767px) {
   body{

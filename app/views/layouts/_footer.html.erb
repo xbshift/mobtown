@@ -1,6 +1,6 @@
 <footer class="center">
   <ul class="nav nav-pills">
-    <li><%= link_to "Map", '#' %></li>
+    <li class="<%= 'active' if current_page?(map_path) %>"><%= link_to "Map", map_path %></li>
     <li><%= link_to "Facebook", 'http://www.facebook.com/pages/Mobtown-Ballroom/201271009923515' %></li>
     <li><%= link_to "Twitter", 'http://twitter.com/#!/mobtownballroom' %></li>
     <li><%= link_to "Yelp", 'http://www.yelp.com/biz/mobtown-ballroom-baltimore' %></li>
