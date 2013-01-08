@@ -7,6 +7,9 @@ Mobtown::Application.routes.draw do
   match '/map', to: 'static_pages#map'
   match '/personalities', to: 'static_pages#personalities'
   match '/classes', to: 'dance_classes#index'
+  match '/classes/new', to: 'dance_classes#new'
+  match '/classes/lindy-hop', to: 'dance_classes#lindy'
+  match '/classes/lindy', to: 'dance_classes#lindy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -7,8 +7,9 @@
 #  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  category    :string(255)
 #
 
 class DanceClass < ActiveRecord::Base
-  attr_accessible :description, :name
+  attr_accessible :name, :description, :category
 end

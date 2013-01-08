@@ -3,11 +3,20 @@ class DanceClassesController < ApplicationController
   end
 
   def index
-    @dance_classes = DanceClass.all
+  @dance_classes = DanceClass.all
+ 
+    respond_to do |format|
+      format.html  # index.html.erb
+      format.json  { render :json => @post }
+    end
+  end
+
+  def lindy
+    @dance_classes = DanceClass.find_all_by_category('lindy')
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @dance_classes }
+      format.html  # lindy.html.erb
+      format.json  { render :json => @post }
     end
   end
 end
