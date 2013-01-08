@@ -1,9 +1,60 @@
-<h1>All Classes</h1>
+<div class="row-fluid">
+  <div class="span3" id="all-dance-classes">
+    <ul class="nav nav-list">
+      <li class="nav-header">East Coast Swing</li>
+      <% @all_dance_classes.select {|c| c.category.include?('swing')}.each do |dance_class| %>
+        <li><%= link_to dance_class.name, classes_path + '/' + dance_class.category + '/' + dance_class.id.to_s %></li>
+      <% end %>
+      <li class="nav-header">Lindy Hop</li>
+      <% @all_dance_classes.select {|c| c.category.include?('lindy')}.each do |dance_class| %>
+        <li><%= link_to dance_class.name, classes_path + '/' + dance_class.category + '/' + dance_class.id.to_s %></li>
+      <% end %>
+      <li class="nav-header">West Coast Swing</li>
+      <% @all_dance_classes.select {|c| c.category.include?('west_coast')}.each do |dance_class| %>
+        <li><%= link_to dance_class.name, classes_path + '/' + dance_class.category + '/' + dance_class.id.to_s %></li>
+      <% end %>
+      <li class="nav-header">Belly Dancing</li>
+      <% @all_dance_classes.select {|c| c.category.include?('belly_dancing')}.each do |dance_class| %>
+        <li><%= link_to dance_class.name, classes_path + '/' + dance_class.category + '/' + dance_class.id.to_s %></li>
+      <% end %>
+      <li class="nav-header">Salsa</li>
+      <% @all_dance_classes.select {|c| c.category.include?('salsa')}.each do |dance_class| %>
+        <li><%= link_to dance_class.name, classes_path + '/' + dance_class.category + '/' + dance_class.id.to_s %></li>
+      <% end %>
+    </ul>
+    </ul>
+  </div>
 
-<ul class="dance-classes">
+  <div class="span9">
+
+  <%= render 'dance_classes/' + @category %>
+
+  <div class="tabbable">
+    <ul class="nav nav-tabs" id="dance-classes">
   <% @dance_classes.each do |dance_class| %>
-  <li>
-    <%= dance_class.name %>
-  </li>
+      <li><a href="#tab<%= dance_class.id %>" data-toggle="tab"><%= dance_class.name %></a></li>
   <% end %>
-</ul>
+    </ul>
+    <div class="tab-content">
+  <% @dance_classes.each do |dance_class| %>
+      <div class="tab-pane" id="tab<%= dance_class.id %>">
+        <p><%= dance_class.description %></p>
+      </div>
+  <% end %>
+    </div>
+  </div>
+
+  <% content_for :javascript do %>
+    <script>
+      $('#dance-classes a').click(function(e) {
+        e.preventDefault();
+        $(this).tab('show');
+      })  
+      $('#dance-classes a<%=raw @tab %>').tab('show');
+
+      document.getElementById("classes-nav-element").className += "active";
+    </script>
+  <% end %>
+
+  </div>
+</div><!-- row-fluid -->
