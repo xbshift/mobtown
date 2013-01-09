@@ -16,6 +16,7 @@ Mobtown::Application.routes.draw do
     match '/dance_classes/' + c, to: 'dance_classes#index', category: c
   end
   resources :dance_classes
+  match '/warroom', to: 'application#login'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

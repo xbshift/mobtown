@@ -28,6 +28,9 @@
             <p>$1,000,000</p>
             <a class="btn btn-dirtydog">Sign up</a>
           </div>
+        <% if logged_in? %>
+          <p>War Room: <%= link_to 'Edit or Destroy', edit_dance_class_path(dance_class) %> or <%= link_to 'New Class', new_dance_class_path %></p>
+        <% end %>
         </div>
         <% end %>
       </div><!-- tab-content -->
