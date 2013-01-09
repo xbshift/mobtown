@@ -13,4 +13,7 @@ class StaticPagesController < ApplicationController
 
   def mob_mentality
   end
+
+  def calendar
+  end
 end
