@@ -28,6 +28,7 @@ class DanceClassesController < ApplicationController
   end
 
   def index
+    DanceClass.order("category ASC, name ASC")
     @all_dance_classes = DanceClass.all
     params[:category] = 'lindy' if not params.has_key?('category')
       @dance_classes = DanceClass.find_all_by_category(params[:category])
@@ -64,6 +65,7 @@ class DanceClassesController < ApplicationController
   end
 
   def show
+    DanceClass.order("category ASC, name ASC")
     @dance_class = DanceClass.find(params[:id])
     @category = @dance_class.category
     @dance_classes = DanceClass.find_all_by_category(@category)
