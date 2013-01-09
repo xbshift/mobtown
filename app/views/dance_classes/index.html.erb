@@ -29,13 +29,13 @@
 
   <%= render 'dance_classes/' + @category %>
 
-  <div class="tabbable">
+  <div class="tabbable row-fluid">
     <ul class="nav nav-tabs" id="dance-classes">
   <% @dance_classes.each do |dance_class| %>
       <li><a href="#tab<%= dance_class.id %>" data-toggle="tab"><%= dance_class.name %></a></li>
   <% end %>
     </ul>
-    <div class="tab-content">
+    <div class="tab-content row-fluid">
   <% @dance_classes.each do |dance_class| %>
       <div class="tab-pane row-fluid" id="tab<%= dance_class.id %>">
         <div class=="span6">
