@@ -41,9 +41,13 @@ $btnPrimaryBackground: $nothing;
 }
 
 .nav-list li a {
-  color: $dark;
+  color: $chocolate;
   text-shadow: none;
+  &:hover {
+    background-color: $nothing;
+  }
 }
+
 .nav-list .nav-header {
   color: $dark;
   text-shadow: none;
