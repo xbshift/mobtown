@@ -10,4 +10,7 @@ class StaticPagesController < ApplicationController
 
   def personalities
   end
+
+  def mob_mentality
+  end
 end
