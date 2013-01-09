@@ -1,4 +1,6 @@
 Mobtown::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+
   get "dance_classes/new"
 
   root to: 'static_pages#home'
