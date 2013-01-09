@@ -6,6 +6,7 @@ Mobtown::Application.routes.draw do
   match '/the-location', to: 'static_pages#venue'
   match '/map', to: 'static_pages#map'
   match '/personalities', to: 'static_pages#personalities'
+  match '/mobmentality', to: 'static_pages#mob_mentality'
   match '/mob-mentality', to: 'static_pages#mob_mentality'
   match '/classes/', to: 'dance_classes#index'
   match '/classes/:category', to: 'dance_classes#index'
