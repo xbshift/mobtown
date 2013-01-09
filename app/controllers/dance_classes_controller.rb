@@ -28,10 +28,9 @@ class DanceClassesController < ApplicationController
   end
 
   def index
-    DanceClass.order("category ASC, name ASC")
-    @all_dance_classes = DanceClass.all
+    @all_dance_classes = DanceClass.all(order: 'name')
     params[:category] = 'lindy' if not params.has_key?('category')
-      @dance_classes = DanceClass.find_all_by_category(params[:category])
+      @dance_classes = DanceClass.find_all_by_category(params[:category], order: 'name')
     if params.has_key?('id')
       @tab = '[href="#tab' + params[:id] + '"]'
     else
@@ -65,11 +64,10 @@ class DanceClassesController < ApplicationController
   end
 
   def show
-    DanceClass.order("category ASC, name ASC")
-    @dance_class = DanceClass.find(params[:id])
+    @dance_class = DanceClass.find(params[:id], order: 'name')
     @category = @dance_class.category
-    @dance_classes = DanceClass.find_all_by_category(@category)
-    @all_dance_classes = DanceClass.all
+    @dance_classes = DanceClass.find_all_by_category(@category, order: 'name')
+    @all_dance_classes = DanceClass.all(order: 'name')
     @tab = '[href="#tab' + params[:id] + '"]'
  
     respond_to do |format|
