@@ -12,14 +12,22 @@
         <% @dance_classes.each do |dance_class| %>
         <div class="tab-pane row-fluid" id="tab<%= dance_class.id %>">
           <div class="span9">
+            <%= yield :dance_class %>
             <p><%= dance_class.description %></p>
           </div>
           <div class="signup-well span3">
             <h5>Current Session</h5>
             <p>Jan 1 - Feb 1</p>
             <h5>Pricing</h5>
-            <p><%= number_to_currency(dance_class.price) %></p>
-            <a class="btn btn-dirtydog">Sign up</a>
+            <% if not dance_class.student_price.blank? %>
+              <ul>
+                <li>Adult <%= number_to_currency(dance_class.price) %></li>
+                <li>Student <%= number_to_currency(dance_class.student_price) %></li>
+              </ul>
+            <% else %>
+              <p><%= number_to_currency(dance_class.price) %></p>
+            <% end %>
+<%= render :partial => 'dance_classes/paypal', :locals => {:dance_class => dance_class} %>
           </div>
         <% if logged_in? %>
           <p>War Room: <%= link_to 'Edit or Destroy', edit_dance_class_path(dance_class) %> or <%= link_to 'New Class', new_dance_class_path %></p>

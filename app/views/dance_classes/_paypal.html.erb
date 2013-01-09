@@ -5,19 +5,21 @@
   <input type="hidden" name="cmd" value="_cart">
   <input type="hidden" name="add" value="1">
   <!-- Specify details about the item that buyers will purchase. -->
-  <input type="hidden" name="item_name" value="<%= @dance_class.name %>" />
-  <input type="hidden" name="amount" value="<%= @dance_class.price %>" />
+  <input type="hidden" name="item_name" value="<%= dance_class.name %>" />
+  <input type="hidden" name="amount" value="<%= dance_class.price %>" />
   <input type="hidden" name="currency_code" value="USD" />
-  <input name="on0" type="hidden" value="student" />
-  <select name="os0" class="student">
-    <option value="no">Adult - $125</option>
-    <option value="yes">Student - $105</option>
-  </select>
-  <input type="hidden" name="option_select0" value="no" />
-  <input type="hidden" name="option_select1" value="yes" />
-  <input type="hidden" name="option_amount0" value="125" />
-  <input type="hidden" name="option_amount1" value="<%= @dance_class.student_price %>" />
+  <% if not dance_class.student_price.blank? %>
+    <input name="on0" type="hidden" value="student" />
+    <select name="os0" class="student">
+      <option value="no">Adult - <%= number_to_currency(dance_class.price) %></option>
+      <option value="yes">Student - <%= number_to_currency(dance_class.student_price) %></option>
+    </select>
+    <input type="hidden" name="option_select0" value="no" />
+    <input type="hidden" name="option_select1" value="yes" />
+    <input type="hidden" name="option_amount0" value="<%= dance_class.price %>" />
+    <input type="hidden" name="option_amount1" value="<%= dance_class.student_price %>" />
   <!-- Specify where customers return if order succeeds or is canceled. -->
+  <% end %>
   <input name="return" type="hidden" value="http://mobtownballroom.com/classes/success" />
   <input name="cancel_return" type="hidden" value="http://mobtownballroom.com/classes/cancel" />
   <!-- Display the payment button. -->
