@@ -11,9 +11,9 @@ Mobtown::Application.routes.draw do
   match '/dances', to: 'static_pages#dances'
   match '/calendar', to: 'static_pages#calendar'
   match '/classes/', to: 'dance_classes#index'
+  match '/classes/new', to: 'dance_classes#new'
   match '/classes/:category', to: 'dance_classes#index'
   match '/classes/:category/:id', to: 'dance_classes#index'
-  match '/classes/new', to: 'dance_classes#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
