@@ -40,6 +40,15 @@ $btnPrimaryBackground: $nothing;
   }
 }
 
+.nav-list li {
+  color: $dark;
+  text-shadow: none;
+}
+.nav-list .nav-header {
+  color: $dark
+  text-shadow: none;
+}
+
 .btn-dirtydog {
   /* using http://charliepark.org/bootstrap_buttons/ */
   background-color: hsl(20, 23%, 63%) !important;
