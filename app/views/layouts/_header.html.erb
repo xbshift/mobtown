@@ -25,7 +25,7 @@
             <li><%= link_to "Salsa", classes_path + '/salsa' %></li>
           </ul>
         </li>
-        <li class="<%= 'active' if current_page?(venue_path) %>"><%= link_to "Dance Nights", dances_path %></li>
+        <li class="<%= 'active' if current_page?(dances_path) %>"><%= link_to "Dance Nights", dances_path %></li>
         <li class="<%= 'active' if current_page?(personalities_path) %>"><%= link_to "Personalities", personalities_path %></li>
       </ul>
     </div>
