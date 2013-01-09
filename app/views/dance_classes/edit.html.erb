@@ -2,4 +2,5 @@
  
 <%= render 'form' %>
  
-<%= link_to 'Classes', dance_classes_path %>
+<%= link_to 'Destroy', @dance_class, :confirm => 'Pull the trigger?',
+                                     :method => :delete %>
