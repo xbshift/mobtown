@@ -31,23 +31,23 @@
     <ul class="nav nav-list">
       <li class="nav-header">East Coast Swing</li>
       <% @all_dance_classes.select {|c| c.category.include?('swing')}.each do |dance_class| %>
-        <li><%= link_to dance_class.name, classes_path + '/' + dance_class.category + '/' + dance_class.id.to_s %></li>
+        <li><%= link_to dance_class.name, url_for(dance_class) %></li>
       <% end %>
       <li class="nav-header">Lindy Hop</li>
       <% @all_dance_classes.select {|c| c.category.include?('lindy')}.each do |dance_class| %>
-        <li><%= link_to dance_class.name, classes_path + '/' + dance_class.category + '/' + dance_class.id.to_s %></li>
+        <li><%= link_to dance_class.name, url_for(dance_class) %></li>
       <% end %>
       <li class="nav-header">West Coast Swing</li>
       <% @all_dance_classes.select {|c| c.category.include?('west_coast')}.each do |dance_class| %>
-        <li><%= link_to dance_class.name, classes_path + '/' + dance_class.category + '/' + dance_class.id.to_s %></li>
+        <li><%= link_to dance_class.name, url_for(dance_class) %></li>
       <% end %>
       <li class="nav-header">Belly Dancing</li>
       <% @all_dance_classes.select {|c| c.category.include?('belly_dancing')}.each do |dance_class| %>
-        <li><%= link_to dance_class.name, classes_path + '/' + dance_class.category + '/' + dance_class.id.to_s %></li>
+        <li><%= link_to dance_class.name, url_for(dance_class) %></li>
       <% end %>
       <li class="nav-header">Salsa</li>
       <% @all_dance_classes.select {|c| c.category.include?('salsa')}.each do |dance_class| %>
-        <li><%= link_to dance_class.name, classes_path + '/' + dance_class.category + '/' + dance_class.id.to_s %></li>
+        <li><%= link_to dance_class.name, url_for(dance_class) %></li>
       <% end %>
     </ul>
     </ul>

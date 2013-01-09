@@ -12,10 +12,10 @@ Mobtown::Application.routes.draw do
   match '/mob-mentality', to: 'static_pages#mob_mentality'
   match '/dances', to: 'static_pages#dances'
   match '/calendar', to: 'static_pages#calendar'
-  match '/classes/', to: 'dance_classes#index'
-  match '/classes/new', to: 'dance_classes#new'
-  match '/classes/:category', to: 'dance_classes#index'
-  match '/classes/:category/:id', to: 'dance_classes#index'
+  ['lindy', 'swing', 'salsa', 'belly_dancing', 'west_coast'].each do |c|
+    match '/dance_classes/' + c, to: 'dance_classes#index', category: c
+  end
+  resources :dance_classes
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

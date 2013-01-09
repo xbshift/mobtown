@@ -15,14 +15,14 @@
       <ul class="nav">
         <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Home", root_path %></li>
         <li class="<%= 'active' if current_page?(venue_path) %>"><%= link_to "The Venue", venue_path %></li>
-        <li id="classes-nav-element" class="dropdown <%= 'active' if current_page?(classes_path) %>">
+        <li id="classes-nav-element" class="dropdown ">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Classes</a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-            <li><%= link_to "Intro Swing Dancing", classes_path + '/swing' %></li>
-            <li><%= link_to "Lindy Hop", classes_path + '/lindy' %></li>
-            <li><%= link_to "West Coast Swing", classes_path + '/west_coast' %></li>
-            <li><%= link_to "Belly Dancing", classes_path + '/belly_dancing' %></li>
-            <li><%= link_to "Salsa", classes_path + '/salsa' %></li>
+            <li><%= link_to "Intro Swing Dancing", dance_classes_path + '/swing' %></li>
+            <li><%= link_to "Lindy Hop", dance_classes_path + '/lindy' %></li>
+            <li><%= link_to "West Coast Swing", dance_classes_path + '/west_coast' %></li>
+            <li><%= link_to "Belly Dancing", dance_classes_path + '/belly_dancing' %></li>
+            <li><%= link_to "Salsa", dance_classes_path + '/salsa' %></li>
           </ul>
         </li>
         <li class="<%= 'active' if current_page?(dances_path) %>"><%= link_to "Dance Nights", dances_path %></li>
