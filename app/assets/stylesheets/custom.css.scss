@@ -53,6 +53,10 @@ $btnPrimaryBackground: $nothing;
   text-shadow: none;
 }
 
+.well {
+  background-color: lighten($blue_green, 20%);
+}
+
 .btn-dirtydog {
   /* using http://charliepark.org/bootstrap_buttons/ */
   background-color: hsl(20, 23%, 63%) !important;
