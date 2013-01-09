@@ -16,4 +16,7 @@ class StaticPagesController < ApplicationController
 
   def calendar
   end
+
+  def dances
+  end
 end

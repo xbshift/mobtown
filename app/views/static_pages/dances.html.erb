@@ -1,0 +1,28 @@
+<h4>Regular Dance Events</h4>
+
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs" id="dances">
+    <li class="active"><a href="#dorry-sommer" data-toggle="tab">Dorry & Sommer</a></li>
+    <li><a href="#blues" data-toggle="tab">Tuesday Blues</a></li>
+    <li><a href="#swing" data-toggle="tab">Monday & Friday Swing</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="blues">
+      <%= render 'static_pages/blues' %>
+    </div>
+    <div class="tab-pane" id="swing">
+      <%= render 'static_pages/weekly_swing' %>
+    </div>
+  </div>
+</div>
+
+<% content_for :javascript do %>
+<script>
+$('#dances').click(function(e) {
+    e.preventDefault();
+    $(this).tab('show');
+})
+
+$('#dances a:first').tab('show');
+</script>
+<% end %>
