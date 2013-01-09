@@ -11,7 +11,7 @@ class DanceClassesController < ApplicationController
   end
 
   def create
-    @dance_class = DanceClass.new(params[:post])
+    @dance_class = DanceClass.new(params[:dance_class])
  
     respond_to do |format|
       if @dance_class.save
