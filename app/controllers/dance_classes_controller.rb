@@ -75,4 +75,14 @@ class DanceClassesController < ApplicationController
       format.json  { render :json => @dance_class }
     end
   end
+
+  def destroy
+    @dance_class = DanceClass.find(params[:id])
+    @dance_class.destroy
+ 
+  respond_to do |format|
+    format.html { redirect_to dance_classes_url }
+    format.json { head :no_content }
+  end
+end
 end
