@@ -6,6 +6,7 @@ Mobtown::Application.configure do
 
   # Precompile additional assets
   config.assets.precompile += %w( .svg .eot .woff .ttf )
+  config.assets.precomplie += %w( ie6.css ie7.css )
 
   # Settings specified here will take precedence over those in config/application.rb
 
