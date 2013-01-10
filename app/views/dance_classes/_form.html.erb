@@ -13,7 +13,7 @@
   <%= f.inputs :name => "The Sell" do %>
     <%= f.input :name %>
     <%= f.input :category %>
-    <%= f.input :description %>
+    <%= f.input :description, :as => :ckeditor %>
     <%= f.input :price %>
     <%= f.input :student_price %>
   <% end %>
