@@ -4,6 +4,9 @@ Mobtown::Application.configure do
   # Add the fonts path
   config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
 
+  # Precompile ckeditor.
+  config.assets.precompile += ['ckeditor/*'] 
+
   # Precompile additional assets
   config.assets.precompile += %w( .svg .eot .woff .ttf )
 
