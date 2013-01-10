@@ -39,8 +39,8 @@ $baseFontSize: 15px;
 $baseLineHeight: 22px;
 
 $navbarLinkColor: $chocolate;
-$navbarLinkColorActive: $framboesa; 
-$navbarLinkColorHover: $framboesa;
+$navbarLinkColorActive: white; 
+$navbarLinkColorHover: white;
 $navbarText: $chocolate;
 $navbarBrandColor: $chocolate;
 $navbarBackground: $nothing;
@@ -167,7 +167,14 @@ footer {
     float:none;
     display:inline-block;
     *display:inline; /* ie7 fix */
-     zoom:1; /* hasLayout ie7 trigger */
+    zoom:1; /* hasLayout ie7 trigger */
+    a {
+      color: $nothing;
+    }
+    a:hover {
+      color: white;
+    }
+    
   }
   .nav-tabs, .nav-pills {
     text-align:center;
@@ -181,7 +188,7 @@ footer {
 }
 
 .nav-tabs > li > a:hover {
-  color: white;
+  color: $framboesa;
   border-color: $nothing;
   border-bottom-color: white;
   background-color: $nothing;
