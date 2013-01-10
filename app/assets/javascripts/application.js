@@ -15,4 +15,4 @@
 //= require_tree .
 //= require bootstrap
 //= require ckeditor/init
-//= require ckeditor/ckedtior
+//= require ckeditor/ckeditor 
