@@ -68,7 +68,7 @@ $btnPrimaryBackground: $nothing;
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: 'mission_scriptregular';
+  font-family: 'nexabold_regular';
   font-weight: normal;
 }
 
@@ -163,6 +163,10 @@ footer {
   .nav-tabs, .nav-pills {
     text-align:center;
   }
+}
+
+.nav-tabs > li > a {
+  font-family: 'nexa_boldregular';
 }
 
 .nav-tabs > li > a:hover {
