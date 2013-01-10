@@ -24,7 +24,7 @@
 
 /* color */
 /* http://www.colourlovers.com/palette/1620866/Milan_1920 */
-$framboesa: rgb(199, 54, 54);
+$framboesa: #bf1a00; 
 $nothing: #55938d; /* a teal almost */ 
 $chocolate: white; 
 $blue_green: #dcd9cb; /* grey */ 
@@ -39,8 +39,8 @@ $baseFontSize: 15px;
 $baseLineHeight: 22px;
 
 $navbarLinkColor: $chocolate;
-$navbarLinkColorActive: white;
-$navbarLinkColorHover: white;
+$navbarLinkColorActive: $framboesa; 
+$navbarLinkColorHover: $framboesa;
 $navbarText: $chocolate;
 $navbarBrandColor: $chocolate;
 $navbarBackground: $nothing;
@@ -79,6 +79,7 @@ header .navbar {
 .headline {
   font-family: 'mission_scriptregular';
   font-weight: normal;
+  text-transform: none;
 }
 
 .nav-pills {
@@ -107,6 +108,10 @@ header .navbar {
   -moz-border-radius: 10px;
   border-radius: 10px;
   background-color: lighten($blue_green, 20%);
+  ul {
+    list-style: none;
+    margin-left: 0;
+  }
 }
 
 .btn-dirtydog {
