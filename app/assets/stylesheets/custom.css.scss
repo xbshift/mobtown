@@ -68,13 +68,16 @@ $btnPrimaryBackground: $nothing;
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: 'nexabold_regular';
-  font-weight: normal;
   text-transform: uppercase;
 }
 
 header .navbar {
   font-family: 'mission-scriptregular';
+  font-weight: normal;
+}
+
+headline {
+  font-family: 'mission_scriptregular';
   font-weight: normal;
 }
 
@@ -168,6 +171,7 @@ footer {
 
 .nav-tabs > li > a {
   font-family: 'mission_scriptregular';
+  font-size: 20px;
 }
 
 .nav-tabs > li > a:hover {
