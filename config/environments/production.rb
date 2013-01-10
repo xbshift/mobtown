@@ -1,4 +1,12 @@
 Mobtown::Application.configure do
+
+  # Dan did this.
+  # Add the fonts path
+  config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
+
+  # Precompile additional assets
+  config.assets.precompile += %w( .svg .eot .woff .ttf )
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
