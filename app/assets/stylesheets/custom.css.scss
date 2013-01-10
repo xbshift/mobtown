@@ -71,7 +71,7 @@ h1, h2, h3, h4, h5 {
 }
 
 header .navbar {
-  font-family: 'mission-scriptregular';
+  font-family: 'mission_scriptregular';
   font-weight: normal;
 }
 
@@ -137,7 +137,7 @@ header .navbar {
 
 .nav-tabs > .active > a,
 .nav-tabs > .active > a:hover {
-  color: $white;
+  color: darken($dirtyred, 20%);
 }
 
 .btn-dirtydog {
