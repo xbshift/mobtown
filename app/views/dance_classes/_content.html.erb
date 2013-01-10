@@ -11,11 +11,11 @@
       <div class="tab-content span12">
         <% @dance_classes.each do |dance_class| %>
         <div class="tab-pane row-fluid" id="tab<%= dance_class.id %>">
-          <div class="span9">
+          <div class="span8">
             <%= yield :dance_class %>
             <p><%= dance_class.description %></p>
           </div>
-          <div class="signup-well span3">
+          <div class="signup-well span4">
             <h5>Current Session</h5>
             <p>Jan 1 - Feb 1</p>
             <h5>Pricing</h5>
