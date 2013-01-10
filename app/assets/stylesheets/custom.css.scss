@@ -71,9 +71,11 @@ h1, h2, h3, h4, h5 {
 }
 
 header .navbar {
-  font-family: 'nextbold_regular';
+  font-family: 'nexa_boldregular';
   font-weight: normal;
   font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.1 em;
 }
 
 .headline {
@@ -185,6 +187,7 @@ header .navbar {
     display: block;
     font-family: 'nexa_boldregular';
     text-transform: uppercase;
+    letter-spacing: 0.1 em;
   }
 }
 
