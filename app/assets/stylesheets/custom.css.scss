@@ -80,6 +80,7 @@ header .navbar {
   font-family: 'mission_scriptregular';
   font-weight: normal;
   text-transform: none;
+  color: $framboesa;
 }
 
 .nav-pills {
@@ -169,7 +170,7 @@ footer {
     *display:inline; /* ie7 fix */
     zoom:1; /* hasLayout ie7 trigger */
     a {
-      color: $nothing;
+      color: $framboesa; 
     }
     a:hover {
       color: white;
