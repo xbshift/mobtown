@@ -65,6 +65,12 @@ $btnPrimaryBackground: $tealalmost;
 
 /* Some overrides must be done after the import. */
 
+#logo {
+  background-image: url('/images/mobtown-logo-200.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
 
 h1, h2, h3, h4, h5 {
   text-transform: uppercase;
