@@ -33,6 +33,22 @@ $btnPrimaryBackground: $nothing;
 
 /* Some overrides must be done after the import. */
 
+@font-face {
+    font-family: 'mission_scriptregular';
+    src: url('mission-script-webfont.eot');
+    src: url('mission-script-webfont.eot?#iefix') format('embedded-opentype'),
+         url('mission-script-webfont.woff') format('woff'),
+         url('mission-script-webfont.ttf') format('truetype'),
+         url('mission-script-webfont.svg#mission_scriptregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'mission_scriptregular';
+}
+
 .nav-pills {
   .active > a, .active > a:hover , li > a:hover {
     background: $nothing;
