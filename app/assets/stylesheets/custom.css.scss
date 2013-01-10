@@ -84,10 +84,11 @@ header .navbar {
   letter-spacing: 0.2 em;
 }
 
-.headline {
+.headline, .headline a, .headline a:hover {
   font-family: 'mission_scriptregular';
   font-weight: normal;
   text-transform: none;
+  text-decoration: none;
   color: $dirtyred;
 }
 
@@ -129,24 +130,28 @@ header .navbar {
   }
 }
 
+.nav-tabs {
+  border-color: $tealalmost;
+}
+
 .nav-tabs > li {
   font-family: 'mission_scriptregular';
   font-weight: regular;
   font-size: 20px;
-  a {
-    color: $dirtyred; 
+  a, &.active a, &.active a:hover {
+    border-color: $tealalmost;
+    border-bottom-color: transparent;
   }
   a:hover {
     color: white;
-    border-color: $tealalmost;
-    border-bottom-color: $grey;
     background-color: $tealalmost;
   } 
-}
-
-.nav-tabs > .active > a,
-.nav-tabs > .active > a:hover {
-  color: darken($dirtyred, 15%);
+  a {
+    color: $dirtyred; 
+  }
+  &.active a, &.active a:hover {
+    color: darken($dirtyred, 15%);
+  }
 }
 
 .btn-dirtydog {
@@ -167,31 +172,26 @@ header .navbar {
   -webkit-font-smoothing: antialiased;
 }
 
-$carouselWidth: 940px;
-
-.below-carousel {
-  width: $carouselWidth;
-  margin: auto;
-}
-
-#heroCarousel {
-  width: $carouselWidth;
-  margin: auto;
-}
+$carouselWidth: 960px;
+$carouselHeight: 500px;
 
 .carousel-inner .item {
-  height: 400px;
+  height: $carouselHeight;
   overflow: hidden;
 }
 
 .overflow-box {
-  height: 400px; 
+  height: $carouselHeight;
   display: table-cell;
   vertical-align: middle;
 }
 .overflow-box img {
-  height: auto; 
   width: $carouselWidth;
+  height: auto; 
+}
+
+.carousel-control {
+  font-family: 'Georgia', 'Times New Roman';
 }
 
 .carousel-caption p {

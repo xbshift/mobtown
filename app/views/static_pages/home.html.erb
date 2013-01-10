@@ -1,6 +1,6 @@
-<div id="heroCarousel" class="carousel slide row">
+<div id="heroCarousel" class="carousel slide">
   <!-- Carousel items -->
-  <div class="carousel-inner span12">
+  <div class="carousel-inner">
     <div class="active item">
       <div class="overflow-box">
         <%= image_tag "carousel1.jpg" %>
@@ -33,14 +33,13 @@
   <a class="carousel-control right" href="#heroCarousel" data-slide="next">&rsaquo;</a>
 </div>
 
-<div class="below-carousel">
   <div class="row">
     <div class="span4">
-      <h3 class="headline">Sign Up for Classes</h3>
+      <h3 class="headline"><%= link_to 'Sign Up for Classes', dance_classes_path %></h3>
       <p>The Mobtown Ballroom is committed to making it as easy as possible to get started dancing. You're in good hands.</p><%= link_to "Do it.", dance_classes_path, class: "btn btn-dirtydog" %>
     </div>
     <div class="span4">
-      <h3 class="headline">Get the Skinny</h3>
+      <h3 class="headline"><%= link_to 'Get the Skinny', calendar_path %></h3>
       <p>See what we've got in store for the new year.</p><%= link_to "Calendar", calendar_path ,class: "btn btn-dirtydog" %>
     </div>
     <div class="span4">
@@ -48,7 +47,6 @@
       <p>Read our <%= link_to "Mob Mentality", mobmentality_path %>, and visit the Mob Blog.</p>
     </div>
   </div>
-</div>
 
 <% content_for :javascript do %>
   <script>
