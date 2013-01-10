@@ -6,8 +6,8 @@ Mobtown::Application.configure do
 
   # Precompile additional assets
   config.assets.precompile += %w( .svg .eot .woff .ttf )
-  config.assets.precomplie += %w( ie6.css ie7.css )
-  #config.assets.precompile += ['ckeditor/*']
+  config.assets.precompile += %w( ie6.css ie7.css )
+  config.assets.precompile += ['ckeditor/*']
 
   # Settings specified here will take precedence over those in config/application.rb
 
