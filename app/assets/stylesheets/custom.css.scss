@@ -167,13 +167,15 @@ header .navbar {
   -webkit-font-smoothing: antialiased;
 }
 
+$carouselWidth: 940px;
+
 .below-carousel {
-  width: 800px;
+  width: $carouselWidth;
   margin: auto;
 }
 
 #heroCarousel {
-  width: 800px; 
+  width: $carouselWidth;
   margin: auto;
 }
 
@@ -189,7 +191,7 @@ header .navbar {
 }
 .overflow-box img {
   height: auto; 
-  width: 800px;
+  width: $carouselWidth;
 }
 
 .carousel-caption p {
