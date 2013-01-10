@@ -11,5 +11,5 @@
 #
 
 class DanceClass < ActiveRecord::Base
-  attr_accessible :name, :description, :category
+  attr_accessible :name, :description, :category, :price, :student_price
 end

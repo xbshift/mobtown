@@ -13,7 +13,7 @@
         <div class="tab-pane row-fluid" id="tab<%= dance_class.id %>">
           <div class="span8">
             <%= yield :dance_class %>
-            <p><%= dance_class.description %></p>
+            <p><%= dance_class.description.html_safe %></p>
           </div>
           <div class="signup-well span4">
             <h5>Current Session</h5>
