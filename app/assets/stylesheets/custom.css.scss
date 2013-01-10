@@ -167,6 +167,11 @@ header .navbar {
   -webkit-font-smoothing: antialiased;
 }
 
+.carousel_width {
+  width: 800px;
+}
+/* for matching row-fluid below carousel */
+
 #heroCarousel {
   width: 800px; 
   margin: auto;
