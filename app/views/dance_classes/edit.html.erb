@@ -1,6 +1,7 @@
-<h1>Editing Class</h1>
+<h3>Editing Class</h3>
  
 <%= render 'form' %>
  
 <%= link_to 'Destroy', @dance_class, :confirm => 'Pull the trigger?',
-                                     :method => :delete %>
+                                     :method => :delete,
+                                     :class => 'destroy-link' %>

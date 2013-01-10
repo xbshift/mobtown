@@ -11,11 +11,8 @@
   </div>
   <% end %>
   <%= f.inputs :name => "The Sell" do %>
-    <%= f.input :name %>
-    <%= f.input :category %>
-    <%= f.input :description %>
-    <%= f.input :price %>
-    <%= f.input :student_price %>
+    <%= f.inputs :name, :category, :price, :student_price  %>
+    <%= f.input :description, :as => :ckeditor %>
   <% end %>
 
   <%= f.actions do %> 
