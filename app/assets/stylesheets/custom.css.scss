@@ -1,26 +1,21 @@
 /* Import bootstrap AFTER overriding some color variables. */
 
-@font-face {
-    font-family: 'nexa_lightregular';
-    src: url('nexa_light-webfont.eot');
-    src: url('nexa_light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('nexa_light-webfont.woff') format('woff'),
-         url('nexa_light-webfont.ttf') format('truetype'),
-         url('nexa_light-webfont.svg#nexa_lightregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+@font-face{ 
+	font-family: 'nexa_bold';
+	src: url('nexa_bold.eot');
+	src: url('nexa_bold.eot?#iefix') format('embedded-opentype'),
+	     url('nexa_bold.woff') format('woff'),
+	     url('nexa_bold.ttf') format('truetype'),
+	     url('nexa_bold.svg#webfont') format('svg');
 }
 
-@font-face {
-    font-family: 'nexa_boldregular';
-    src: url('nexa_bold-webfont.eot');
-    src: url('nexa_bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('nexa_bold-webfont.woff') format('woff'),
-         url('nexa_bold-webfont.ttf') format('truetype'),
-         url('nexa_bold-webfont.svg#nexa_boldregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    letter-spacing: 0.3em;
+@font-face{ 
+	font-family: 'nexa_light';
+	src: url('nexa_light.eot');
+	src: url('nexa_light.eot?#iefix') format('embedded-opentype'),
+	     url('nexa_light.woff') format('woff'),
+	     url('nexa_light.ttf') format('truetype'),
+	     url('nexa_light.svg#webfont') format('svg'); 
 }
 
 @font-face {
@@ -44,7 +39,7 @@ $dark: #150e03; /* virtually black */
 $bodyBackground: $grey;
 $textColor: $dark;
 
-$serifFontFamily: 'nexa_lightregular'; 
+$serifFontFamily: 'nexa_light'; 
 $baseFontFamily: $serifFontFamily;
 $baseFontSize: 15px;
 $baseLineHeight: 22px;
@@ -78,11 +73,11 @@ h1, h2, h3, h4, h5 {
 }
 
 header .navbar {
-  font-family: 'nexa_boldregular';
+  font-family: 'nexa_bold';
   font-weight: normal;
   font-size: 15px;
   text-transform: uppercase;
-  letter-spacing: 0.2 em;
+  letter-spacing: 1.2 em;
 }
 
 .headline, .headline a, .headline a:hover {
@@ -205,7 +200,7 @@ $carouselHeight: 500px;
   color: white; 
   .event-title {
     display: block;
-    font-family: 'nexa_boldregular';
+    font-family: 'nexa_bold';
     text-transform: uppercase;
     letter-spacing: 0.2 em;
   }
