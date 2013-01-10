@@ -25,8 +25,8 @@
 /* color */
 /* http://www.colourlovers.com/palette/1620866/Milan_1920 */
 $framboesa: rgb(199, 54, 54);
-$nothing: rgb(171, 151, 138);
-$chocolate: rgb(66, 42, 42);
+$nothing: #55938d; /* a teal almost */ 
+$chocolate: white; 
 $blue_green: #dcd9cb; /* grey */ 
 $dark: #150e03; /* virtually black */ 
 
@@ -76,7 +76,7 @@ header .navbar {
   font-weight: normal;
 }
 
-headline {
+.headline {
   font-family: 'mission_scriptregular';
   font-weight: normal;
 }
