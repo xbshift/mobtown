@@ -20,6 +20,7 @@
          url('nexa_bold-webfont.svg#nexa_boldregular') format('svg');
     font-weight: normal;
     font-style: normal;
+    letter-spacing: 0.3em;
 }
 
 @font-face {
@@ -175,18 +176,24 @@ header .navbar {
 $carouselWidth: 960px;
 $carouselHeight: 500px;
 
+#heroCarousel {
+  max-width: $carouselWidth;
+  width: 100%;
+  margin: auto;
+}
+
 .carousel-inner .item {
-  height: $carouselHeight;
+  max-height: $carouselHeight;
   overflow: hidden;
 }
 
 .overflow-box {
-  height: $carouselHeight;
+  max-height: $carouselHeight;
   display: table-cell;
   vertical-align: middle;
 }
 .overflow-box img {
-  width: $carouselWidth;
+  width: $carouselWidth; 
   height: auto; 
 }
 
