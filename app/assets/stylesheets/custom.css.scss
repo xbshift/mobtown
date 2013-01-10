@@ -82,17 +82,23 @@ header .navbar {
   color: $dirtyred;
 }
 
-.nav-pills {
-  .active > a, .active > a:hover , li > a:hover {
+.nav-pills li {
+  a {
+    color: $tealalmost;
+  }
+  &.active > a, &.active > a:hover , a:hover {
     background: $tealalmost;
     color: white;
   }
 }
 
-.nav-list li a {
-  color: $dirtyred;
+.nav-list li {
   text-shadow: none;
-  &:hover {
+  a {
+    color: $dirtyred;
+  }
+  a:hover {
+    color: white;
     background-color: $tealalmost;
   }
 }
