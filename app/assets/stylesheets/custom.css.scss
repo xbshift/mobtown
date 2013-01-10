@@ -27,8 +27,8 @@
 $framboesa: rgb(199, 54, 54);
 $nothing: rgb(171, 151, 138);
 $chocolate: rgb(66, 42, 42);
-$blue_green: rgb(91, 128, 123); 
-$dark: rgb(26, 26, 26);
+$blue_green: #dcd9cb; /* grey */ 
+$dark: #150e03; /* virtually black */ 
 
 $bodyBackground: $blue_green;
 $textColor: $dark;
@@ -148,7 +148,7 @@ headline {
 }
 
 .carousel-caption p {
-  color: $framboesa;
+  color: white; 
   .event-title {
     display: block;
     font-family: 'nexa_boldregular';
@@ -171,6 +171,7 @@ footer {
 
 .nav-tabs > li > a {
   font-family: 'mission_scriptregular';
+  font-weight: regular;
   font-size: 20px;
 }
 
