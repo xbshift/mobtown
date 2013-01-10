@@ -61,6 +61,8 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     ffi (1.2.0)
+    formtastic (2.2.1)
+      actionpack (>= 3.0)
     guard (1.6.1)
       listen (>= 0.6.0)
       lumberjack (>= 1.0.2)
@@ -189,6 +191,7 @@ DEPENDENCIES
   capybara (= 1.1.2)
   ckeditor
   coffee-rails (= 3.2.2)
+  formtastic (~> 2.2.1)
   guard-rspec (= 1.2.1)
   guard-spork (= 1.2.0)
   jquery-rails (= 2.0.2)

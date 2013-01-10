@@ -1,4 +1,4 @@
-<%= form_for(@dance_class) do |f| %>
+<%= semantic_form_for @dance_class do |f| %>
   <% if @dance_class.errors.any? %>
   <div id="errorExplanation">
     <h2><%= pluralize(@dance_class.errors.count, "error") %> prohibited
@@ -10,20 +10,17 @@
     </ul>
   </div>
   <% end %>
- 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :category%><br />
-    <%= f.text_field :category %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.inputs :name => "The Sell" do %>
+    <%= f.input :name %>
+    <%= f.input :category %>
+    <%= f.input :description %>
+    <%= f.input :price %>
+    <%= f.input :student_price %>
+  <% end %>
+
+  <%= f.actions do %> 
+    <%= f.action :submit, :as => :button %>
+    <%= f.action :cancel, :as => :link %>
+  <% end %>
+
 <% end %>
