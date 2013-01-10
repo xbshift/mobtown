@@ -24,7 +24,7 @@
 
 /* color */
 /* http://www.colourlovers.com/palette/1620866/Milan_1920 */
-$framboesa: #bf1a00; 
+$framboesa: #bf1a00;  /* red */
 $nothing: #55938d; /* a teal almost */ 
 $chocolate: white; 
 $blue_green: #dcd9cb; /* grey */ 
@@ -91,7 +91,7 @@ header .navbar {
 }
 
 .nav-list li a {
-  color: $chocolate;
+  color: $framboesa;
   text-shadow: none;
   &:hover {
     background-color: $nothing;
@@ -169,13 +169,6 @@ footer {
     display:inline-block;
     *display:inline; /* ie7 fix */
     zoom:1; /* hasLayout ie7 trigger */
-    a {
-      color: $framboesa; 
-    }
-    a:hover {
-      color: white;
-    }
-    
   }
   .nav-tabs, .nav-pills {
     text-align:center;
@@ -186,14 +179,17 @@ footer {
   font-family: 'mission_scriptregular';
   font-weight: regular;
   font-size: 20px;
+  a {
+    color: $framboesa; 
+  }
+  a:hover {
+    color: white;
+    border-color: $nothing;
+    border-bottom-color: white;
+    background-color: $nothing;
+  } 
 }
 
-.nav-tabs > li > a:hover {
-  color: $framboesa;
-  border-color: $nothing;
-  border-bottom-color: white;
-  background-color: $nothing;
-}
 .nav-tabs > .active > a,
 .nav-tabs > .active > a:hover {
   color: $white;
