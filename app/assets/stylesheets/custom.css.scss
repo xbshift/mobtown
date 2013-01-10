@@ -77,11 +77,6 @@ header .navbar {
   font-weight: normal;
 }
 
-strong {
-  font-family: 'nexa_boldregular';
-  text-transform: uppercase;
-}
-
 .nav-pills {
   .active > a, .active > a:hover , li > a:hover {
     background: $nothing;
@@ -152,7 +147,8 @@ strong {
   color: $framboesa;
   .event-title {
     display: block;
-    font-weight: bold;
+    font-family: 'nexa_boldregular';
+    text-transform: uppercase;
   }
 }
 
