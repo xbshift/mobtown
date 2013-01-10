@@ -22,39 +22,6 @@
     font-style: normal;
 }
 
-/* color */
-/* http://www.colourlovers.com/palette/1620866/Milan_1920 */
-$framboesa: #bf1a00;  /* red */
-$nothing: #55938d; /* a teal almost */ 
-$chocolate: white; 
-$blue_green: #dcd9cb; /* grey */ 
-$dark: #150e03; /* virtually black */ 
-
-$bodyBackground: $blue_green;
-$textColor: $dark;
-
-$serifFontFamily: 'nexa_lightregular'; 
-$baseFontFamily: $serifFontFamily;
-$baseFontSize: 15px;
-$baseLineHeight: 22px;
-
-$navbarLinkColor: $chocolate;
-$navbarLinkColorActive: white; 
-$navbarLinkColorHover: white;
-$navbarText: $chocolate;
-$navbarBrandColor: $chocolate;
-$navbarBackground: $nothing;
-$navbarBackgroundHighlight: $nothing;
-
-$linkColor: $chocolate;
-
-$btnPrimaryBackground: $nothing;
-
-@import "bootstrap";
-@import "bootstrap-responsive";
-
-/* Some overrides must be done after the import. */
-
 @font-face {
     font-family: 'mission_scriptregular';
     src: url('mission-script-webfont.eot');
@@ -64,8 +31,40 @@ $btnPrimaryBackground: $nothing;
          url('mission-script-webfont.svg#mission_scriptregular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
+
+/* color */
+/* http://www.colourlovers.com/palette/1620866/Milan_1920 */
+$dirtyred: #bf1a00;  /* red */
+$tealalmost: #55938d; /* a teal almost */ 
+$grey: #dcd9cb; /* grey */ 
+$dark: #150e03; /* virtually black */ 
+
+$bodyBackground: $grey;
+$textColor: $dark;
+
+$serifFontFamily: 'nexa_lightregular'; 
+$baseFontFamily: $serifFontFamily;
+$baseFontSize: 15px;
+$baseLineHeight: 22px;
+
+$navbarLinkColor: white;
+$navbarLinkColorActive: white; 
+$navbarLinkColorHover: white;
+$navbarText: white;
+$navbarBrandColor: white;
+$navbarBackground: $tealalmost;
+$navbarBackgroundHighlight: $tealalmost;
+
+$linkColor: white;
+
+$btnPrimaryBackground: $tealalmost;
+
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+/* Some overrides must be done after the import. */
+
 
 h1, h2, h3, h4, h5 {
   text-transform: uppercase;
@@ -80,21 +79,21 @@ header .navbar {
   font-family: 'mission_scriptregular';
   font-weight: normal;
   text-transform: none;
-  color: $framboesa;
+  color: $dirtyred;
 }
 
 .nav-pills {
   .active > a, .active > a:hover , li > a:hover {
-    background: $nothing;
+    background: $tealalmost;
     color: white;
   }
 }
 
 .nav-list li a {
-  color: $framboesa;
+  color: $dirtyred;
   text-shadow: none;
   &:hover {
-    background-color: $nothing;
+    background-color: $tealalmost;
   }
 }
 
@@ -108,7 +107,7 @@ header .navbar {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
-  background-color: lighten($blue_green, 20%);
+  background-color: lighten($grey, 20%);
   ul {
     list-style: none;
     margin-left: 0;
@@ -128,7 +127,7 @@ header .navbar {
   background-image: -o-linear-gradient(top, #ddd0c9, #b6998a);
   background-image: linear-gradient(#ddd0c9, #b6998a);
   border-color: #b6998a #b6998a hsl(20, 23%, 58%);
-  color: $chocolate !important;
+  color: white !important;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.33);
   -webkit-font-smoothing: antialiased;
 }
@@ -180,13 +179,13 @@ footer {
   font-weight: regular;
   font-size: 20px;
   a {
-    color: $framboesa; 
+    color: $dirtyred; 
   }
   a:hover {
     color: white;
-    border-color: $nothing;
+    border-color: $tealalmost;
     border-bottom-color: white;
-    background-color: $nothing;
+    background-color: $tealalmost;
   } 
 }
 
