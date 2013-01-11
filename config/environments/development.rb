@@ -3,7 +3,7 @@ Mobtown::Application.configure do
 
   config.paperclip_defaults = {    :storage => :s3,
     :s3_credentials => {
-     # :bucket => ENV['AWS_BUCKET'],
+      :bucket => ENV['mobtown'],
       :access_key_id => ENV['AKIAJTH3JU6U2WYYK37A'],
       :secret_access_key => ENV['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']
     }
