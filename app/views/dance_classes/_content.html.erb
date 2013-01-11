@@ -17,7 +17,7 @@
           </div>
           <div class="signup-well span4">
             <h5>Current Session</h5>
-            <p>Jan 1 - Feb 1</p>
+            <p><%= dance_class.session_dates %></p>
             <h5>Pricing</h5>
             <% if not dance_class.student_price.blank? %>
               <ul>
