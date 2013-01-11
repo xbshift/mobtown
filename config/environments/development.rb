@@ -1,4 +1,14 @@
 Mobtown::Application.configure do
+
+
+  config.paperclip_defaults = {    :storage => :s3,
+    :s3_credentials => {
+     # :bucket => ENV['AWS_BUCKET'],
+      :access_key_id => ENV['AKIAJTH3JU6U2WYYK37A'],
+      :secret_access_key => ENV['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']
+    }
+  }
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
