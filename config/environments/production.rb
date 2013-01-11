@@ -1,6 +1,5 @@
 Mobtown::Application.configure do
 
-  # Dan did this.
   # Add the fonts path
   config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
 
@@ -8,6 +7,15 @@ Mobtown::Application.configure do
   config.assets.precompile += %w( .svg .eot .woff .ttf )
   config.assets.precompile += %w( ie6.css ie7.css )
   config.assets.precompile += ['ckeditor/*']
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+     # :bucket => ENV['AWS_BUCKET'],
+      :access_key_id => ENV['AKIAJTH3JU6U2WYYK37A'],
+      :secret_access_key => ENV['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']
+    }
+  }
 
   # Settings specified here will take precedence over those in config/application.rb
 
