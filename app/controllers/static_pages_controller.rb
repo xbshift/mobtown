@@ -19,4 +19,7 @@ class StaticPagesController < ApplicationController
 
   def dances
   end
+
+  def videos
+  end
 end

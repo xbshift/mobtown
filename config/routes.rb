@@ -17,6 +17,7 @@ Mobtown::Application.routes.draw do
   end
   resources :dance_classes
   match '/warroom', to: 'application#login'
+  match '/videos', to: 'static_pages#videos'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
