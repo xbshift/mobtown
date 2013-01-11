@@ -10,13 +10,12 @@
     </ul>
   </div>
   <% end %>
-  <%= f.inputs :name => "The Sell" do %>
-    <%= f.input :name %>
-    <%= f.input :category %>
-    <%= f.input :description, :as => :ckeditor %>
-    <%= f.input :price %>
-    <%= f.input :student_price %>
-  <% end %>
+  <%= f.input :name %>
+  <%= f.input :category %>
+  <%= f.input :session_dates, :label => "Session Dates & Meeting Times" %>
+  <%= f.input :description, :as => :ckeditor %>
+  <%= f.input :price %>
+  <%= f.input :student_price %>
 
   <%= f.actions do %> 
     <%= f.action :submit, :as => :button %>
