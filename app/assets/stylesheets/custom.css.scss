@@ -239,14 +239,31 @@ footer {
   }
 }
 
-.content img {
+.content img, .content figure {
   margin: 5px 0px 5px 0px;
   &.pull-right {
-    margin: 5px 0px 5px 10px;
+    margin-left: 10px;
+    figcaption {
+      margin-left: 10px;
+    }
   }
   &.pull-left {
-    margin: 5px 10px 5px 0px;
+    margin-right: 10px;
+    figcaption {
+      margin-right: 10px;
+    }
   }
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+figcaption {
+  margin: 1px;
+  font-size: 10px;
+  line-height: 8px;
 }
 
 .big-picture {
