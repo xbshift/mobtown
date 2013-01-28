@@ -1,8 +1,7 @@
 <div class="row-fluid">
   <div class="span9 content">
     <%= render 'dance_classes/' + @category %>
-
-    <div class="tabbable row-fluid">
+    <div class="tabbable row-fluid clear-left">
       <ul class="nav nav-tabs" id="dance-classes">
         <% @dance_classes.each do |dance_class| %>
         <li><a href="#tab<%= dance_class.id %>" data-toggle="tab"><%= dance_class.name %></a></li>
