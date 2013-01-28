@@ -34,19 +34,32 @@
 </div>
 
   <div class="row-fluid">
-    <div class="span4">
+    <div class="span4 feature-box">
       <h3 class="headline"><%= link_to 'Sign Up for Classes', dance_classes_path %></h3>
-      <p>The Mobtown Ballroom is committed to making it as easy as possible to get started dancing. You're in good hands.</p><%= link_to "Do it.", dance_classes_path, class: "btn btn-dirtydog" %>
+      <p>The Mobtown Ballroom is committed to making it as easy as possible to get started dancing. You're in good hands.</p><%= link_to "Do it", dance_classes_path, class: "btn btn-dirtydog" %>
     </div>
-    <div class="span4">
+    <div class="span4 feature-box">
       <h3 class="headline"><%= link_to 'Get the Skinny', calendar_path %></h3>
       <p>See what we've got in store for the new year.</p><%= link_to "Calendar", calendar_path ,class: "btn btn-dirtydog" %>
     </div>
-    <div class="span4">
-      <h3 class="headline">Drink the Kool-Aid</h3>
-      <p>Read our <%= link_to "Mob Mentality", mobmentality_path %>, and visit the Mob Blog.</p>
+    <div class="span4 feature-box">
+      <h3 class="headline"><%= link_to 'Read Our Battle Cry', mobmentality_path %></h3>
+      <p>This is what we do.</p><%= link_to 'The Mob Mentality', mobmentality_path, class: 'btn btn-dirtydog' %>
     </div>
   </div>
+  <div class="row-fluid">
+    <div class="span4 feature-box">
+      <h3 class="headline"><%= link_to 'Watch Videos', videos_path %></h3>
+      <p>Review moves from classes. See Mobtown denizens competing on the dance floor. Experience our promotion in Technicolor.</p><%= link_to 'Watch \'em', videos_path, class: 'btn btn-dirtydog' %>
+    </div>
+    <div class="span4 feature-box">
+      <h3 class="headline"><%= link_to 'Go Dancing', dances_path %></h3>
+      <p>On dance nights, we mix it up with seasoned regulars and first-timers just giving it a try.</p><%= link_to 'Pick a night', dances_path, class: 'btn btn-dirtydog' %>
+    </div>
+    <div class="span4 feature-box">
+      <h3 class="headline"><%= link_to 'Drink the Kool-Aid', '#' %></h3>
+      <p>In which we pontificate on our scheme to emamcipate you from the daily grind</p><%= link_to 'The Mob Blog', '#', class: 'btn btn-dirtydog' %>
+    </div>
 
 <% content_for :javascript do %>
   <script>

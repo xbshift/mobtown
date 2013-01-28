@@ -155,6 +155,10 @@ header .navbar {
   }
 }
 
+.feature-box {
+  margin-bottom: 15px;
+}
+
 .btn-dirtydog {
   /* using http://charliepark.org/bootstrap_buttons/ */
   background-color: hsl(0, 70%, 24%) !important;
@@ -173,8 +177,8 @@ header .navbar {
   -webkit-font-smoothing: antialiased;
 }
 
-$carouselWidth: 960px;
-$carouselHeight: 500px;
+$carouselWidth: 700px;
+$carouselHeight: 400px;
 
 #heroCarousel {
   max-width: $carouselWidth;
@@ -229,13 +233,24 @@ footer {
   text-align: center;
 }
 
+.content {
+  ul li {
+    list-style: none;
+  }
+}
+
 .content img {
+  margin: 5px 0px 5px 0px;
   &.pull-right {
     margin: 5px 0px 5px 10px;
   }
   &.pull-left {
     margin: 5px 10px 5px 0px;
   }
+}
+
+.big-picture {
+  width: 100%;
 }
 
 .bio-pic {
@@ -257,7 +272,7 @@ footer {
     padding-left: 0px;
     padding-right: 0px;
   }
-  .container{
+  .container-fluid{
     padding:5px 19px;
     width: auto;
   }
