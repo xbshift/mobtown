@@ -29,11 +29,14 @@
 <%= render :partial => 'dance_classes/paypal', :locals => {:dance_class => dance_class} %>
           </div>
         <% if logged_in? %>
-          <p>War Room: <%= link_to 'Edit or Destroy', edit_dance_class_path(dance_class) %> or <%= link_to 'New Class', new_dance_class_path %></p>
+          <p class='war-room'>War Room: <%= link_to 'Edit or Destroy', edit_dance_class_path(dance_class) %></p>
         <% end %>
         </div>
         <% end %>
       </div><!-- tab-content -->
+      <% if logged_in? %>
+        <p class="war-room">War Room: <%= link_to 'New Class', new_dance_class_path %></p>
+      <% end %>
     </div>
   </div>
 
