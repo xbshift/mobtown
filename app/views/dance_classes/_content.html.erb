@@ -10,7 +10,7 @@
       <div class="tab-content span12">
         <% @dance_classes.each do |dance_class| %>
         <div class="tab-pane row-fluid" id="tab<%= dance_class.id %>">
-          <div class="span8">
+          <div class="span8 min-width-youtube">
             <%= yield :dance_class %>
             <p><%= dance_class.description.html_safe %></p>
           </div>
