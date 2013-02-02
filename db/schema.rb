@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130109214440) do
+ActiveRecord::Schema.define(:version => 20130202231139) do
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
@@ -38,6 +38,18 @@ ActiveRecord::Schema.define(:version => 20130109214440) do
     t.decimal  "price",         :precision => 8, :scale => 2
     t.decimal  "student_price", :precision => 8, :scale => 2
     t.string   "session_dates"
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "title"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.datetime "expiration"
+    t.boolean  "special"
+    t.text     "summary"
+    t.text     "prose"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
