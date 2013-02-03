@@ -4,7 +4,7 @@
   <% @events.each do |event| %>
     <div class="item">
       <div class="overflow-box">
-        <%= image_tag "carousel1.jpg" %>
+        <%= image_tag event.photo.url(:carousel) %>
         <div class="carousel-caption">
           <p><span class="event-title"><%= event.title %></span><%= raw event.summary %></p>
         </div>
@@ -20,7 +20,7 @@
   <div class="row-fluid">
     <div class="span3 feature-box">
       <h3 class="headline"><%= link_to 'Get the Skinny', calendar_path %></h3>
-      <p>See what we've got in store.</p><%= link_to "Calendar", calendar_path ,class: "btn btn-dirtydog" %>
+      <p>See what we've got in store.</p><%= link_to "Calendar", events_path, class: "btn btn-dirtydog" %>
     </div>
     <div class="span3 feature-box">
       <h3 class="headline"><%= link_to 'Sign Up for Classes', dance_classes_path %></h3>
