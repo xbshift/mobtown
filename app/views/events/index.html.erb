@@ -1,0 +1,12 @@
+<div class="content">
+  <% @events.each do |event| %>
+    <div>
+      <%= image_tag event.photo.url(:small), class: "img-rounded pull-left" %>
+      <h5><%= event.title %></h5>
+      <p><%= raw event.summary %></p>
+      <% if logged_in? %>
+        <p class='war-room'>War Room: <%= link_to 'Edit or Destroy', edit_event_path(event) %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
