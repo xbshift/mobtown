@@ -22,6 +22,7 @@ Mobtown::Application.routes.draw do
   match '/balls', to: 'application#login'
   match '/admin', to: 'application#login'
   match '/videos', to: 'static_pages#videos'
+  resources :events
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

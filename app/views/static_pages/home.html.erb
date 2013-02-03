@@ -1,32 +1,16 @@
 <div id="heroCarousel" class="carousel slide">
   <!-- Carousel items -->
   <div class="carousel-inner">
-    <div class="active item">
+  <% @events.each do |event| %>
+    <div class="item">
       <div class="overflow-box">
         <%= image_tag "carousel1.jpg" %>
         <div class="carousel-caption">
-          <p><span class="event-title">West Coast Swing dance party</span>Completely new programming begins on January 13, when we have our first ever West Coast Swing dance party. $10 will get you in for everything, and there's a quick drop-in from 8-9.</p>
+          <p><span class="event-title"><%= event.title %></span><%= raw event.summary %></p>
         </div>
       </div>
     </div>
-    <div class="item">
-      <div class="overflow-box">
-        <%= image_tag "bosley_shotgun.jpg" %>
-      </div>
-      <div class="carousel-caption">
-        <p><span class="event-title">Bosley</span>
-        Get hyped about the glorious, triumphant, and not at all lecherous return of our house soul band, BOSLEY. They've played thrice here, and each time they brought down the house. Saturday, January 26th. Doors at 8:00, show at 9:00. Be there.</p>
-      </div>
-    </div>
-    <div class="item">
-      <div class="overflow-box">
-        <%= image_tag "carousel1.jpg" %>
-      </div>
-      <div class="carousel-caption">
-        <p><span class='event-title'>Friday Night Dance</span>
-        Dance late into the night. Try a drop-in beginner lesson at 8 ($5) and stay for the dance ($7). We'll be open as late as you want to stay.</p>
-      </div>
-    </div>
+  <% end %>
   </div>
   <!-- Carousel nav -->
   <a class="carousel-control left" href="#heroCarousel" data-slide="prev">&lsaquo;</a>

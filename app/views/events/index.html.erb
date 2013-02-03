@@ -1,0 +1,10 @@
+<% @events.each do |event| %>
+  <div class="item">
+    <div class="overflow-box">
+      <%= image_tag "carousel1.jpg" %>
+      <div class="carousel-caption">
+        <p><span class="event-title"><%= event.title %></span><%= raw event.summary %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
