@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :get_special_events
+
+  def get_special_events
+    @special_events = Event.find(:all, :conditions => {:special => true})
+  end
+
   def login
     authenticate
   end
