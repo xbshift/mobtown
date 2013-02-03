@@ -1,7 +1,10 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.find(:all, :limit => 5, :order => 'starts_at asc')
+    @events = Event.find(
+      :all, 
+      :conditions => {:starts_at => Date.today..(Date.today + 90.days)},
+      :order => 'starts_at asc')
 
     respond_to do |format|
       format.html  # index.html.erb
