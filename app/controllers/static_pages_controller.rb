@@ -1,6 +1,9 @@
 class StaticPagesController < ApplicationController
   def home 
-    @events = Event.find(:all, :order => 'starts_at asc')
+    @events = Event.find(
+      :all, 
+      :conditions => {:starts_at => Date.today..(Date.today + 9.days)},
+      :order => 'starts_at asc')
   end
 
   def venue

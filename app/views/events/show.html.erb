@@ -3,3 +3,7 @@
 <div class="content">
   <%= raw @event.prose %>
 </div>
+
+<% if logged_in? %>
+  <p class='war-room'><%= link_to "Edit or Destroy", edit_event_path(@event) %></p>
+<% end %>
