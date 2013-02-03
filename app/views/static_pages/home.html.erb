@@ -1,8 +1,12 @@
 <div id="heroCarousel" class="carousel slide">
   <!-- Carousel items -->
   <div class="carousel-inner">
-  <% @events.each do |event| %>
-    <div class="item">
+  <% @events.each_with_index do |event, i| %>
+    <% if i == 0 %>
+      <div class="item active">
+    <% else %>
+      <div class="item">
+    <% end %>
       <div class="overflow-box">
         <%= image_tag event.photo.url(:carousel) %>
         <div class="carousel-caption">
