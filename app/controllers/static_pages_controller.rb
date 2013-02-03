@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home 
+    @events = Event.find(:all, :order => 'starts_at asc')
   end
 
   def venue

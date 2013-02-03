@@ -12,7 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui-sliderAccess
+//= require jquery-ui-timepicker-addon
 //= require_tree .
 //= require bootstrap
 //= require ckeditor/init
 //= require ckeditor/ckeditor 
+$('.date_picker').datetimepicker();
