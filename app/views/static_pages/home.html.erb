@@ -1,17 +1,34 @@
 <div id="heroCarousel" class="carousel slide">
   <!-- Carousel items -->
   <div class="carousel-inner">
-  <% @events.each_with_index do |event, i| %>
-    <% if i == 0 %>
-      <div class="item active">
-    <% else %>
-      <div class="item">
-    <% end %>
+  <% @is_first = true %>
+  <% @events.each do |event| %>
+    <div class="item <%= @is_first? 'active' : '' %>">
+      <% @is_first = false %>
       <div class="overflow-box">
-        <%= image_tag event.photo.url(:carousel) %>
-        <div class="carousel-caption">
-          <p><span class="event-title"><%= event.title %></span><%= raw event.summary %></p>
-        </div>
+        <% if event.prose.blank? %>
+          <%= image_tag event.photo.url(:carousel) %>
+          <div class="carousel-caption">
+            <p>
+            <span class="event-header">
+              <%= content_tag :span, event.starts_at.strftime("%A, %b %e"), class: 'event-date' %>
+              <%= content_tag :span, event.title, class: 'event-title' %>
+            </span>
+            <%= raw event.summary %></p>
+          </div>
+        <% else %>
+          <%= link_to(event_path(event)) do %>
+            <%= image_tag(event.photo.url(:carousel)) %>
+            <div class="carousel-caption">
+              <p>
+              <span class="event-header">
+                <%= content_tag :span, event.starts_at.strftime("%A, %b %e"), class: 'event-date' %>
+                <%= content_tag :span, event.title, class: 'event-title' %>
+              </span>
+              <%= raw event.summary %></p>
+            </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
   <% end %>

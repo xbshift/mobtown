@@ -207,11 +207,15 @@ $carouselHeight: 400px;
 
 .carousel-caption p {
   color: white; 
-  .event-title {
+  .event-header {
     display: block;
     font-family: 'nexa_boldregular';
     text-transform: uppercase;
-    letter-spacing: 0.2 em;
+    .event-title {
+    }
+    .event-date {
+      color: $dirtyred;
+    }
   }
 }
 
