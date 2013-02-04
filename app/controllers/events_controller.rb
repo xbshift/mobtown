@@ -1,3 +1,5 @@
+require 'ice_cube'
+
 class EventsController < ApplicationController
   include EventHelper
 
@@ -21,7 +23,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @schedule = IceCube::Schedule.new(Time.now)
+    @schedule = Schedule.new(Time.now)
     @schedule.add_recurrence_date(Date.strptime(params[:event][:starts_at]))
     @event = Event.new(params[:event])
     @event.schedule = @schedule
