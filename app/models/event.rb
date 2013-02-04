@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
   end
 
   def schedule
-    Schedule.from_hash(read_attribute(:schedule), :start_date_override => Date.today)
+    Schedule.from_hash(read_attribute(:schedule), :start_date_override => Date.today.midnight)
   end
 
   attr_accessible :ends_at, :expiration, :prose, :special, :starts_at, :summary, :title, :photo, :schedule
