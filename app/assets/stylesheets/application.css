@@ -11,4 +11,5 @@
  *= require_self
  *= require formtastic
  *= require custom 
+ *= require wordpress_legacy
  */
