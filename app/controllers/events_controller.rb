@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  require 'ice_cube'
 
   def index
     @events = Event.find(
@@ -22,7 +23,10 @@ class EventsController < ApplicationController
   end
 
   def create
+    @schedule = IceCube::Schedule.new(Time.now)
+    @schedule.add_recurrence_date(Date.strptime(params[:event][:starts_at]))
     @event = Event.new(params[:event])
+    @event.schedule = @schedule
  
     respond_to do |format|
       if @event.save
@@ -40,7 +44,9 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    
+    @next = @event.schedule.next_occurrence.strftime("%A, %b %e")
+    @repetition_string = @event.schedule.rrules.empty? ? '' : @event.schedule.to_s
+
     respond_to do |format|
       format.html  # show.html.erb
       format.json  { render :json => @event }

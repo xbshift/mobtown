@@ -1,4 +1,6 @@
-<h4><%= @event.title %></h4>
+<h4><%= content_tag :span, raw(@next) + ': ', class: 'event-date'%> <%= @event.title %></h4>
+<p><%=raw @repetition_string %></p>
+
 
 <div class="content">
   <%= raw @event.prose %>

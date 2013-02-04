@@ -205,6 +205,10 @@ $carouselHeight: 400px;
   font-family: 'Georgia', 'Times New Roman';
 }
 
+.event-date {
+  color: $dirtyred;
+}
+
 .carousel-caption p {
   color: white; 
   .event-header {
