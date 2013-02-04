@@ -1,0 +1,24 @@
+<%= semantic_form_for @post, :html => { :multipart => true}  do |f| %>
+  <% if @post.errors.any? %>
+  <div id="errorExplanation">
+    <p><%= pluralize(@post.errors.count, "error") %> prohibited
+        this class from being saved:</p>
+    <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <%= f.inputs do %>
+    <%= f.input :title %>
+    <%= f.input :publish, :as => :boolean %>
+    <%= f.input :prose, :as => :ckeditor %>
+  <% end %>
+
+  <%= f.actions do %> 
+    <%= f.action :submit, :as => :button %>
+    <%= f.action :cancel, :as => :link %>
+  <% end %>
+
+<% end %>

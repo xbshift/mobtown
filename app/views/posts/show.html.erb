@@ -1,0 +1,6 @@
+<h3><%= @post.title %></h3>
+<% if logged_in? %>
+  <p class='war-room'><%= link_to "Edit or Destroy", edit_post_path(@post) %></p>
+<% end %>
+
+<%= raw @post.prose %>
