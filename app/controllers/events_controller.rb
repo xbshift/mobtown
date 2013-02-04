@@ -2,6 +2,7 @@ require 'ice_cube'
 
 class EventsController < ApplicationController
   include EventHelper
+  include IceCube
 
   def index
     @events = Event.all
