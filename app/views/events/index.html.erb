@@ -1,6 +1,9 @@
 <div class="content">
+  <% if logged_in? %>
+    <p class='war-room'>War Room: <%= link_to 'New Event', new_event_path %></p>
+  <% end %>
   <% @events.each do |event| %>
-    <div>
+    <div class="clear-left">
       <%= image_tag event.photo.url(:small), class: "img-rounded pull-left" %>
       <h5><%= event.starts_at.strftime("%A, %b %e") + ': ' + event.title %></h5>
       <p><%= raw event.summary %></p>
@@ -10,7 +13,4 @@
       <% end %>
     </div>
   <% end %>
-<% if logged_in? %>
-  <p class='war-room'>War Room: <%= link_to 'New Event', new_event_path %></p>
-<% end %>
 </div>

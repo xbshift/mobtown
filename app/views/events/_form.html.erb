@@ -12,12 +12,15 @@
   <% end %>
   <%= f.inputs do %>
     <%= f.input :title %>
+    <p>Special events will be shown the Special Events drop-down menu.</p>
     <%= f.input :special, :as => :boolean %>
+    <p>Repeating events are supported, including arbitrarily complex schedules and special exceptions. However, they cannot be set up here. Create the event, and then talk to Dan.</p>
     <%= f.input :starts_at, :as => :date_picker %>
-    <%= f.input :ends_at, :as => :date_picker %>
-    <%= f.input :expiration, :as => :date_picker, :label => "Remove from front page after" %>
-    <%= f.file_field :photo %>
+    <p>This photo is shown the carousel. Photos will be automatically cropped to fit.</p>
+    <%= f.file_field :photo, :label => "Carousel photo" %>
+    <p>The summary will be displayed in the carousel and on the calendar. You can use rich text (bold, italics). But please don't photos here &mdash; weird things will happen.</p>
     <%= f.input :summary, :as => :ckeditor, :toolbarStartupExpanded => 'false'  %>
+    <p>To create a special page for this event, add content below. It will be linked from the carousel and the calendar. You can use photos, videos, whatever. If you leave this blank, the carousel and calendar entry won't be clickable.</p>
     <%= f.input :prose, :as => :ckeditor %>
   <% end %>
 

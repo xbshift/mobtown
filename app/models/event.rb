@@ -1,5 +1,7 @@
+require 'ice_cube'
+
 class Event < ActiveRecord::Base
-  include IceCube
+  include IceCube 
   serialize :schedule, Hash
 
   def schedule=(new_schedule)
@@ -7,7 +9,7 @@ class Event < ActiveRecord::Base
   end
 
   def schedule
-    Schedule.from_hash(read_attribute(:schedule))
+    Schedule.from_hash(read_attribute(:schedule), :start_date_override => Date.today)
   end
 
   attr_accessible :ends_at, :expiration, :prose, :special, :starts_at, :summary, :title, :photo, :schedule
