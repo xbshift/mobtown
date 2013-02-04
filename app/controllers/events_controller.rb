@@ -1,11 +1,9 @@
 class EventsController < ApplicationController
-  require 'ice_cube'
+  include EventHelper
 
   def index
-    @events = Event.find(
-      :all, 
-      :conditions => {:starts_at => Date.today..(Date.today + 90.days)},
-      :order => 'starts_at asc')
+    @events = Event.all
+    @events = expand_events(@events, 60.days)
 
     respond_to do |format|
       format.html  # index.html.erb
@@ -44,8 +42,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @next = @event.schedule.next_occurrence.strftime("%A, %b %e")
-    @repetition_string = @event.schedule.rrules.empty? ? '' : @event.schedule.to_s
+    @next = @event.schedule.first.strftime("%A, %b %e")
+    @repeats = (not @event.schedule.rrules.empty?)
 
     respond_to do |format|
       format.html  # show.html.erb

@@ -1,9 +1,13 @@
-<h4><%= content_tag :span, raw(@next) + ': ', class: 'event-date'%> <%= @event.title %></h4>
-<p><%=raw @repetition_string %></p>
-
+<h4><%= @repeats ? '' : content_tag(:span, raw(@next) + ': ', class: 'event-date')%> <%= @event.title %></h4>
+<% if @repeats %>
+<h5>Next one: <%= content_tag(:span, raw(@next), class: 'event-date')%></h5>
+<% end %>
 
 <div class="content">
-  <%= raw @event.prose %>
+  <% if @event.prose.blank? %>
+    <%= image_tag @event.photo.url(:small), class: "img-rounded pull-left" %>
+  <% end %>
+  <%= raw @event.prose.blank? ? @event.summary : @event.prose %>
 </div>
 
 <% if logged_in? %>
