@@ -1,5 +1,3 @@
-require 'ice_cube'
-
 class EventsController < ApplicationController
   include EventHelper
   include IceCube
@@ -45,6 +43,9 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    if request.path != event_path(@event)
+      redirect_to @event, status: :moved_permanently
+    end
     @next = @event.schedule.first.strftime("%A, %b %e")
     @repeats = (not @event.schedule.rrules.empty?)
 

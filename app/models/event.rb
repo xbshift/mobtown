@@ -1,8 +1,10 @@
-require 'ice_cube'
-
 class Event < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :history]
+
   include IceCube 
   serialize :schedule, Hash
+
 
   def schedule=(new_schedule)
     write_attribute(:schedule, new_schedule.to_hash)

@@ -12,4 +12,7 @@
 
 class DanceClass < ActiveRecord::Base
   attr_accessible :name, :description, :category, :price, :student_price, :session_dates
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :history]
+
 end
