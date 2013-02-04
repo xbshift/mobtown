@@ -1,0 +1,17 @@
+.alignleft {
+  float: left;
+}
+
+.alignright {
+  float: right;
+}
+
+.aligncenter {
+  margin: 10px auto;
+}
+
+.wp-caption-text {
+  font-size: 80%;
+  line-height: 1.2;
+}
+
