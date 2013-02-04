@@ -32,7 +32,7 @@ class DanceClassesController < ApplicationController
     params[:category] = 'lindy' if not params.has_key?('category')
       @dance_classes = DanceClass.find_all_by_category(params[:category], order: 'name')
     if params.has_key?('id')
-      @tab = '[href="#tab' + params[:id] + '"]'
+      @tab = '[href="#tab-' + params[:id] + '"]'
     else
       @tab = ':first'
     end
@@ -68,7 +68,7 @@ class DanceClassesController < ApplicationController
     @category = @dance_class.category
     @dance_classes = DanceClass.find_all_by_category(@category, order: 'name')
     @all_dance_classes = DanceClass.all(order: 'name')
-    @tab = '[href="#tab' + params[:id] + '"]'
+    @tab = '[href="#tab-' + params[:id] + '"]'
  
     respond_to do |format|
       format.html  # show.html.erb
