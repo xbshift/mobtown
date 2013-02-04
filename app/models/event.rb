@@ -14,7 +14,7 @@ class Event < ActiveRecord::Base
     Schedule.from_hash(read_attribute(:schedule), :start_date_override => Date.today.midnight)
   end
 
-  attr_accessible :ends_at, :expiration, :prose, :special, :starts_at, :summary, :title, :photo, :schedule
+  attr_accessible :ends_at, :expiration, :prose, :special, :starts_at, :summary, :title, :photo, :schedule, :link
 
   has_attached_file :photo, :styles => { :carousel => "700x450#",
                                          :small => "300x" },
