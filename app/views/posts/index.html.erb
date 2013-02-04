@@ -1,0 +1,16 @@
+<h3>The Mob Blog</h3>
+<div class="row-fluid">
+  <div class="span8">
+    <h4><%= @latest_post.title %></h4>
+    <div class="content">
+      <%= raw @latest_post.prose %>
+    </div>
+  </div>
+  <div class="span4">
+  <ul> 
+  <% @posts.each do |post| %>
+    <li><%= link_to(post.title, post_path(post)) %></li>
+  <% end %>
+  </ul>
+  </div>
+</div>

@@ -13,9 +13,9 @@ Mobtown::Application.routes.draw do
   match '/dances', to: 'static_pages#dances'
   match '/calendar', to: 'static_pages#calendar'
   ['lindy', 'swing', 'salsa', 'belly_dancing', 'west_coast'].each do |c|
-    match '/dance_classes/' + c, to: 'dance_classes#index', category: c
+    match '/classes/' + c, to: 'dance_classes#index', category: c
   end
-  resources :dance_classes
+  resources :dance_classes, :path => '/classes'
   match '/warroom', to: 'application#login'
   match '/war-room', to: 'application#login'
   match '/war', to: 'application#login'
@@ -23,6 +23,7 @@ Mobtown::Application.routes.draw do
   match '/admin', to: 'application#login'
   match '/videos', to: 'static_pages#videos'
   resources :events
+  resources :posts, :path => '/mob-blog'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
