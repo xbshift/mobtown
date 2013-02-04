@@ -1,5 +1,16 @@
 class Event < ActiveRecord::Base
-  attr_accessible :ends_at, :expiration, :prose, :special, :starts_at, :summary, :title, :photo
+  include IceCube
+  serialize :schedule, Hash
+
+  def schedule=(new_schedule)
+    write_attribute(:schedule, new_schedule.to_hash)
+  end
+
+  def schedule
+    Schedule.from_hash(read_attribute(:schedule))
+  end
+
+  attr_accessible :ends_at, :expiration, :prose, :special, :starts_at, :summary, :title, :photo, :schedule
 
   has_attached_file :photo, :styles => { :carousel => "700x450#",
                                          :small => "300x" },

@@ -17,7 +17,7 @@
     <%= f.input :ends_at, :as => :date_picker %>
     <%= f.input :expiration, :as => :date_picker, :label => "Remove from front page after" %>
     <%= f.file_field :photo %>
-    <%= f.input :summary, :as => :ckeditor %>
+    <%= f.input :summary, :as => :ckeditor, :toolbarStartupExpanded => 'false'  %>
     <%= f.input :prose, :as => :ckeditor %>
   <% end %>
 
