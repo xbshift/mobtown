@@ -41,19 +41,30 @@
   <div class="row-fluid">
     <div class="span3 feature-box">
       <h3 class="headline"><%= link_to 'Get the Skinny', calendar_path %></h3>
-      <p>See what we've got in store.</p><%= link_to "Calendar", events_path, class: "btn btn-dirtydog" %>
+      <p>See what we've got in store.</p>
     </div>
     <div class="span3 feature-box">
       <h3 class="headline"><%= link_to 'Sign Up for Classes', dance_classes_path %></h3>
-      <p>The Mobtown Ballroom is committed to making it as easy as possible to get started dancing. You're in good hands.</p><%= link_to "Do it", dance_classes_path, class: "btn btn-dirtydog" %>
+      <p>The Mobtown Ballroom is committed to making it as easy as possible to get started dancing. You're in good hands.</p>
     </div>
     <div class="span3 feature-box">
       <h3 class="headline"><%= link_to 'Drink the Kool-Aid', '#' %></h3>
-      <p>This is where we vent our spleen.</p><%= link_to 'The Mob Blog', '#', class: 'btn btn-dirtydog' %>
+      <p>This is where we vent our spleen.</p>
     </div>
     <div class="span3 feature-box">
       <h3 class="headline"><%= link_to 'Read Our Manifesto', mobmentality_path %></h3>
-      <p>This is what we do.</p><%= link_to 'The Mob Mentality', mobmentality_path, class: 'btn btn-dirtydog' %>
+      <p>This is what we do.</p>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span3 feature-box">
+      <%= link_to "Calendar", events_path, class: "btn btn-dirtydog" %>
+    </div>
+      <div class="span3 feature-box"><%= link_to "Do it", dance_classes_path, class: "btn btn-dirtydog" %>
+    </div>
+      <div class="span3 feature-box"><%= link_to 'The Mob Blog', '#', class: 'btn btn-dirtydog' %>
+    </div>
+    <div class="span3 feature-box"><%= link_to 'The Mob Mentality', mobmentality_path, class: 'btn btn-dirtydog' %>
     </div>
   </div>
 
