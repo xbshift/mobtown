@@ -257,16 +257,20 @@ footer {
 }
 
 .content img, .content figure {
-  margin: 5px 0px 5px 0px;
+  margin: 5px 10px 5px 10px;
   &.pull-right {
     margin-left: 10px;
+    margin-right: 0;
     figcaption {
       margin-left: 10px;
+      margin-right: 0;
     }
   }
   &.pull-left {
+    margin-left: 0;
     margin-right: 10px;
     figcaption {
+      margin-left: 0;
       margin-right: 10px;
     }
   }
