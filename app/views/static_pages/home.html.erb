@@ -7,7 +7,7 @@
       <% @is_first = false %>
       <div class="overflow-box">
         <% if event.prose.blank? and event.link.nil? %>
-          <%= image_tag event.photo.url(:carousel) %>
+          <%= image_tag event.photo.url(:carousel), :size => '700x450' %>
           <div class="carousel-caption">
             <p>
             <span class="event-header">
@@ -19,7 +19,7 @@
         <% else %>
         <% link = event.link.nil? ? event_path(event) : event.link %>
           <%= link_to(link) do %>
-            <%= image_tag(event.photo.url(:carousel)) %>
+            <%= image_tag event.photo.url(:carousel), :size => '700x450' %>
             <div class="carousel-caption">
               <p>
               <span class="event-header">
@@ -41,7 +41,7 @@
 
   <div class="row-fluid">
     <div class="span3 feature-box">
-      <h3 class="headline"><%= link_to 'Get the Skinny', calendar_path %></h3>
+      <h3 class="headline"><%= link_to 'Get the Skinny', events_path %></h3>
       <p>See what we've got in store.</p>
     </div>
     <div class="span3 feature-box">

@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
   include EventHelper
   def home 
     @events = Event.all
-    @events = expand_events(@events, 9.days)
+    @events = expand_events(@events, 30.days)
   end
 
   def venue
