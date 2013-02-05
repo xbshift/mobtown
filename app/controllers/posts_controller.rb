@@ -27,6 +27,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @posts = Post.all(order: 'created_at')
     if request.path != post_path(@post)
       redirect_to @post, status: :moved_permanently
     end

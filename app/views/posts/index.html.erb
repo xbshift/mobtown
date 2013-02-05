@@ -1,4 +1,7 @@
 <h3>The Mob Blog</h3>
+<% if logged_in? %>
+  <p class='war-room'>War Room: <%= link_to "New Blog Post", new_post_path %></p>
+<% end %>
 <div class="row-fluid">
   <div class="span8">
     <h4><%= @latest_post.title %></h4>
