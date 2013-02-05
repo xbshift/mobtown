@@ -47,7 +47,7 @@
         <li><strong><%= @events[1].starts_at.strftime("%A, %b %e") %></strong> &mdash; <%= @events[1].title %></li>
         <li><strong><%= @events[2].starts_at.strftime("%A, %b %e") %></strong> &mdash; <%= @events[2].title %></li>
       </ul>
-      <%= link_to "Calendar", events_path, class: "btn btn-dirtydog" %>
+      <%= link_to "More Events & Details", events_path, class: "btn btn-dirtydog" %>
     </div>
     <div class="span4 feature-box">
       <h3 class="headline"><%= link_to 'Learn to Dance', dance_classes_path %></h3>
