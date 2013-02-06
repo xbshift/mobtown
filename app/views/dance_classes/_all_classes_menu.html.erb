@@ -1,3 +1,8 @@
     <ul class="nav nav-list">
-      List all of the classes in a menu here. 
+    <% Category.all.each do |category| %>
+      <li class="nav-header"><%= category.name %></li>
+      <% category.dance_classes.each do |dance_class| %>
+        <li><%= link_to dance_class.name, dance_class_path(dance_class) %></li>
+      <% end %>
+    <% end %>
     </ul>
