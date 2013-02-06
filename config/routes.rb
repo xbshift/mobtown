@@ -11,10 +11,11 @@ Mobtown::Application.routes.draw do
   match '/mobmentality', to: 'static_pages#mob_mentality'
   match '/mob-mentality', to: 'static_pages#mob_mentality'
   match '/dances', to: 'static_pages#dances'
-  resources :dance_classes
-  match 'classes/(:category)/new', to: 'dance_classes#new'
-  match 'classes/(:category)/(:id)/', to: 'dance_classes#index'
-  match 'classes/(:category)/(:id)/', to: 'dance_classes#edit'
+  Category.all.each do |c|
+    match 'classes/' + c.slug + '/(:id)', to: 'dance_classes#index', category: c.slug
+  end
+  resources :dance_classes, :path => '/classes'
+  resources :categories, :path => '/class_categories'
   match '/warroom', to: 'application#login'
   match '/war-room', to: 'application#login'
   match '/war', to: 'application#login'

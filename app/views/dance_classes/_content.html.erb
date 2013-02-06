@@ -1,6 +1,10 @@
 <div class="row-fluid">
   <div class="span9 content">
+    <h4><%= @category.name %></h4>
     <%= raw @category.prose %>
+    <% if logged_in? %>
+      <p class="war-room">War Room: <%= link_to 'Edit This Category Description', edit_category_path(@category) %>
+    <% end %>
     <div class="tabbable row-fluid clear-left">
       <ul class="nav nav-tabs" id="dance-classes">
         <% @dance_classes.each do |dance_class| %>
