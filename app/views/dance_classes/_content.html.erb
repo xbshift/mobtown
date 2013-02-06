@@ -1,6 +1,6 @@
 <div class="row-fluid">
   <div class="span9 content">
-    <%= render 'dance_classes/' + @category %>
+    <%= raw @category.prose %>
     <div class="tabbable row-fluid clear-left">
       <ul class="nav nav-tabs" id="dance-classes">
         <% @dance_classes.each do |dance_class| %>

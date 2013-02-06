@@ -28,15 +28,13 @@ class DanceClassesController < ApplicationController
   end
 
   def index
-    @all_dance_classes = DanceClass.all(order: 'name')
-    params[:category] = 'lindy' if not params.has_key?('category')
-      @dance_classes = DanceClass.find_all_by_category(params[:category], order: 'name')
+    @category = Category.find(params[:category])
+    @dance_classes = @category.dance_classes
     if params.has_key?('id')
       @tab = '[href="#tab-' + params[:id] + '"]'
     else
       @tab = ':first'
     end
-    @category = params[:category]
     respond_to do |format|
       format.html  # index.html.erb
       format.json  { render :json => @dance_classes }
@@ -64,15 +62,13 @@ class DanceClassesController < ApplicationController
   end
 
   def show
-    @dance_class = DanceClass.find(params[:id], order: 'name')
-    @category = @dance_class.category
-    @dance_classes = DanceClass.find_all_by_category(@category, order: 'name')
-    @all_dance_classes = DanceClass.all(order: 'name')
+    @category = DanceClass.find(params[:id]).category
+    @dance_classes = @category.dance_classes
     @tab = '[href="#tab-' + params[:id] + '"]'
- 
+
     respond_to do |format|
-      format.html  # show.html.erb
-      format.json  { render :json => @dance_class }
+      format.html  # index.html.erb
+      format.json  { render :json => @dance_classes }
     end
   end
 
