@@ -15,4 +15,6 @@ class DanceClass < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]
 
+  belongs_to :category
+
 end
