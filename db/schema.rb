@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130204230240) do
+ActiveRecord::Schema.define(:version => 20130206155821) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.integer  "rank"
+    t.string   "slug"
+    t.text     "prose"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "categories", ["slug"], :name => "index_categories_on_slug"
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
@@ -38,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20130204230240) do
     t.decimal  "student_price", :precision => 8, :scale => 2
     t.string   "session_dates"
     t.string   "slug"
-    t.string   "category"
+    t.integer  "category_id"
   end
 
   add_index "dance_classes", ["slug"], :name => "index_dance_classes_on_slug"
