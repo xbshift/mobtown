@@ -24,6 +24,7 @@ Mobtown::Application.routes.draw do
   match '/videos', to: 'static_pages#videos'
   resources :events
   resources :posts, :path => '/mob-blog'
+  resources :feature_boxes
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
