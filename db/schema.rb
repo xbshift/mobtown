@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20130207022924) do
 
   create_table "dance_classes", :force => true do |t|
     t.string   "name"
+    t.string   "category"
     t.text     "description"
     t.datetime "created_at",                                  :null => false
     t.datetime "updated_at",                                  :null => false
@@ -56,16 +57,16 @@ ActiveRecord::Schema.define(:version => 20130207022924) do
 
   create_table :events do |t|
     t.string :title
-    t.string :category
     t.datetime :starts_at
     t.datetime :ends_at
     t.datetime :expiration
     t.boolean :special
     t.text :summary
     t.text :prose
+    t.string :url
     t.attachment :photo
     t.string :slug
-    t.string :schedule
+    t.text :schedule
 
     t.timestamps
   end
