@@ -157,6 +157,13 @@ header .navbar {
 
 .feature-box {
   margin-bottom: 5px;
+  ul {
+    list-style: none;
+    margin-left: 0;
+    li {
+      padding: 5px 0;
+    }
+  }
 }
 
 .btn-dirtydog {

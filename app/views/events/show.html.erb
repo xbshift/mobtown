@@ -14,3 +14,4 @@
   <p class='war-room'><%= link_to "Edit or Destroy", edit_event_path(@event) %></p>
 <% end %>
 <% content_for :title, @event.title %>
+<% content_for :og_image, request.protocol + request.host_with_port + @event.photo.url %>
