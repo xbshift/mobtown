@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20130207022924) do
     t.string :url
     t.attachment :photo
     t.string :slug
+    t.string :link
     t.text :schedule
 
     t.timestamps
