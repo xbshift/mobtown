@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20130207022924) do
 
   create_table :events do |t|
     t.string :title
-    t.string :slug
+    t.string :category
     t.datetime :starts_at
     t.datetime :ends_at
     t.datetime :expiration
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20130207022924) do
     t.text :summary
     t.text :prose
     t.attachment :photo
+    t.string :slug
     t.string :schedule
 
     t.timestamps
