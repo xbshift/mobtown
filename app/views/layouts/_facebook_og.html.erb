@@ -1,0 +1,7 @@
+<% default_og_image = 'http://mobtownballroom.com/crowd-in-motion-300.jpg' %>
+<meta property="og:title" content="<%= yield(:title) %>" />
+<meta property="og:type" content="activity" />
+<meta property="og:url" content="<%= request.url %>" />
+<meta property="og:image" content="<%= content_for?(:og_image) ? content_for(:og_image) : default_og_image %>" />
+<meta property="og:site_name" content="Mobtown Ballroom" />
+<meta property="fb:admins" content="3705959" />
