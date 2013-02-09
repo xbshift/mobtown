@@ -54,8 +54,21 @@ ActiveRecord::Schema.define(:version => 20130207022924) do
 
   add_index "dance_classes", ["slug"], :name => "index_dance_classes_on_slug"
 
-# Could not dump table "events" because of following StandardError
-#   Unknown type 'hash' for column 'schedule'
+  create_table :events do |t|
+    t.string :title
+    t.string :slug
+    t.datetime :starts_at
+    t.datetime :ends_at
+    t.datetime :expiration
+    t.boolean :special
+    t.text :summary
+    t.text :prose
+    t.attachment :photo
+    t.string :schedule
+
+    t.timestamps
+  end
+    add_index "events", ["slug"], :name => "index_events_on_slug"
 
   create_table "feature_boxes", :force => true do |t|
     t.text     "prose"
