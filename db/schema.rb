@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130206155821) do
+ActiveRecord::Schema.define(:version => 20130207022924) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -56,6 +56,12 @@ ActiveRecord::Schema.define(:version => 20130206155821) do
 
 # Could not dump table "events" because of following StandardError
 #   Unknown type 'hash' for column 'schedule'
+
+  create_table "feature_boxes", :force => true do |t|
+    t.text     "prose"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "friendly_id_slugs", :force => true do |t|
     t.string   "slug",                         :null => false
