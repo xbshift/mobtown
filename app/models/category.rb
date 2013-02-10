@@ -1,4 +1,4 @@
-require 'FriendlyId'
+require 'friendly_id'
 
 class Category < ActiveRecord::Base
   attr_accessible :name, :prose
