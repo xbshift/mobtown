@@ -1,5 +1,4 @@
 Mobtown::Application.routes.draw do
-  mount Ckeditor::Engine => '/ckeditor'
 
   get "dance_classes/new"
 
