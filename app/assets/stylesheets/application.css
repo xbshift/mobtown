@@ -10,6 +10,7 @@
  *
  *= require jquery.ui.all
  *= require_self
+ *= require bootstrap_and_overrides
  *= require formtastic
  *= require custom 
  *= require wordpress_legacy
