@@ -1,4 +1,4 @@
-require 'FriendlyId'
+require 'friendly_id'
 
 class Post < ActiveRecord::Base
   extend FriendlyId
