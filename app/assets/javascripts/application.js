@@ -19,4 +19,5 @@
 //= require_tree .
 //= require bootstrap
 //= require ckeditor/init
+//= require ckeditor/ckeditor
 $('.date_picker').datetimepicker();
