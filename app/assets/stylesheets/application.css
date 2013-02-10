@@ -10,7 +10,6 @@
  *
  *= require_self
  *= require formtastic
- *= require bootstrap_and_overrides
  *= require custom 
  *= require wordpress_legacy
  */
