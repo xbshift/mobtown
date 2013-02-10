@@ -14,6 +14,7 @@
 //= require jquery-ui
 //= require jquery.ui.all
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require jquery-ui-sliderAccess
 //= require jquery-ui-timepicker-addon
 //= require_tree .
