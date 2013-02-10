@@ -1,3 +1,5 @@
+require 'FriendlyId'
+
 class Category < ActiveRecord::Base
   attr_accessible :name, :prose
   extend FriendlyId
