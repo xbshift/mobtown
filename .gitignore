@@ -19,3 +19,7 @@
 /uploads/
 /variety\ show/
 /*.xml
+
+# Sensitive
+config/database.yml
+Gemfile
