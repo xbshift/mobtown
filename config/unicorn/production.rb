@@ -1,76 +1,103 @@
-Mobtown::Application.configure do
+# Sample verbose configuration file for Unicorn (not Rack)
+#
+# This configuration file documents many features of Unicorn
+# that may not be needed for some applications. See
+# http://unicorn.bogomips.org/examples/unicorn.conf.minimal.rb
+# for a much simpler configuration file.
+#
+# See http://unicorn.bogomips.org/Unicorn/Configurator.html for complete
+# documentation.
 
-  # Add the fonts path
-  config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
+# Use at least one worker per core if you're on a dedicated server,
+# more will usually help for _short_ waits on databases/caches.
+worker_processes 4
 
-  # Precompile additional assets
-  config.assets.precompile += %w( .svg .eot .woff .ttf )
-  config.assets.precompile += %w( ie6.css ie7.css )
-  config.assets.precompile += ['ckeditor/*']
+# Since Unicorn is never exposed to outside clients, it does not need to
+# run on the standard HTTP port (80), there is no reason to start Unicorn
+# as root unless it's from system init scripts.
+# If running the master process as root and the workers as an unprivileged
+# user, do this to switch euid/egid in the workers (also chowns logs):
+# user "unprivileged_user", "unprivileged_group"
 
-  # Settings specified here will take precedence over those in config/application.rb
+# Help ensure your application will always spawn in the symlinked
+# "current" directory that Capistrano sets up.
+APP_PATH = '/home/dallan/mobtown/'
+working_directory APP_PATH + 'current/' # available in 0.94.0+
 
-  # Code is not reloaded between requests
-  config.cache_classes = true
+# listen on both a Unix domain socket and a TCP port,
+# we use a shorter backlog for quicker failover when busy
+listen "/tmp/.sock", :backlog => 64
+listen 8080, :tcp_nopush => true
 
-  # Full error reports are disabled and caching is turned on
-  config.consider_all_requests_local       = false
-  config.action_controller.perform_caching = true
+# nuke workers after 30 seconds instead of 60 seconds (the default)
+timeout 30
 
-  # Disable Rails's static asset server (Apache or nginx will already do this)
-  config.serve_static_assets = false
+# feel free to point this anywhere accessible on the filesystem
+pid APP_PATH + "shared/pids/unicorn.pid"
 
-  # Compress JavaScripts and CSS
-  config.assets.compress = true
+# By default, the Unicorn logger will write to stderr.
+# Additionally, ome applications/frameworks log to stderr or stdout,
+# so prevent them from going to /dev/null when daemonized here:
+stderr_path APP_PATH + "shared/log/unicorn.stderr.log"
+stdout_path APP_PATH + "shared/log/unicorn.stdout.log"
 
-  # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = false
+# combine Ruby 2.0.0dev or REE with "preload_app true" for memory savings
+# http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
+preload_app true
+GC.respond_to?(:copy_on_write_friendly=) and
+  GC.copy_on_write_friendly = true
 
-  # Generate digests for assets URLs
-  config.assets.digest = true
+# Enable this flag to have unicorn test client connections by writing the
+# beginning of the HTTP headers before calling the application.  This
+# prevents calling the application for connections that have disconnected
+# while queued.  This is only guaranteed to detect clients on the same
+# host unicorn runs on, and unlikely to detect disconnects even on a
+# fast LAN.
+check_client_connection false
 
-  # Defaults to nil and saved in location specified by config.assets.prefix
-  # config.assets.manifest = YOUR_PATH
+before_fork do |server, worker|
+  # the following is highly recomended for Rails + "preload_app true"
+  # as there's no need for the master process to hold a connection
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.connection.disconnect!
 
-  # Specifies the header that your server uses for sending files
-  # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
-  # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
+  # The following is only recommended for memory/DB-constrained
+  # installations.  It is not needed if your system can house
+  # twice as many worker_processes as you have configured.
+  #
+  # # This allows a new master process to incrementally
+  # # phase out the old master process with SIGTTOU to avoid a
+  # # thundering herd (especially in the "preload_app false" case)
+  # # when doing a transparent upgrade.  The last worker spawned
+  # # will then kill off the old master process with a SIGQUIT.
+  # old_pid = "#{server.config[:pid]}.oldbin"
+  # if old_pid != server.pid
+  #   begin
+  #     sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
+  #     Process.kill(sig, File.read(old_pid).to_i)
+  #   rescue Errno::ENOENT, Errno::ESRCH
+  #   end
+  # end
+  #
+  # Throttle the master from forking too quickly by sleeping.  Due
+  # to the implementation of standard Unix signal handlers, this
+  # helps (but does not completely) prevent identical, repeated signals
+  # from being lost when the receiving process is busy.
+  # sleep 1
+end
 
-  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+after_fork do |server, worker|
+  # per-process listener ports for debugging/admin/migrations
+  # addr = "127.0.0.1:#{9293 + worker.nr}"
+  # server.listen(addr, :tries => -1, :delay => 5, :tcp_nopush => true)
 
-  # See everything in the log (default is :info)
-  # config.log_level = :debug
+  # the following is *required* for Rails + "preload_app true",
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.establish_connection
 
-  # Prepend all log lines with the following tags
-  # config.log_tags = [ :subdomain, :uuid ]
-
-  # Use a different logger for distributed setups
-  # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
-
-  # Use a different cache store in production
-  # config.cache_store = :mem_cache_store
-
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  # config.action_controller.asset_host = "http://assets.example.com"
-
-  # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  # config.assets.precompile += %w( search.js )
-
-  # Disable delivery errors, bad email addresses will be ignored
-  # config.action_mailer.raise_delivery_errors = false
-
-  # Enable threaded mode
-  # config.threadsafe!
-
-  # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
-  # the I18n.default_locale when a translation can not be found)
-  config.i18n.fallbacks = true
-
-  # Send deprecation notices to registered listeners
-  config.active_support.deprecation = :notify
-
-  # Log the query plan for queries taking more than this (works
-  # with SQLite, MySQL, and PostgreSQL)
-  # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  # if preload_app is true, then you may also want to check and
+  # restart any other shared sockets/descriptors such as Memcached,
+  # and Redis.  TokyoCabinet file handles are safe to reuse
+  # between any number of forked children (assuming your kernel
+  # correctly implements pread()/pwrite() system calls)
 end
