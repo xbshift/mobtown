@@ -23,3 +23,7 @@
 # Sensitive
 config/database.yml
 Gemfile
+
+# Local assets
+public/assets/*
+public/ckeditor_assets/*
