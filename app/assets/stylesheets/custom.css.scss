@@ -61,8 +61,8 @@ $linkColor: $tealalmost;
 
 $btnPrimaryBackground: $tealalmost;
 
-@import "bootstrap";
-@import "bootstrap-responsive";
+@import "twitter/bootstrap/bootstrap";
+@import "twitter/bootstrap/bootstrap-responsive";
 /* Some overrides must be done after the import. */
 
 #logo {
