@@ -11,8 +11,6 @@ gem 'yaml_db'
 
 gem 'capistrano'
 gem 'rvm-capistrano'
-gem "delayed_job", "~> 3.0.3"
-gem 'delayed_job_active_record'
 
 # gem 'will_paginate',  '~> 3.0.3'
 # gem 'bootstrap-will_paginate', "~> 0.0.7"
