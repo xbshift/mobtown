@@ -45,7 +45,7 @@ ssh_options[:keys] = %w(/Users/dallan/.ssh/id_rsa.pub)
 deployment_group =          "web"
 rvm_ruby_string =           "ruby-1.9.3-p385@global"
 
-# db_user =                   "mob"
+# db_user =                   "mobtownuser"
 # db_host =                   "localhost"
 # db_name =                   "mobtowndb"
 
