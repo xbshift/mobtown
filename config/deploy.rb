@@ -24,6 +24,7 @@
 # Common
 #$:.unshift File.expand_path("..", __FILE__)
 require 'capistrano'
+require 'bundler/capistrano'
 require 'capistrano/cli'
 
 
@@ -40,7 +41,7 @@ app_repository_branch =     "master"
 app_deployment_root =       "/var/www/mobtown"
 deployment_user =           "dallan"
 #deployment_user_password =  "PASSWORD"
-ssh_options[:keys] = %w(/Users/dallan/.ssh/)
+ssh_options[:keys] = %w(/Users/dallan/.ssh/id_rsa.pub)
 deployment_group =          "web"
 rvm_ruby_string =           "ruby-1.9.3-p385@global"
 
@@ -74,7 +75,7 @@ set :unicorn_workers,         2           # default: 4
 # #$:.unshift(File.expand_path('./lib', ENV['rvm_path']))  # Add RVM's lib directory to the load path.
 # set :rvm_type, :system
 # set :rvm_ruby_string, rvm_ruby_string                   # The RVM's env to run in.
-# require "rvm/capistrano"                                # Load RVM's capistrano plugin.
+require "rvm/capistrano"                                # Load RVM's capistrano plugin.
 
 require 'bundler/capistrano'
 

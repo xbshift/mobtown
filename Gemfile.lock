@@ -37,8 +37,6 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
-    bootstrap-sass (2.2.2.0)
-      sass (~> 3.2)
     builder (3.0.4)
     capistrano (2.14.1)
       highline
@@ -58,8 +56,9 @@ GEM
       xpath (~> 0.1.4)
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
-    ckeditor_rails (4.0.1.1)
-      railties (>= 3.0)
+    ckeditor (4.0.2)
+      mime-types
+      orm_adapter
     cocaine (0.4.2)
     coderay (1.0.8)
     coffee-rails (3.2.2)
@@ -128,6 +127,7 @@ GEM
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     nokogiri (1.5.6)
+    orm_adapter (0.4.0)
     paperclip (3.4.0)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
@@ -230,12 +230,11 @@ PLATFORMS
 DEPENDENCIES
   annotate (= 2.5.0)
   aws-sdk
-  bootstrap-sass (~> 2.2.2.0)
   capistrano
   capistrano-nginx
   capistrano-unicorn
   capybara (= 1.1.2)
-  ckeditor_rails
+  ckeditor
   coffee-rails (= 3.2.2)
   formtastic (~> 2.2.1)
   friendly_id
