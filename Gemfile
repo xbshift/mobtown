@@ -41,7 +41,7 @@ end
 
 gem 'jquery-rails', '2.0.2'
 gem 'jquery-ui-rails'
-# gem 'bootstrap-sass', '~> 2.2.2.0' 
+gem 'bootstrap-sass', '~> 2.2.2.0' 
 # gem 'less-rails'
 
 group :test do
