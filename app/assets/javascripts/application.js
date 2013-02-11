@@ -15,6 +15,6 @@
 //= require jquery_ujs
 //= require jquery-ui-sliderAccess
 //= require jquery-ui-timepicker-addon
-//= require_tree .
 //= require twitter/bootstrap
+//= require_tree .
 $('.date_picker').datetimepicker();
