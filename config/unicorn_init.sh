@@ -4,7 +4,7 @@ set -e
 # since nginx and unicorn accept the same signals
 
 # Feel free to change any of the following variables for your app:
-APP_ROOT="/var/www/rescuerails/current"
+APP_ROOT="/var/www/mobtown/current"
 PID="$APP_ROOT/tmp/pids/unicorn.pid"
 ENV="production"
 #ENV="development"
