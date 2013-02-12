@@ -16,5 +16,6 @@
 //= require twitter/bootstrap
 //= require jquery-ui-sliderAccess
 //= require jquery-ui-timepicker-addon
+//= require ckeditor/init
 //= require_tree .
 $('.date_picker').datetimepicker();
