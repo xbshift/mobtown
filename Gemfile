@@ -12,6 +12,8 @@ gem 'yaml_db'
 gem 'capistrano'
 gem 'rvm-capistrano'
 
+gem 'exception_notification', :require => 'exception_notifier'
+
 # gem 'will_paginate',  '~> 3.0.3'
 # gem 'bootstrap-will_paginate', "~> 0.0.7"
 gem "therubyracer", "~> 0.10.1", :platform => :ruby
