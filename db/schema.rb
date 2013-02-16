@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130207022924) do
+ActiveRecord::Schema.define(:version => 20130206155821) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(:version => 20130207022924) do
 
   create_table "dance_classes", :force => true do |t|
     t.string   "name"
-    t.string   "category"
     t.text     "description"
     t.datetime "created_at",                                  :null => false
     t.datetime "updated_at",                                  :null => false
@@ -55,23 +54,27 @@ ActiveRecord::Schema.define(:version => 20130207022924) do
 
   add_index "dance_classes", ["slug"], :name => "index_dance_classes_on_slug"
 
-  create_table :events do |t|
-    t.string :title
-    t.datetime :starts_at
-    t.datetime :ends_at
-    t.datetime :expiration
-    t.boolean :special
-    t.text :summary
-    t.text :prose
-    t.string :url
-    t.attachment :photo
-    t.string :slug
-    t.string :link
-    t.text :schedule
-
-    t.timestamps
+  create_table "events", :force => true do |t|
+    t.string   "title"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.datetime "expiration"
+    t.boolean  "special"
+    t.text     "summary"
+    t.text     "prose"
+    t.string   "url"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "slug"
+    t.string   "link"
+    t.text     "schedule"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
-    add_index "events", ["slug"], :name => "index_events_on_slug"
+
+  add_index "events", ["slug"], :name => "index_events_on_slug"
 
   create_table "feature_boxes", :force => true do |t|
     t.text     "prose"
