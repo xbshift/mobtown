@@ -5,23 +5,22 @@
   <input type="hidden" name="cmd" value="_cart">
   <input type="hidden" name="add" value="1">
   <!-- Specify details about the item that buyers will purchase. -->
-  <input type="hidden" name="item_name" value="<%= dance_class.name %>" />
-  <input type="hidden" name="amount" value="<%= dance_class.price %>" />
+  <% name = defined?(item.name) ? item.name : item.title # Hack! %>
+  <input type="hidden" name="item_name" value="<%= name %>" />
+  <input type="hidden" name="amount" value="<%= item.price %>" />
   <input type="hidden" name="currency_code" value="USD" />
-  <% if not dance_class.student_price.blank? %>
+  <% if not item.student_price.blank? %>
     <input name="on0" type="hidden" value="student" />
     <select name="os0" class="student">
-      <option value="no">Adult - <%= number_to_currency(dance_class.price) %></option>
-      <option value="yes">Student - <%= number_to_currency(dance_class.student_price) %></option>
+      <option value="no">Adult - <%= number_to_currency(item.price) %></option>
+      <option value="yes">Student - <%= number_to_currency(item.student_price) %></option>
     </select>
     <input type="hidden" name="option_select0" value="no" />
     <input type="hidden" name="option_select1" value="yes" />
-    <input type="hidden" name="option_amount0" value="<%= dance_class.price %>" />
-    <input type="hidden" name="option_amount1" value="<%= dance_class.student_price %>" />
+    <input type="hidden" name="option_amount0" value="<%= item.price %>" />
+    <input type="hidden" name="option_amount1" value="<%= item.student_price %>" />
   <!-- Specify where customers return if order succeeds or is canceled. -->
   <% end %>
-  <input name="return" type="hidden" value="http://mobtownballroom.com/classes/success" />
-  <input name="cancel_return" type="hidden" value="http://mobtownballroom.com/classes/cancel" />
   <!-- Display the payment button. -->
   <input type="submit" name="submit" class="btn btn-dirtydog" value="Register" alt="PayPal - The safer, easier way to pay online" />
 </form>

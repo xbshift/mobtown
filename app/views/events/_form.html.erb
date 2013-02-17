@@ -22,6 +22,9 @@
     <%= f.input :summary, :as => :ckeditor, :toolbarStartupExpanded => 'false'  %>
     <p>To create a special page for this event, add content below. It will be linked from the carousel and the calendar. You can use photos, videos, whatever. If you leave this blank, the carousel and calendar entry won't be clickable.</p>
     <%= f.input :prose, :as => :ckeditor %>
+    <%= f.input :registration_switch, label: 'Open registration' %>
+    <%= f.input :price %>
+    <%= f.input :student_price %>
   <% end %>
 
   <%= f.actions do %> 
