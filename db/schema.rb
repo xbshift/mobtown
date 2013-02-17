@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130206155821) do
+ActiveRecord::Schema.define(:version => 20130217184443) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -70,8 +70,11 @@ ActiveRecord::Schema.define(:version => 20130206155821) do
     t.string   "slug"
     t.string   "link"
     t.text     "schedule"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
+    t.boolean  "registration_switch"
+    t.decimal  "price",               :precision => 8, :scale => 2
+    t.decimal  "student_price",       :precision => 8, :scale => 2
   end
 
   add_index "events", ["slug"], :name => "index_events_on_slug"
