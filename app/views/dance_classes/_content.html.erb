@@ -30,7 +30,7 @@
             <% else %>
               <p><%= number_to_currency(dance_class.price) %></p>
             <% end %>
-<%= render :partial => 'application/paypal', :locals => {:dance_class => dance_class} %>
+<%= render :partial => 'application/paypal', :locals => {:item => dance_class} %>
           </div>
         <% if logged_in? %>
           <p class='war-room'>War Room: <%= link_to 'Edit or Destroy', edit_dance_class_path(dance_class) %></p>
