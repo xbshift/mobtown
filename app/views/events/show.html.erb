@@ -5,31 +5,29 @@
 
 <div class="content">
 <div class="row">
-  <% if @event.prose.blank? %>
-    <%= image_tag @event.photo.url(:small), class: "img-rounded pull-left" %>
-  <% else %>
-    <% if @event.registration_switch? %>
-      <div class="row">
-        <div class="span8">
-          <%= raw @event.prose.blank? ? @event.summary : @event.prose %>
-        </div>
-        <div class="signup-well span4">
-          <h5>Pricing</h5>
-          <% if not @event.student_price.blank? %>
-            <ul>
-              <li>Adult <%= number_to_currency(@event.price) %></li>
-              <li>Student <%= number_to_currency(@event.student_price) %></li>
-            </ul>
-          <% else %>
-            <p><%= number_to_currency(event.price) %></p>
-          <% end %>
-          <%= render :partial => 'application/paypal', :locals => {:item => @event} %>
-        </div>
-      </div>
-    <% else %>
+  <% if @event.registration_switch? %>
+    <div class="span8">
       <%= raw @event.prose.blank? ? @event.summary : @event.prose %>
-    <% end %>
+    </div>
+    <div class="signup-well span4">
+      <h5>Pricing</h5>
+      <% if not @event.student_price.blank? %>
+        <ul>
+          <li>Adult <%= number_to_currency(@event.price) %></li>
+          <li>Student <%= number_to_currency(@event.student_price) %></li>
+        </ul>
+      <% else %>
+        <p><%= number_to_currency(event.price) %></p>
+      <% end %>
+      <%= render :partial => 'application/paypal', :locals => {:item => @event} %>
+    </div>
+  <% else %>
+    <div class="span12">
+      <%= @event.prose.blank? ? image_tag(@event.photo.url(:small), class: "img-rounded pull-left") : '' %>
+      <%= raw @event.prose.blank? ? @event.summary : @event.prose %>
+    </div>
   <% end %>
+</div>
 </div>
 
 <% if logged_in? %>
