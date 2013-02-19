@@ -4,7 +4,6 @@ require "rails/all"
 require "rubygems"
 require "jquery-rails"
 require "jquery-ui-rails"
-require "formtastic"
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line

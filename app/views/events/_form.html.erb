@@ -1,4 +1,4 @@
-<%= form_for @event, :html => { :multipart => true}  do |f| %>
+<%= simple_form_for @event, :html => { multipart: 'true', class: 'form-horizontal'}  do |f| %>
   <% if @event.errors.any? %>
   <div id="errorExplanation">
     <h2><%= pluralize(@event.errors.count, "error") %> prohibited
@@ -10,30 +10,32 @@
     </ul>
   </div>
   <% end %>
-    <%= f.submit %>
+  <%= f.submit class: 'pull-right' %>
   <legend>Essentials</legend>
-  <%= f.text_field :title, placeholder: 'Event Title' %>
-  <%= f.text_field :starts_at, placeholder: 'Date & Time' %>
-  <%= content_tag :label, class: 'file-field' do %>
-    <%= f.file_field :photo %> Carousel photo
-  <% end %>
-  <%= content_tag :label do %>
-    <%= f.text_field :summary, display: "width=100%;", placeholder: 'Short description.'  %>
-    <span class="help-block">This will be used as a caption on the home page. There is no strict length constraint, but be brief.</span>
-  <% end %>
-  <legend>Special Event</legend> 
-  <%= content_tag :label, class: 'checkbox' do %>
-    <%= f.check_box :special %> Make this a Special Event.
-  <% end %>
-    <p class="help-block">To create a page for this event, write below. It will be linked from the carousel and the calendar. To embed a video, click the Source button and paste in the code from YouTube.</p>
-    <%= f.cktext_area :prose %>
-  <legend>Registration</legend>
-  <%= content_tag :label, class: 'checkbox' do %>
-    <%= f.check_box :registration_switch %> Open registration.
-  <% end %>
-    <%= f.text_field :price, placeholder: 'Price' %>
-    <%= f.text_field :student_price, placeholder: 'Student Price' %>
-  <p class="help-block">Student price may be left blank.</p>
-    <%= f.submit %>
+  <%= f.input :title, placeholder: 'Event Title', label: 'Event' %>
+  <%= f.input :starts_at, as: 'string', placeholder: 'Date & Time', label: 'When', input_html: {data: {behavior: 'datepicker'}} %>
+  <%= f.input :photo, label: 'Carousel photo' %>
+  <%= f.input :summary, placeholder: 'Short description.'  %>
+  <span class="help-block">This will be used as a caption on the home page. There is no strict length constraint, but be brief.</span>
 
+  <legend>Special Event</legend> 
+  <%= f.check_box :special, label: 'Make this a special event.' %> Make this a Special Event.
+    <p class="help-block">To create a page for this event, write below. It will be linked from the carousel and the calendar. To embed a video, click the Source button and paste in the code from YouTube.</p>
+    <%= f.input :prose, :as => :ckeditor %>
+  <legend>Registration</legend>
+  <%= f.input :registration_switch, label: 'Open registration.' %>
+  <%= f.input :price %>
+  <%= f.input :student_price, placeholder: 'Optional' %>
+  <%= f.submit %>
+
+<% end %>
+
+
+<% content_for :javascript do %>
+  <script>
+$(document).on("focus", "[data-behavior~='datepicker']", function(e){
+    $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true});
+});
+
+  </script>
 <% end %>

@@ -4,13 +4,16 @@ gem 'rails', '3.2.10'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'ckeditor'
-gem "formtastic", "~> 2.2.1"
+gem 'simple_form'
 gem 'ice_cube'
 gem 'friendly_id'
 gem 'yaml_db'
 
 gem 'capistrano'
 gem 'rvm-capistrano'
+
+gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
+  :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 
 gem 'exception_notification', :require => 'exception_notifier'
 
