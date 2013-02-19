@@ -5,20 +5,10 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     @events = expand_events(@events, 60.days)
-
-    respond_to do |format|
-      format.html  # index.html.erb
-      format.json  { render :json => @events }
-    end
   end
 
   def new
     @event = Event.new
- 
-    respond_to do |format|
-      format.html  # new.html.erb
-      format.json  { render :json => @event }
-    end
   end
 
   def create
@@ -27,17 +17,10 @@ class EventsController < ApplicationController
     @event = Event.new(params[:event])
     @event.schedule = @schedule
  
-    respond_to do |format|
-      if @event.save
-        format.html  { redirect_to(@event,
-                      :notice => 'Event was successfully created.') }
-        format.json  { render :json => @event,
-                      :status => :created, :location => @event }
-      else
-        format.html  { render :action => "new" }
-        format.json  { render :json => @event.errors,
-                    :status => :unprocessable_entity }
-      end
+    if @event.save
+      redirect_to @event, notice: 'Event was successfully created.'
+    else
+      render :action => "new"
     end
   end
 

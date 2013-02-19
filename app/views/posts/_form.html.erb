@@ -1,4 +1,4 @@
-<%= semantic_form_for @post, :html => { :multipart => true}  do |f| %>
+<%= simple_form_for @post, :html => {multipart: 'true', class: 'form-horizontal'}  do |f| %>
   <% if @post.errors.any? %>
   <div id="errorExplanation">
     <p><%= pluralize(@post.errors.count, "error") %> prohibited
@@ -10,15 +10,8 @@
     </ul>
   </div>
   <% end %>
-  <%= f.inputs do %>
-    <%= f.input :title %>
-    <%= f.input :publish, :as => :boolean %>
-    <%= f.input :prose, :as => :ckeditor %>
-  <% end %>
-
-  <%= f.actions do %> 
-    <%= f.action :submit, :as => :button %>
-    <%= f.action :cancel, :as => :link %>
-  <% end %>
-
+  <%= f.input :title, placeholder: 'Post Title', label: nil %>
+  <%= f.input :publish, hint: "Leave unchecked to save as a draft." %>
+  <%= f.input :prose, :as => :ckeditor %>
+  <%= f.submit class: 'btn-primary' %>
 <% end %>
