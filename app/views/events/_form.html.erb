@@ -15,7 +15,7 @@
   <%= f.input :title, placeholder: 'Event Title', label: 'Event' %>
   <%= f.input :starts_at, as: 'string', placeholder: 'Date & Time', label: 'When', input_html: {data: {behavior: 'datepicker'}} %>
   <%= f.input :photo, label: 'Carousel photo' %>
-  <%= f.input :summary, placeholder: 'Short description.'  %>
+  <%= f.input :summary, placeholder: 'Short description.', input_html: {rows: 5, columns: 80}  %>
   <span class="help-block">This will be used as a caption on the home page. There is no strict length constraint, but be brief.</span>
 
   <legend>Special Event</legend> 
