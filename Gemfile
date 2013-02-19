@@ -42,6 +42,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2'
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.3'
+  gem 'turbo-sprockets-rails3'
 end
 
 gem 'jquery-rails', '2.0.2'
