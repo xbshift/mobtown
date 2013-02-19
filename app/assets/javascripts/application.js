@@ -14,6 +14,7 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require bootstrap-datepicker
 //= require jquery-ui-sliderAccess
 //= require jquery-ui-timepicker-addon
 //= require ckeditor/init

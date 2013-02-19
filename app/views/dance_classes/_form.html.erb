@@ -1,4 +1,4 @@
-<%= semantic_form_for @dance_class do |f| %>
+<%= simple_form_for @dance_class, html: {class: 'form-horizontal'} do |f| %>
   <% if @dance_class.errors.any? %>
   <div id="errorExplanation">
     <h2><%= pluralize(@dance_class.errors.count, "error") %> prohibited
@@ -10,18 +10,13 @@
     </ul>
   </div>
   <% end %>
-  <%= f.inputs do %>
-    <%= f.input :name %>
-    <%= f.input :category %>
-    <%= f.input :session_dates, :label => "Session Dates & Meeting Times" %>
-    <%= f.input :description, :as => :ckeditor %>
-    <%= f.input :price %>
-    <%= f.input :student_price %>
-  <% end %>
+  <%= f.input :name %>
+  <%= f.input :category %>
+  <%= f.input :session_dates, :label => "Session Dates & Meeting Times" %>
+  <%= f.input :description, :as => :ckeditor %>
+  <%= f.input :price %>
+  <%= f.input :student_price %>
 
-  <%= f.actions do %> 
-    <%= f.action :submit, :as => :button %>
-    <%= f.action :cancel, :as => :link %>
-  <% end %>
+  <%= f.submit %>
 
 <% end %>
