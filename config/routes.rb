@@ -1,5 +1,9 @@
 Mobtown::Application.routes.draw do
 
+  # 301 redirects from legacy URLs
+  match '/category/mob-blog', to: redirect('/mob-blog')
+  match '/mob-blog/why-the-century-ballroom-matters--2', to: redirect('/mob-blog/why-the-century-ballroom-matters')
+
   get "dance_classes/new"
 
   root to: 'static_pages#home'
@@ -24,6 +28,7 @@ Mobtown::Application.routes.draw do
   resources :events
   resources :posts, :path => '/mob-blog'
   resources :feature_boxes
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
