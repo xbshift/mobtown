@@ -264,8 +264,7 @@ footer {
 
 .content img, .content figure {
   margin: 5px 10px 5px 10px;
-  float: left;
-  &.pull-right {
+  &.pull-right, &.alignright {
     margin-left: 10px;
     margin-right: 0;
     figcaption {
@@ -273,7 +272,7 @@ footer {
       margin-right: 0;
     }
   }
-  &.pull-left {
+  &.pull-left, &.alignleft {
     margin-left: 0;
     margin-right: 10px;
     figcaption {
