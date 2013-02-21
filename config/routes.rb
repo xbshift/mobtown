@@ -3,6 +3,7 @@ Mobtown::Application.routes.draw do
   # 301 redirects from legacy URLs
   match '/category/mob-blog', to: redirect('/mob-blog')
   match '/mob-blog/why-the-century-ballroom-matters--2', to: redirect('/mob-blog/why-the-century-ballroom-matters')
+  match '/blues', to: redirect('/dances/blues') # Marissa's postcards
 
   get "dance_classes/new"
 
