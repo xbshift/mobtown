@@ -264,6 +264,7 @@ footer {
 
 .content img, .content figure {
   margin: 5px 10px 5px 10px;
+  float: left;
   &.pull-right {
     margin-left: 10px;
     margin-right: 0;
