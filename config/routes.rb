@@ -7,6 +7,11 @@ Mobtown::Application.routes.draw do
 
   get "dance_classes/new"
 
+  namespace :ckeditor, :only => [:index, :create, :destroy] do
+      resources :pictures
+      resources :attachment_files
+  end
+
   root to: 'static_pages#home'
   match '/venue', to: 'static_pages#venue'
   match '/the-location', to: 'static_pages#venue'
