@@ -35,6 +35,8 @@ Mobtown::Application.routes.draw do
   resources :posts, :path => '/mob-blog'
   resources :feature_boxes
 
+  match '/acquire', to: 'static_pages#acquire'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
