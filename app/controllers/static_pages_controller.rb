@@ -25,4 +25,7 @@ class StaticPagesController < ApplicationController
 
   def videos
   end
+
+  def acquire
+  end
 end
