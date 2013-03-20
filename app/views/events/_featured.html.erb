@@ -1,0 +1,5 @@
+<ul>
+<% @featured_events.each do |event| %>
+  <li><strong><%= event.occurrences[0].start.strftime("%A, %b %e") %></strong> &mdash; <%= event.title %></li>
+<% end %>
+</ul>

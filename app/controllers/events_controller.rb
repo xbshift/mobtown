@@ -12,10 +12,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    @schedule = Schedule.new(Time.now)
-    @schedule.add_recurrence_date(Date.strptime(params[:event][:starts_at]))
-    @event = Event.new(params[:event])
-    @event.schedule = @schedule
+    @event = Event.create(params[:event])
+    @event.occurrences.build(params[:occurrence]).save
  
     if @event.save
       redirect_to @event, notice: 'Event was successfully created.'
@@ -26,11 +24,11 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    # @occurrences = @event.occurrences.sort { |a,b| a.start <=> b.start } 
+    @next = Event.next
     if request.path != event_path(@event)
       redirect_to @event, status: :moved_permanently
     end
-    @next = @event.schedule.first.strftime("%A, %b %e")
-    @repeats = (not @event.schedule.rrules.empty?)
 
     respond_to do |format|
       format.html  # show.html.erb
