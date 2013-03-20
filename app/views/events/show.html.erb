@@ -1,4 +1,4 @@
-<h4><%= @repeats ? '' : content_tag(:span, raw(@next) + ': ', class: 'event-date')%> <%= @event.title %></h4>
+<h4><%= content_tag(:span, raw(@next.start) + ': ', class: 'event-date')%> <%= @event.title %></h4>
 <% if @repeats %>
 <h5>Next one: <%= content_tag(:span, raw(@next), class: 'event-date')%></h5>
 <% end %>

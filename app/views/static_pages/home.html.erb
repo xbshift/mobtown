@@ -42,12 +42,9 @@
   <div class="row-fluid">
     <div class="span4 feature-box">
       <h3 class="headline"><%= link_to 'Upcoming Events', events_path %></h3>
-      <ul>
-        <li><strong><%= @events[0].starts_at.strftime("%A, %b %e") %></strong> &mdash; <%= @events[0].title %></li>
-        <li><strong><%= @events[1].starts_at.strftime("%A, %b %e") %></strong> &mdash; <%= @events[1].title %></li>
-        <li><strong><%= @events[2].starts_at.strftime("%A, %b %e") %></strong> &mdash; <%= @events[2].title %></li>
-      </ul>
+      <%= render 'events/featured' %>
       <%= link_to "More Events & Details", events_path, class: "btn btn-dirtydog" %>
+
     </div>
     <div class="span4 feature-box">
       <h3 class="headline"><%= link_to 'Learn to Dance', dance_classes_path %></h3>

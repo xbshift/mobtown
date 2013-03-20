@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217184443) do
+ActiveRecord::Schema.define(:version => 20130320173403) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -96,6 +96,14 @@ ActiveRecord::Schema.define(:version => 20130217184443) do
   add_index "friendly_id_slugs", ["sluggable_id"], :name => "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
 
+  create_table "occurrences", :force => true do |t|
+    t.datetime "start"
+    t.datetime "end"
+    t.integer  "event_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.boolean  "publish"
@@ -104,5 +112,23 @@ ActiveRecord::Schema.define(:version => 20130217184443) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "schedule_exceptions", :force => true do |t|
+    t.datetime "datetime"
+    t.integer  "event_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "schedule_exceptions", ["event_id"], :name => "index_schedule_exceptions_on_event_id"
+
+  create_table "schedule_recurrences", :force => true do |t|
+    t.datetime "datetime"
+    t.integer  "event_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "schedule_recurrences", ["event_id"], :name => "index_schedule_recurrences_on_event_id"
 
 end
