@@ -1,11 +1,19 @@
+<%= content_tag :h4, 'Manage Events' %>
 <table class='table-striped'>
+  <thead>
+    <th>Title</th>
+    <th>Delete</th>
+  </thead>
   <tbody>
   <% @events.each do |event| %>
     <%= content_tag :tr do %>
-      <%= content_tag :td, link_to(event.title, event) %>
-      <%= content_tag :td, link_to('Edit', edit_event_path(event)) %>
-      <%= content_tag :td, link_to('Destroy', event, :confirm => 'Pull the trigger?', :method => :delete) %>
+      <%= content_tag :td, link_to(event.title, edit_event_path(event)) %>
+      <%= content_tag :td, link_to(content_tag(:i, '', class: 'icon-trash'), event, :confirm => 'Pull the trigger?', :method => :delete) %>
     <% end %>
   <% end %>
   </tbody>
 </table>
+
+<%= link_to 'Create New Event', new_event_path, class: 'btn' %>
+
+<% content_for :title, 'Manage Events' %>
