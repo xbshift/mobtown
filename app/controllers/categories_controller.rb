@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_filter :authenticate, :except => [:index, :show]
 
   def edit
     @category = Category.find(params[:id])

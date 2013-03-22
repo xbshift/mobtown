@@ -1,0 +1,5 @@
+<fieldset>
+  <%= f.input :start, as: 'string', placeholder: 'Add an occurrence.', input_html: {data: {behavior: 'datepicker'}} %>
+  <%= f.input :end, as: 'string', input_html: {data: {behavior: 'datepicker'}} %>
+  <%= f.input :_destroy, as: :boolean, label: false, inline_label: 'Cancel this occurrence.' %>
+</fieldset>

@@ -1,20 +1,23 @@
 class Event < ActiveRecord::Base
   extend FriendlyId
+
+  attr_accessible :ends_at, :expiration, :prose, :special, :starts_at, :summary, :title, :photo, :schedule, :link, :price, :student_price, :registration_switch, :occurrences_attributes
+
+  start_of_today = Time.now.midnight
+  end_of_today = Time.now.midnight + 1.day + 2.hours
+  has_many :occurrences, conditions: ['start >= ? OR (end IS NOT NULL AND end >= ?)', start_of_today, end_of_today], order: 'start'
+
+  accepts_nested_attributes_for :occurrences, allow_destroy: true, reject_if: :blank_start
+
+  def blank_start(attributes)
+    attributes[:start].blank?
+  end
+
+  scope :upcoming, lambda {|n| joins(:occurrences).where('occurrences.start > ?', Time.now).order('occurrences.start')[0..n] }
+
+  scope :special, where('events.special == ?', true)
+
   friendly_id :title, use: [:slugged, :history]
-
-  include IceCube 
-  serialize :schedule, Hash
-
-
-  def schedule=(new_schedule)
-    write_attribute(:schedule, new_schedule.to_hash)
-  end
-
-  def schedule
-    Schedule.from_hash(read_attribute(:schedule), :start_date_override => Date.today.midnight)
-  end
-
-  attr_accessible :ends_at, :expiration, :prose, :special, :starts_at, :summary, :title, :photo, :schedule, :link, :price, :student_price, :registration_switch
 
   has_attached_file :photo, :styles => { :carousel => "700x450#",
                                          :small => "300x" },

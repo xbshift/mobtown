@@ -1,17 +1,9 @@
 <div class="content">
-  <% if logged_in? %>
-    <p class='war-room'>War Room: <%= link_to 'New Event', new_event_path %></p>
-  <% end %>
-  <% @events.each do |event| %>
-    <div class="clear-left">
-      <%= image_tag event.photo.url(:small), class: "img-rounded pull-left" %>
-      <h5><%= event.starts_at.strftime("%A, %b %e") + ': ' + event.title %></h5>
-      <p><%= raw event.summary %></p>
-      <%= event.prose.blank? ? '' : link_to('Would You Like to Know More?', event_path(event), class: 'btn btn-dirtydog') %>
-      <% if logged_in? %>
-        <p class='war-room'>War Room: <%= link_to 'Edit or Destroy', edit_event_path(event) %></p>
-      <% end %>
-    </div>
-  <% end %>
+  <%= @tonight.empty? ? '' : content_tag(:h3, 'Tonight', class: 'clear-left timespan') %>
+  <%= render partial: 'stub', collection: @tonight, as: :occurrence %>
+  <%= @this_week.empty? ? '' : content_tag(:h3, 'Later This Week', class: 'clear-left timespan') %>
+  <%= render partial: 'stub', collection: @this_week, as: :occurrence %>
+  <%= @this_month.empty? ? '' : content_tag(:h3, 'In the Coming Weeks', class: 'clear-left timespan') %>
+  <%= render partial: 'stub', collection: @this_month, as: :occurrence %>
 </div>
 <% content_for :title, 'Upcoming Events' %>

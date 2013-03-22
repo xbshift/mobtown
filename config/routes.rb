@@ -31,7 +31,12 @@ Mobtown::Application.routes.draw do
   match '/balls', to: 'application#login'
   match '/admin', to: 'application#login'
   match '/videos', to: 'static_pages#videos'
-  resources :events
+  resources :events do
+    collection do
+      get :manage
+    end
+    resources :occurrences
+  end
   resources :posts, :path => '/mob-blog'
   resources :feature_boxes
 

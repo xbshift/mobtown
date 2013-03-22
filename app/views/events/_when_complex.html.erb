@@ -1,0 +1,20 @@
+<%= content_tag :div, id='occurrences' do %>
+  <% @event.occurrences.each do |occurrence| %>
+    <%= simple_form_for [@event, occurrence], display: 'inline', remote: true do |o| %>
+      <%= o.input :start, as: 'string', input_html: {data: {behavior: 'datepicker'}} %>
+      <%= o.submit 'Revise date', class: 'addon btn' %>
+      <%= button_to 'Cancel this occurrence.', [@event, occurrence], { method: 'delete', remote: true } %> 
+    <% end %>
+  <% end %>
+<% end %>
+<% if @event.id.nil? %>
+  <%= simple_fields_for @event.occurrences.build, remote: true do |o| %>
+    <%= o.input :start, as: 'string', placeholder: 'e', label: 'When', input_html: {data: {behavior: 'datepicker'}} %>
+    <%= o.submit %>
+  <% end %>
+<% else %>
+  <%= simple_form_for [@event, @event.occurrences.build], remote: true do |o| %>
+    <%= o.input :start, as: 'string', placeholder: 'Add an occurrence', label: 'When', input_html: {data: {behavior: 'datepicker'}} %>
+    <%= o.submit %>
+  <% end %>
+<% end %>
