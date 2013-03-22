@@ -8,7 +8,7 @@ class Occurrence < ActiveRecord::Base
   this_coming_sunday = Date.today + 7.days - Date.today.wday
   far_enough = Date.today + 45.days
 
-  default_scope where('start >= ? OR (end IS NOT NULL AND end >= ?)', start_of_today, end_of_today).order('start') 
+  default_scope where('start >= ?', start_of_today).order('start') 
 
   scope :this_week, where('start < ?', Date.today + 9.days)
   scope :next_3, limit(3)
