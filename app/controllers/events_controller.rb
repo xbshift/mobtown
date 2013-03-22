@@ -6,7 +6,7 @@ class EventsController < ApplicationController
 
   def index
     @tonight = Occurrence.tonight
-    @this_week = Occurrence.this_week
+    @this_week = Occurrence.later_this_week
     @this_month = Occurrence.this_month
   end
 
