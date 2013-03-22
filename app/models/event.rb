@@ -15,7 +15,7 @@ class Event < ActiveRecord::Base
 
   scope :upcoming, lambda {|n| joins(:occurrences).where('occurrences.start > ?', Time.now).order('occurrences.start')[0..n] }
 
-  scope :special, where('events.special == ?', true)
+  scope :special, where('events.special = 1')
 
   friendly_id :title, use: [:slugged, :history]
 
