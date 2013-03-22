@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
 
   start_of_today = Time.now.midnight
   end_of_today = Time.now.midnight + 1.day + 2.hours
-  has_many :occurrences, conditions: ['start >= ? OR (end IS NOT NULL AND end >= ?)', start_of_today, end_of_today], order: 'start'
+  has_many :occurrences, conditions: ['start >= ?', start_of_today], order: 'start'
 
   accepts_nested_attributes_for :occurrences, allow_destroy: true, reject_if: :blank_start
 
