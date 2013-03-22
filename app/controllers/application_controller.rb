@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :get_special_events
 
   def get_special_events
-    @special_events = Event.find(:all, :conditions => {:special => true}, :order => 'starts_at ASC')
+    @special_events = Event.special.upcoming(8)
   end
 
   def login

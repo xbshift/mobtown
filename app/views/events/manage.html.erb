@@ -1,0 +1,11 @@
+<table class='table-striped'>
+  <tbody>
+  <% @events.each do |event| %>
+    <%= content_tag :tr do %>
+      <%= content_tag :td, link_to(event.title, event) %>
+      <%= content_tag :td, link_to('Edit', edit_event_path(event)) %>
+      <%= content_tag :td, link_to('Destroy', event, :confirm => 'Pull the trigger?', :method => :delete) %>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>

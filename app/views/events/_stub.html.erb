@@ -1,0 +1,8 @@
+<% event = Event.find(occurrence.event_id) %>
+<div class="clear-left">
+  <%= image_tag event.photo.url(:small), class: "img-rounded pull-left" %>
+  <%= content_tag :h5, occurrence.start.strftime("%A, %b %e") %>
+  <%= content_tag :h4, event.title %>
+  <p><%= raw event.summary %></p>
+  <%= event.prose.blank? ? '' : link_to('Would You Like to Know More?', event_path(event), class: 'btn btn-dirtydog') %>
+</div>
