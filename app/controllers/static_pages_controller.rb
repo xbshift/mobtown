@@ -1,8 +1,8 @@
 class StaticPagesController < ApplicationController
   include EventHelper
   def home 
-    @events = Event.all
-    @events = expand_events(@events, 30.days)
+    @featured = Occurrence.next_3
+    @carousel = Occurrence.this_week
   end
 
   def venue

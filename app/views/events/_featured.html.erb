@@ -1,0 +1,2 @@
+<% event = Event.find(occurrence.event_id) %>
+<li><strong><%= occurrence.start.strftime("%A, %b %e") %></strong> &mdash; <%= event.title %></li>

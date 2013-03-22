@@ -1,3 +1,11 @@
 // Place all the styles related to the Event controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h3.timespan {
+  font-family: 'mission_scriptregular';
+  font-weight: normal;
+  text-transform: none;
+  text-decoration: none;
+  color: $dirtyred;
+}
