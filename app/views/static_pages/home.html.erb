@@ -2,7 +2,8 @@
   <!-- Carousel items -->
   <div class="carousel-inner">
   <% @is_first = true %>
-  <% @events.each do |event| %>
+  <% @carousel.each do |occurrence| %>
+    <% event = Event.find(occurrence.event_id) %>
     <div class="item <%= @is_first? 'active' : '' %>">
       <% @is_first = false %>
       <div class="overflow-box">
@@ -11,7 +12,7 @@
           <div class="carousel-caption">
             <p>
             <span class="event-header">
-              <%= content_tag :span, event.starts_at.strftime("%A, %b %e"), class: 'event-date' %>
+              <%= content_tag :span, occurrence.start.strftime("%A, %b %e"), class: 'event-date' %>
               <%= content_tag :span, event.title, class: 'event-title' %>
             </span>
             <%= raw event.summary %></p>
@@ -23,7 +24,7 @@
             <div class="carousel-caption">
               <p>
               <span class="event-header">
-                <%= content_tag :span, event.starts_at.strftime("%A, %b %e"), class: 'event-date' %>
+                <%= content_tag :span, occurrence.start.strftime("%A, %b %e"), class: 'event-date' %>
                 <%= content_tag :span, event.title, class: 'event-title' %>
               </span>
               <%= raw event.summary %></p>
@@ -41,8 +42,8 @@
 
   <div class="row-fluid">
     <div class="span4 feature-box">
-      <h3 class="headline"><%= link_to 'Upcoming Events', events_path %></h3>
-      <%= render 'events/featured' %>
+      <%= link_to content_tag(:h3, 'Upcoming Events', class: 'headline'), events_path %>
+      <%= render partial: 'events/featured', collection: @featured, as: :occurrence %>
       <%= link_to "More Events & Details", events_path, class: "btn btn-dirtydog" %>
 
     </div>

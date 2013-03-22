@@ -1,13 +1,22 @@
 class Event < ActiveRecord::Base
-  attr_accessible :ends_at, :expiration, :prose, :special, :starts_at, :summary, :title, :photo, :schedule, :link, :price, :student_price, :registration_switch, :event_id
+  extend FriendlyId
 
-  has_many :occurrences
+  attr_accessible :ends_at, :expiration, :prose, :special, :starts_at, :summary, :title, :photo, :schedule, :link, :price, :student_price, :registration_switch, :occurrences_attributes
 
-  def next
-    :occurrences.sort { |a,b| a.start <=> b.start } [0]
+  start_of_today = Time.now.midnight
+  end_of_today = Time.now.midnight + 1.day + 2.hours
+  has_many :occurrences, conditions: ['start >= ? OR (end IS NOT NULL AND end >= ?)', start_of_today, end_of_today], order: 'start'
+
+  accepts_nested_attributes_for :occurrences, allow_destroy: true, reject_if: :blank_start
+
+  def blank_start(attributes)
+    attributes[:start].blank?
   end
 
-  extend FriendlyId
+  scope :upcoming, lambda {|n| joins(:occurrences).where('occurrences.start > ?', Time.now).order('occurrences.start')[0..n] }
+
+  scope :special, where('events.special == ?', true)
+
   friendly_id :title, use: [:slugged, :history]
 
   has_attached_file :photo, :styles => { :carousel => "700x450#",
