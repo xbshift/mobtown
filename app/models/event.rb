@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
 
   start_of_today = Time.now.midnight
   end_of_today = Time.now.midnight + 1.day + 2.hours
-  has_many :occurrences, conditions: ['start >= ?', start_of_today], order: 'start'
+  has_many :occurrences 
 
   accepts_nested_attributes_for :occurrences, allow_destroy: true, reject_if: :blank_start
 
@@ -15,7 +15,7 @@ class Event < ActiveRecord::Base
 
   scope :upcoming, lambda {|n| joins(:occurrences).where('occurrences.start > ?', Time.now).order('occurrences.start')[0..n] }
 
-  scope :special, where('events.special = ?', true)
+  scope :special, joins(:occurrences).where('events.special = ?', true).where('occurrences.start > ?', Time.now).order('occurrences.start')
 
   friendly_id :title, use: [:slugged, :history]
 
