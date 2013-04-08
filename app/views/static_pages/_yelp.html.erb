@@ -1,0 +1,19 @@
+<%
+require 'oauth'
+require 'json'
+
+consumer_key = 'vm3mrkUPUQdQYEZYrBoVyw'
+consumer_secret = 'jIZFg2HGmbKAzEBE6kkVEc6CniU'
+token = '928iTJ6MeALkqH-m4kKhWr8URnlPQvCn'
+token_secret = 'uriiKDrX8l0qiwIafGykD9Ut5qI'
+
+api_host = 'api.yelp.com'
+
+consumer = OAuth::Consumer.new(consumer_key, consumer_secret, {:site => "http://#{api_host}"})
+access_token = OAuth::AccessToken.new(consumer, token, token_secret)
+
+path = "/v2/business/the-mobtown-ballroom-baltimore"
+hash = JSON.parse access_token.get(path).body
+%>
+
+<%= link_to image_tag(hash['rating_img_url']) + ' ' + hash['review_count'].to_s + ' reviews', hash['url'] %>

@@ -8,6 +8,7 @@ gem 'simple_form'
 gem 'ice_cube'
 gem 'friendly_id'
 gem 'yaml_db'
+gem 'oauth'
 
 gem 'capistrano'
 gem 'rvm-capistrano'
