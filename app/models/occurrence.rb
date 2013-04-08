@@ -13,6 +13,7 @@ class Occurrence < ActiveRecord::Base
   scope :this_week, where('start < ?', Date.today + 9.days)
   scope :next_3, limit(3)
 
+  scope :two_weeks, where('start < ?', Date.today + 14.days)
   scope :tonight, where('start < ?', tomorrow)
   scope :later_this_week, where('start between ? and ?', tomorrow, this_coming_sunday)
   scope :this_month, where('start between ? and ?', this_coming_sunday + 1.minute, far_enough) 
