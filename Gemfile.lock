@@ -138,6 +138,7 @@ GEM
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     nokogiri (1.5.6)
+    oauth (0.4.7)
     orm_adapter (0.4.0)
     paperclip (3.4.0)
       activemodel (>= 3.0.0)
@@ -264,6 +265,7 @@ DEPENDENCIES
   jquery-rails (= 2.0.2)
   jquery-ui-rails
   libnotify (= 0.5.9)
+  oauth
   paperclip
   pg (= 0.12.2)
   rails (= 3.2.10)
