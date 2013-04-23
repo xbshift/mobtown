@@ -5,6 +5,11 @@ class StaticPagesController < ApplicationController
     @carousel = Occurrence.two_weeks
   end
 
+  def yelp_example
+    @featured = Occurrence.next_3
+    @carousel = Occurrence.two_weeks
+  end
+
   def venue
   end
 
