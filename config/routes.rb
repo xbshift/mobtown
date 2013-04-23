@@ -41,6 +41,7 @@ Mobtown::Application.routes.draw do
   resources :feature_boxes
 
   match '/acquire', to: 'static_pages#acquire'
+  match '/yelp-example', to: 'static_pages#yelp_example'
 
 
   # The priority is based upon order of creation:
