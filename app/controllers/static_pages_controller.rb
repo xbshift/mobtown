@@ -1,13 +1,13 @@
 class StaticPagesController < ApplicationController
   include EventHelper
   def home 
-    @featured = Occurrence.next_3
-    @carousel = Occurrence.two_weeks
+    @featured = Occurrence.next(3)
+    @carousel = Occurrence.within(2.weeks)
   end
 
   def yelp_example
-    @featured = Occurrence.next_3
-    @carousel = Occurrence.two_weeks
+    @featured = Occurrence.next(3)
+    @carousel = Occurrence.within(2.weeks)
   end
 
   def venue
