@@ -2,20 +2,12 @@ class Occurrence < ActiveRecord::Base
   attr_accessible :end, :start, :event_id
   belongs_to :event
   
-  start_of_today = Time.now.midnight
-  end_of_today = Time.now.midnight + 1.day + 2.hours
-  tomorrow = Time.now.midnight + 1.day + 2.hours
-  this_coming_sunday = Date.today + 7.days - Date.today.wday
-  far_enough = Date.today + 45.days
 
-  default_scope where('start >= ?', start_of_today).order('start') 
+  scope :this_week, where('start between ? and ?', Date.today, Date.today.end_of_week)
 
-  scope :this_week, where('start < ?', Date.today + 9.days)
-  scope :next_3, limit(3)
+  scope :next_week, where('start between ? and ?', Date.today.end_of_week, Date.today.end_of_week + 7.days)
 
-  scope :two_weeks, where('start < ?', Date.today + 14.days)
-  scope :tonight, where('start < ?', tomorrow)
-  scope :later_this_week, where('start between ? and ?', tomorrow, this_coming_sunday)
-  scope :this_month, where('start between ? and ?', this_coming_sunday + 1.minute, far_enough) 
+  scope :next, lambda { |n| where('start > ?', Date.today).limit(n) }
 
+  scope :within, lambda { |time_delta| where('start between ? and ?', Date.today, Date.today + time_delta) }
 end

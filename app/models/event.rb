@@ -3,8 +3,6 @@ class Event < ActiveRecord::Base
 
   attr_accessible :ends_at, :expiration, :prose, :special, :starts_at, :summary, :title, :photo, :schedule, :link, :price, :student_price, :registration_switch, :occurrences_attributes
 
-  start_of_today = Time.now.midnight
-  end_of_today = Time.now.midnight + 1.day + 2.hours
   has_many :occurrences, :dependent => :destroy
 
   accepts_nested_attributes_for :occurrences, allow_destroy: true, reject_if: :blank_start
@@ -13,9 +11,11 @@ class Event < ActiveRecord::Base
     attributes[:start].blank?
   end
 
-  scope :upcoming, lambda {|n| joins(:occurrences).where('occurrences.start > ?', Time.now).order('occurrences.start')[0..n] }
+  scope :upcoming, joins(:occurrences).where('occurrences.start > ?', Time.now)
 
-  scope :special, joins(:occurrences).where('events.special = ?', true).where('occurrences.start > ?', Time.now).order('occurrences.start')
+  scope :next, lambda {|n| joins(:occurrences).where('occurrences.start > ?', Time.now).order('occurrences.start')[0..n] }
+
+  scope :special, joins(:occurrences).where('events.special = ?', true)
 
   friendly_id :title, use: [:slugged, :history]
 

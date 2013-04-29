@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :get_special_events
 
   def get_special_events
-    @special_events = Event.special.upcoming(8)
+    @special_events = Event.special.upcoming
   end
 
   def login
