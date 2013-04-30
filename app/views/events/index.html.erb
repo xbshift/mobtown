@@ -3,7 +3,7 @@
   <%= render partial: 'stub', collection: @tonight, as: :occurrence %>
   <%= @this_week.empty? ? '' : content_tag(:h3, 'Later This Week', class: 'clear-left timespan') %>
   <%= render partial: 'stub', collection: @this_week, as: :occurrence %>
-  <%= @this_month.empty? ? '' : content_tag(:h3, 'In the Coming Weeks', class: 'clear-left timespan') %>
-  <%= render partial: 'stub', collection: @this_month, as: :occurrence %>
+  <%= @beyond.empty? ? '' : content_tag(:h3, 'Looking Ahead', class: 'clear-left timespan') %>
+  <%= render partial: 'stub', collection: @beyond, as: :occurrence %>
 </div>
 <% content_for :title, 'Upcoming Events' %>

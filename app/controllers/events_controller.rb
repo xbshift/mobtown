@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   def index
     @tonight = Occurrence.tonight
     @this_week = Occurrence.between(Date.tomorrow, Date.today.end_of_week)
-    @this_month = Occurrence.between(Date.today.end_of_week, Date.today.end_of_month)
+    @beyond = Occurrence.between(Date.today.end_of_week + 1.day, Date.today + 60.days) 
   end
 
   def manage
