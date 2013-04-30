@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130320173403) do
+ActiveRecord::Schema.define(:version => 20130430235141) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -97,8 +97,8 @@ ActiveRecord::Schema.define(:version => 20130320173403) do
   add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "occurrences", :force => true do |t|
-    t.datetime "start"
-    t.datetime "end"
+    t.date     "start"
+    t.date     "end"
     t.integer  "event_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
