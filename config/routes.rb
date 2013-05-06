@@ -39,6 +39,7 @@ Mobtown::Application.routes.draw do
   end
   resources :posts, :path => '/mob-blog'
   resources :feature_boxes
+  resources :charges
 
   match '/acquire', to: 'static_pages#acquire'
   match '/yelp-example', to: 'static_pages#yelp_example'

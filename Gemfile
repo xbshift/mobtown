@@ -9,6 +9,7 @@ gem 'ice_cube'
 gem 'friendly_id'
 gem 'yaml_db'
 gem 'oauth'
+gem 'stripe'
 
 gem 'capistrano'
 gem 'rvm-capistrano'
