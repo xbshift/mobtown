@@ -1,5 +1,10 @@
 <%= form_tag charges_path do %>
-  <div><%= text_field :charges, :email, placeholder: 'Email' %></div>
+  <h4>Register</h4>
+  <div>
+    <%= hidden_field_tag :amount, item.price %>
+    <%= text_field_tag :registrant_name, nil, placeholder: 'Name' %>
+    <%= text_field_tag :registrant_email, nil, placeholder: 'Email' %>
+  </div>
   <%= item.title %> : <%= number_to_currency(item.price) %>
   <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
