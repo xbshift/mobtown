@@ -1,14 +1,21 @@
 class Event < ActiveRecord::Base
   extend FriendlyId
 
-  attr_accessible :ends_at, :expiration, :prose, :special, :starts_at, :summary, :title, :photo, :schedule, :link, :price, :student_price, :registration_switch, :occurrences_attributes
+  attr_accessible :ends_at, :expiration, :prose, :special, :starts_at, :summary, :title, :photo, :schedule, :link, :price, :student_price, :registration_switch, :occurrences_attributes, :passes_attributes
 
   has_many :occurrences, :dependent => :destroy
+  has_many :passes, :dependent => :destroy
 
   accepts_nested_attributes_for :occurrences, allow_destroy: true, reject_if: :blank_start
 
+  accepts_nested_attributes_for :passes, allow_destroy: true, reject_if: :blank_pass
+
   def blank_start(attributes)
     attributes[:start].blank?
+  end
+
+  def blank_pass(attributes)
+    attributes[:name].blank?
   end
 
   scope :upcoming, joins(:occurrences).where('occurrences.start > ?', Time.now)

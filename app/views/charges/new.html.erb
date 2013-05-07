@@ -1,13 +1,14 @@
 <%= form_tag charges_path do %>
+  <% pass = event.passes.first %>
   <h4>Register</h4>
   <div>
-    <%= hidden_field_tag :amount, item.price %>
+    <%= hidden_field_tag :amount, pass.price %>
     <%= text_field_tag :registrant_name, nil, placeholder: 'Name' %>
     <%= text_field_tag :registrant_email, nil, placeholder: 'Email' %>
   </div>
-  <%= item.title %> : <%= number_to_currency(item.price) %>
+  <%= pass.name %> : <%= number_to_currency(pass.price) %>
   <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="<%= item.title %>" 
-          data-amount="<%= 100*item.price %>"></script>
+          data-description="<%= pass.name %>" 
+          data-amount="<%= 100*pass.price %>"></script>
 <% end %>
