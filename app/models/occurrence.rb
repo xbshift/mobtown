@@ -8,7 +8,7 @@ class Occurrence < ActiveRecord::Base
 
   scope :next_week, where('start between ? and ?', Date.today.end_of_week + 1.day, Date.today.end_of_week + 7.days).order(:start)
 
-  scope :next, lambda { |n| where('start > ?', Date.today).order(:start).limit(n) }
+  scope :next, lambda { |n| where('start >= ?', Date.today).order(:start).limit(n) }
 
   scope :within, lambda { |time_delta| where('start between ? and ?', Date.today, Date.today + time_delta).order(:start) }
 
