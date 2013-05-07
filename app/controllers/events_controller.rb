@@ -17,6 +17,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @event.occurrences.build
+    @event.passes.build
   end
 
   def create
@@ -39,6 +40,7 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
     @event.occurrences.build
+    @event.passes.build
   end
 
   def update

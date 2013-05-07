@@ -3,13 +3,14 @@
   <h4>
      <%= @event.occurrences.empty? ? 'Date TBA' : @event.occurrences[0].start.strftime('%b %d') + ': ' %><%= @event.title %>
   </h4>
+<%= logged_in? ? link_to("Edit or Destroy", edit_event_path(@event)) : '' %>
   <div class="row">
-    <% if @event.registration_switch? %>
+    <% if not @event.passes.empty? %>
       <div class="span8">
         <%= raw @event.prose.blank? ? @event.summary : @event.prose %>
       </div>
       <div class="signup-well span4">
-        <%= render :template => 'charges/new', :locals => {:item => @event} %>
+        <%= render :template => 'charges/new', :locals => {:event => @event} %>
       </div>
     <% else %>
       <div class="span12">
@@ -20,8 +21,5 @@
   </div>
 </div>
 
-<% if logged_in? %>
-  <p class='war-room'><%= link_to "Edit or Destroy", edit_event_path(@event) %></p>
-<% end %>
 <% content_for :title, @event.title %>
 <% content_for :og_image, request.protocol + request.host_with_port + @event.photo.url %>

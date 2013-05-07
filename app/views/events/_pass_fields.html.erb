@@ -1,0 +1,7 @@
+<fieldset>
+  <%= f.input :name, as: 'string', placeholder: 'Name (e.g., Full Pass)' %>
+  <%= f.input :price %>
+  <%= f.input :student_price, placeholder: 'Optional' %>
+  <%= f.input :_destroy, as: :boolean, label: false, inline_label: 'Mark this as Sold Out.' %>
+  <%= f.input :_destroy, as: :boolean, label: false, inline_label: 'Delete this entirely.' %>
+</fieldset>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130430235141) do
+ActiveRecord::Schema.define(:version => 20130506212350) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -102,6 +102,16 @@ ActiveRecord::Schema.define(:version => 20130430235141) do
     t.integer  "event_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "passes", :force => true do |t|
+    t.integer  "event_id"
+    t.string   "name"
+    t.decimal  "price",         :precision => 8, :scale => 2
+    t.decimal  "student_price", :precision => 8, :scale => 2
+    t.boolean  "available"
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
   end
 
   create_table "posts", :force => true do |t|
