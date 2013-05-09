@@ -40,8 +40,8 @@ app_repository =            "git@github.com:danielballan/mobtown.git"
 app_repository_branch =     "master"
 app_deployment_root =       "/var/www/mobtown"
 deployment_user =           "dallan"
-#deployment_user_password =  "PASSWORD"
-ssh_options[:keys] = %w(/Users/dallan/.ssh/id_rsa.pub)
+ssh_options[:keys] = %w('/Users/danielallan/.ssh/id_rsa')
+set :ssh_options, {:forward_agent => true}
 deployment_group =          "web"
 rvm_ruby_string =           "ruby-1.9.3-p385@global"
 
