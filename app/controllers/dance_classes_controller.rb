@@ -28,7 +28,7 @@ class DanceClassesController < ApplicationController
   end
 
   def index
-    @category_id = params.has_key?(:category) ? params[:category] : Category.first
+    @category_id = params.has_key?(:category) ? params[:category] : 2 
     @category = Category.find(@category_id)
     @dance_classes = @category.dance_classes
     if params.has_key?('id')
