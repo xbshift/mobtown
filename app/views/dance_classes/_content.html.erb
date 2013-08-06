@@ -1,7 +1,6 @@
 <div class="row-fluid">
   <div class="span9 content">
-    <h4>nil: <%= @category.nil? %> id: <%= @category.id %> name: <%= @category.name %></h4>
-    <p>debugging</p>
+    <h4><%= @category.name %></h4>
     <%= raw @category.prose %>
     <% if logged_in? %>
       <p class="war-room">War Room: <%= link_to 'Edit This Category Description', edit_category_path(@category) %>
