@@ -1,14 +1,41 @@
 <%= form_tag charges_path do %>
-  <% pass = event.passes.first %>
   <h4>Register</h4>
-  <div>
-    <%= hidden_field_tag :amount, pass.price %>
-    <%= text_field_tag :registrant_name, nil, placeholder: 'Name' %>
-    <%= text_field_tag :registrant_email, nil, placeholder: 'Email' %>
-  </div>
-  <%= pass.name %> : <%= number_to_currency(pass.price) %>
-  <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="<%= pass.name %>" 
-          data-amount="<%= 100*pass.price %>"></script>
+  <ul class="nav nav-pills" id="passes">
+  <% event.passes.each do |pass| %>
+    <li><a href="#tab-<%= pass.id %>" data-toggle="tab"><%= pass.name %></a></li>
+  <% end %>
+  </ul>
+  <div class="tab-content">
+  <% event.passes.each do |pass| %>
+    <div class="tab-pane" id="tab-<%= pass.id %>">
+      <% pass_summary = event.title + ' ' + pass.name %> 
+      <div>
+        <%= pass.description.blank? ? '' : content_tag('p', pass.description) %>
+        <%= hidden_field_tag :amount, pass.price %>
+        <%= hidden_field_tag :pass_summary, pass_summary %>
+        <%= text_field_tag :registrant_name, nil, placeholder: 'Name', required: true %>
+        <%= text_field_tag :registrant_email, nil, placeholder: 'Email (optional)' %>
+      </div>
+  
+      <span>Price <%= number_to_currency(pass.price) %></span>
+
+      <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="<%= pass_summary %>"
+              data-amount="<%= 100*pass.price %>"></script>
+      <p><small>Your credit card information is transmitted directly to <%= link_to 'Stripe', 'https://stripe.com/' %> over a secure connection. We at Mobtown never handle it, and no one stores it.</small></p>
+    </div>
+  <% end %>
 <% end %>
+
+  <% content_for :javascript do %>
+    <script>
+      $('#passeses a').click(function(e) {
+        e.preventDefault();
+        $(this).tab('show');
+      })
+      $('#passes a<%=raw @tab %>').tab('show');
+
+      document.getElementById("classes-nav-element").className += "active";
+    </script>
+  <% end %>
