@@ -1,14 +1,49 @@
-<div class="row-fluid">
-  <div class="span4 center">
-    <p>You're in.</p>
-    <%= image_tag "dr_strangelove.jpg" %>
-  </div>
-  <div class="span8">
-    <h5>The Big Board</h5>
-    <ul>
-      <li><%= link_to 'Manage Events', manage_events_path %></li>
-      <li><%= link_to 'New Class', new_dance_class_path %></li>
-      <li><%= link_to 'New Mob Blog Post', new_post_path %></li>
-    </ul>
-  </div>
-</div>
+<%= link_to content_tag(:i, '', class: 'icon-plus') + ' New Event', new_event_path, class: 'btn pull-right' %>
+<%= content_tag(:h4, 'Events') %>
+<table class='table ruled table-hover'>
+  <tbody>
+  <% @events.each do |event| %>
+    <%= content_tag :tr do %>
+      <%= content_tag :td do %>
+        <%= link_to(content_tag(:h5, event.title), edit_event_path(event)) %>
+        <% if event.occurrences.empty? %>
+          <p class='note'>No scheduled occurrences. This event is dormant, kept for future reuse.</p>
+        <% else %>
+          <p class='note'>Scheduled <%= event.occurrences.collect{|o| o.start}.to_sentence %> 
+          </p>
+        <% end %>
+        <% if event.passes.empty? %>
+          <p class='note'>No passes</p>
+        <% else %>
+           
+          <table class='table-bordered ruled'>
+          <% event.passes.each do |pass| %>
+            <tr>
+              <%= content_tag :td, pass.name %>
+              <%= content_tag :td, number_to_currency(pass.price) %>
+              <%= content_tag :td, content_tag(:strong, 'x') + '/limit sold' %>
+              <%= content_tag :td, '$___ collected' %>
+            </tr>
+          <% end %>
+          </table>
+          <%= link_to 'View Registration List', '#', class: 'btn', style: 'margin-top: 10px;' %>
+        <% end %>
+      <% end %>
+      <%= content_tag :td, link_to(content_tag(:i, '', class: 'icon-trash'), event, :confirm => 'Pull the trigger?', :method => :delete) %>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+<%= link_to content_tag(:i, '', class: 'icon-plus') + ' New Class', new_dance_class_path, class: 'btn pull-right' %>
+<h4>Classes</h4>
+<table class='table ruled'>
+  <tbody>
+  <% @dance_classes.each do |dance_class| %>
+    <%= content_tag :tr do %>
+      <%= content_tag :td, link_to(content_tag(:h5, dance_class.name), edit_dance_class_path(dance_class)) %>
+      <%= content_tag :td, link_to(content_tag(:i, '', class: 'icon-trash'), dance_class, :confirm => 'Pull the trigger?', :method => :delete) %>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+<%= link_to content_tag(:i, '', class: 'icon-plus') + ' New Mob Blog Post', new_post_path, class: 'btn' %>

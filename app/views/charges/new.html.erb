@@ -1,14 +1,14 @@
 <%= form_tag charges_path do %>
   <h4>Register</h4>
-  <ul class="nav nav-pills" id="passes">
-  <% event.passes.each do |pass| %>
-    <li><a href="#tab-<%= pass.id %>" data-toggle="tab"><%= pass.name %></a></li>
+  <ul class="nav nav-pills" id="<%= id %>-passes">
+  <% passes.each do |pass| %>
+    <li><a href="#tab-<%= id.to_s + '-' + pass.id.to_s %>" data-toggle="tab"><%= pass.name %></a></li>
   <% end %>
   </ul>
   <div class="tab-content">
-  <% event.passes.each do |pass| %>
-    <div class="tab-pane" id="tab-<%= pass.id %>">
-      <% pass_summary = event.title + ' ' + pass.name %> 
+  <% passes.each do |pass| %>
+    <div class="tab-pane" id="tab-<%= id.to_s + '-' + pass.id.to_s %>">
+      <% pass_summary = name + ' ' + pass.name %> 
       <div>
         <%= pass.description.blank? ? '' : content_tag('p', pass.description) %>
         <%= hidden_field_tag :amount, pass.price %>
@@ -26,16 +26,19 @@
       <p><small>Your credit card information is transmitted directly to <%= link_to 'Stripe', 'https://stripe.com/' %> over a secure connection. We at Mobtown never handle it, and no one stores it.</small></p>
     </div>
   <% end %>
+  </div>
 <% end %>
 
-  <% content_for :javascript do %>
-    <script>
-      $('#passeses a').click(function(e) {
-        e.preventDefault();
-        $(this).tab('show');
-      })
-      $('#passes a<%=raw @tab %>').tab('show');
+  <% passes.each do |pass| %>
+    <% content_for :javascript do %>
+      <script>
+        $('#tab-<%= id.to_s + '-' + pass.id.to_s %> a').click(function(e) {
+          e.preventDefault();
+          $(this).tab('show');
+        })
+        $('#<%= id.to_s %>-passes a:first').tab('show');
 
-      document.getElementById("classes-nav-element").className += "active";
-    </script>
+        document.getElementById("classes-nav-element").className += "active";
+      </script>
+    <% end %>
   <% end %>

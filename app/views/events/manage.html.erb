@@ -1,9 +1,5 @@
 <%= content_tag :h4, 'Manage Events' %>
 <table class='table-striped'>
-  <thead>
-    <th>Title</th>
-    <th>Delete</th>
-  </thead>
   <tbody>
   <% @events.each do |event| %>
     <%= content_tag :tr do %>
@@ -14,6 +10,5 @@
   </tbody>
 </table>
 
-<%= link_to 'Create New Event', new_event_path, class: 'btn' %>
 
 <% content_for :title, 'Manage Events' %>
