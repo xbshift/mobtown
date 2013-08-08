@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
 
   def login
     authenticate
+    @events = Event.all
+    @dance_classes = DanceClass.all
   end
 
   protected
