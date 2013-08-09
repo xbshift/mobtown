@@ -4,22 +4,32 @@ class ChargesController < ApplicationController
   end
 
   def create
-    @amount = (params[:amount].to_f*100).to_i
+    pass = Pass.find(params[:pass_id])
  
     customer = Stripe::Customer.create(
-      :email => params[:registrant_email],
-      :description => params[:registrant_name],
+      :email => 'hello', # params[:registration][:email],
+      :description => 'yep', #params[:registration][:name],
       :card  => params[:stripeToken]
     )
 
+    @price = pass.price
+    cents = (pass.price*100).to_i
+
     charge = Stripe::Charge.create(
       :customer    => customer.id,
-      :amount      => @amount,
-      :description => params[:pass_summary],
+      :amount      => cents,
+      :description => 'asdf', # pass.event.title + ' ' + pass.name,
       :currency    => 'usd'
     )
+
+    registration = pass.registrations.create(params[:registration])
+    registration.amount_paid = @price
+    registration.how_paid = 'Stripe'
+    registration.save
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
     end
+
+
   end

@@ -1,0 +1,19 @@
+<h4><%= @event.title + ' ' + @pass.name %></h4>
+<table class='table table-striped'>
+  <thead>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Paid</th>
+    <th>Payment Method</th>
+  </thead>
+  <tbody>
+  <% @registrations.each do |r| %>
+    <tr>
+    <%= content_tag :td, r.name %>
+    <%= content_tag :td, r.email %>
+    <%= content_tag :td, number_to_currency(r.amount_paid) %>
+    <%= content_tag :td, r.how_paid %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

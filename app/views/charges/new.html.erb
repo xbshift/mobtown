@@ -1,4 +1,3 @@
-<%= form_tag charges_path do %>
   <h4>Register</h4>
   <ul class="nav nav-pills" id="<%= id %>-passes">
   <% passes.each do |pass| %>
@@ -8,13 +7,15 @@
   <div class="tab-content">
   <% passes.each do |pass| %>
     <div class="tab-pane" id="tab-<%= id.to_s + '-' + pass.id.to_s %>">
+    <%= form_tag charges_path do %>
       <% pass_summary = name + ' ' + pass.name %> 
       <div>
         <%= pass.description.blank? ? '' : content_tag('p', pass.description) %>
-        <%= hidden_field_tag :amount, pass.price %>
-        <%= hidden_field_tag :pass_summary, pass_summary %>
-        <%= text_field_tag :registrant_name, nil, placeholder: 'Name', required: true %>
-        <%= text_field_tag :registrant_email, nil, placeholder: 'Email (optional)' %>
+        <%= fields_for pass.registrations.build do |r| %>
+          <%= hidden_field_tag :pass_id, pass.id %>
+          <%= r.text_field :name,  placeholder: 'Name', required: true %>
+          <%= r.text_field :email,  placeholder: 'Email', required: true %>
+        <% end %>
       </div>
   
       <span>Price <%= number_to_currency(pass.price) %></span>
@@ -26,8 +27,8 @@
       <p><small>Your credit card information is transmitted directly to <%= link_to 'Stripe', 'https://stripe.com/' %> over a secure connection. We at Mobtown never handle it, and no one stores it.</small></p>
     </div>
   <% end %>
-  </div>
 <% end %>
+  </div>
 
   <% passes.each do |pass| %>
     <% content_for :javascript do %>

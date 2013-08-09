@@ -2,7 +2,7 @@
 <%= content_tag(:h4, 'Events') %>
 <table class='table ruled table-hover'>
   <tbody>
-  <% @events.each do |event| %>
+  <% @events.sort_by{|e| -e.passes.count}.each do |event| %>
     <%= content_tag :tr do %>
       <%= content_tag :td do %>
         <%= link_to(content_tag(:h5, event.title), edit_event_path(event)) %>
@@ -17,19 +17,21 @@
         <% else %>
            
           <table class='table-bordered ruled'>
-          <% event.passes.each do |pass| %>
+          <% event.passes.sort_by{|p| [-p.price, p.name]}.each do |pass| %>
             <tr>
               <%= content_tag :td, pass.name %>
               <%= content_tag :td, number_to_currency(pass.price) %>
-              <%= content_tag :td, content_tag(:strong, 'x') + '/limit sold' %>
-              <%= content_tag :td, '$___ collected' %>
+              <%= content_tag :td  do %>
+                <%= content_tag(:strong, pass.registrations.count) %>
+                <%= pass.limit.blank? ? ' sold' : '/' + pass.limit.to_s + ' sold' %>
+              <% end %>
+              <%= content_tag :td, number_to_currency(pass.registrations.collect{|r| r.amount_paid}.sum) + ' collected' %>
+              <%= pass.registrations.empty? ? content_tag(:td, 'No Registrants') : content_tag(:td, link_to('View Registration List', pass_registrations_path(pass), class: 'btn')) %>
             </tr>
           <% end %>
           </table>
-          <%= link_to 'View Registration List', '#', class: 'btn', style: 'margin-top: 10px;' %>
         <% end %>
       <% end %>
-      <%= content_tag :td, link_to(content_tag(:i, '', class: 'icon-trash'), event, :confirm => 'Pull the trigger?', :method => :delete) %>
     <% end %>
   <% end %>
   </tbody>

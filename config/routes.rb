@@ -37,6 +37,9 @@ Mobtown::Application.routes.draw do
     end
     resources :occurrences
   end
+  resources :passes do
+    resources :registrations
+  end
   resources :posts, :path => '/mob-blog'
   resources :feature_boxes
   resources :charges
