@@ -1,4 +1,5 @@
 class Pass < ActiveRecord::Base
-  attr_accessible :name, :price, :student_price, :description, :event_id
+  attr_accessible :name, :price, :description, :limit, :registrations
   belongs_to :event
+  has_many :registrations
 end
