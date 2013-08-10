@@ -8,7 +8,7 @@ class RegistrationsController < ApplicationController
 
   def index
     @pass = Pass.find(params[:pass_id])
-    @event = Event.find(@pass.event_id)
+    @event = Event.find(@pass.passable_id)
     @registrations = @pass.registrations
   end
 
