@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
   attr_accessible :ends_at, :expiration, :prose, :special, :starts_at, :summary, :title, :photo, :schedule, :link, :price, :student_price, :registration_switch, :occurrences_attributes, :passes_attributes
 
   has_many :occurrences, :dependent => :destroy
-  has_many :passes, :dependent => :destroy
+  has_many :passes, :as => :passable, :dependent => :destroy
 
   accepts_nested_attributes_for :occurrences, allow_destroy: true, reject_if: :blank_start
 

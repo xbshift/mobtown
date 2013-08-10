@@ -7,8 +7,8 @@ class ChargesController < ApplicationController
     pass = Pass.find(params[:pass_id])
  
     customer = Stripe::Customer.create(
-      :email => 'hello', # params[:registration][:email],
-      :description => 'yep', #params[:registration][:name],
+      :email => params[:registration][:email],
+      :description => params[:registration][:name],
       :card  => params[:stripeToken]
     )
 
@@ -18,7 +18,7 @@ class ChargesController < ApplicationController
     charge = Stripe::Charge.create(
       :customer    => customer.id,
       :amount      => cents,
-      :description => 'asdf', # pass.event.title + ' ' + pass.name,
+      :description => pass.passable.title + ' ' + pass.name,
       :currency    => 'usd'
     )
 

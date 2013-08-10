@@ -1,15 +1,15 @@
   <h4>Register</h4>
-  <ul class="nav nav-pills" id="<%= id %>-passes">
+  <ul class="nav nav-pills" id="<%= passes.first.passable.id %>-passes">
   <% passes.each do |pass| %>
-    <li><a href="#tab-<%= id.to_s + '-' + pass.id.to_s %>" data-toggle="tab"><%= pass.name %></a></li>
+    <li><a href="#tab-<%= pass.passable.id.to_s + '-' + pass.id.to_s %>" data-toggle="tab"><%= pass.name %></a></li>
   <% end %>
   </ul>
   <div class="tab-content">
   <% passes.each do |pass| %>
-    <div class="tab-pane" id="tab-<%= id.to_s + '-' + pass.id.to_s %>">
-    <% if pass.limit.nil? or pass.registrations.count < pass.limit %>
+    <div class="tab-pane" id="tab-<%= pass.passable.id.to_s + '-' + pass.id.to_s %>">
+    <% if not pass.soldout? %>
       <%= form_tag charges_path do %>
-        <%= pass.limit.nil? ? '' : content_tag(:p, pluralize(pass.limit - pass.registrations.count, 'passes') + ' remaining', class: 'note')  %>
+        <%= pass.remaining.nil? ? '' : content_tag(:p, pluralize(pass.remaining, 'passes') + ' remaining', class: 'note')  %>
         <div>
           <%= pass.description.blank? ? '' : content_tag('p', pass.description) %>
           <%= fields_for pass.registrations.build do |r| %>
@@ -23,26 +23,25 @@
 
         <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
                 data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                data-description="<%= pass.event.title + ' ' + pass.name %>"
+                data-description="<%= pass.name %>"
                 data-amount="<%= 100*pass.price %>"></script>
         <p><small>Your credit card information is transmitted directly to <%= link_to 'Stripe', 'https://stripe.com/' %> over a secure connection. We at Mobtown never handle it, and no one stores it.</small></p>
       <% end %>
     <% else %>
-      <% These passes are sold out. %>
+      <p>These passes are sold out.</p>
     <% end %>
     </div>
   <% end %>
   </div>
-<% end %>
 
   <% passes.each do |pass| %>
     <% content_for :javascript do %>
       <script>
-        $('#tab-<%= id.to_s + '-' + pass.id.to_s %> a').click(function(e) {
+        $('#tab-<%= pass.passable.id.to_s + '-' + pass.id.to_s %> a').click(function(e) {
           e.preventDefault();
           $(this).tab('show');
         })
-        $('#<%= id.to_s %>-passes a:first').tab('show');
+        $('#<%= pass.passable.id.to_s %>-passes a:first').tab('show');
 
         document.getElementById("classes-nav-element").className += "active";
       </script>

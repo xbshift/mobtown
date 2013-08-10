@@ -32,7 +32,7 @@
                                     :name => 'Student')] 
                end %>
             <% if not dance_class.price.nil? %>
-              <%= render :template => 'charges/new', :locals => {:passes => passes, :name => dance_class.name, :id => dance_class.id} %>
+              <%= render :template => 'charges/new', :locals => {:passes => passes} %>
             <% else %>
               <p>Registration is not currently open. Check back later on, or <%= link_to 'email us', 'mailto:mobtownballroom@gmail.com' %>to enquire.</p>.
             <% end %>
