@@ -23,7 +23,7 @@
               <%= content_tag :td, number_to_currency(pass.price) %>
               <%= content_tag :td  do %>
                 <%= content_tag(:strong, pass.registrations.count) %>
-                <%= pass.limit.blank? ? ' sold' : '/' + pass.limit.to_s + ' sold' %>
+                <%= pass.limit.blank? ? ' sold' : ' / ' + pass.limit.to_s + ' sold' %>
               <% end %>
               <%= content_tag :td, number_to_currency(pass.registrations.collect{|r| r.amount_paid}.sum) + ' collected' %>
               <%= pass.registrations.empty? ? content_tag(:td, 'No Registrants') : content_tag(:td, link_to('View Registration List', pass_registrations_path(pass), class: 'btn')) %>

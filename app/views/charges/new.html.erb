@@ -7,28 +7,33 @@
   <div class="tab-content">
   <% passes.each do |pass| %>
     <div class="tab-pane" id="tab-<%= id.to_s + '-' + pass.id.to_s %>">
-    <%= form_tag charges_path do %>
-      <% pass_summary = name + ' ' + pass.name %> 
-      <div>
-        <%= pass.description.blank? ? '' : content_tag('p', pass.description) %>
-        <%= fields_for pass.registrations.build do |r| %>
-          <%= hidden_field_tag :pass_id, pass.id %>
-          <%= r.text_field :name,  placeholder: 'Name', required: true %>
-          <%= r.text_field :email,  placeholder: 'Email', required: true %>
-        <% end %>
-      </div>
+    <% if pass.limit.nil? or pass.registrations.count < pass.limit %>
+      <%= form_tag charges_path do %>
+        <%= pass.limit.nil? ? '' : content_tag(:p, pluralize(pass.limit - pass.registrations.count, 'passes') + ' remaining', class: 'note')  %>
+        <div>
+          <%= pass.description.blank? ? '' : content_tag('p', pass.description) %>
+          <%= fields_for pass.registrations.build do |r| %>
+            <%= hidden_field_tag :pass_id, pass.id %>
+            <%= r.text_field :name,  placeholder: 'Name', required: true %>
+            <%= r.text_field :email,  placeholder: 'Email', required: true %>
+          <% end %>
+        </div>
   
-      <span>Price <%= number_to_currency(pass.price) %></span>
+        <span>Price <%= number_to_currency(pass.price) %></span>
 
-      <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-              data-description="<%= pass_summary %>"
-              data-amount="<%= 100*pass.price %>"></script>
-      <p><small>Your credit card information is transmitted directly to <%= link_to 'Stripe', 'https://stripe.com/' %> over a secure connection. We at Mobtown never handle it, and no one stores it.</small></p>
+        <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="<%= pass.event.title + ' ' + pass.name %>"
+                data-amount="<%= 100*pass.price %>"></script>
+        <p><small>Your credit card information is transmitted directly to <%= link_to 'Stripe', 'https://stripe.com/' %> over a secure connection. We at Mobtown never handle it, and no one stores it.</small></p>
+      <% end %>
+    <% else %>
+      <% These passes are sold out. %>
+    <% end %>
     </div>
   <% end %>
-<% end %>
   </div>
+<% end %>
 
   <% passes.each do |pass| %>
     <% content_for :javascript do %>
