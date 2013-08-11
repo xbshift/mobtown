@@ -3,6 +3,7 @@ class DanceClassesController < ApplicationController
 
   def new
     @dance_class = DanceClass.new
+    @dance_class.passes.build
  
     respond_to do |format|
       format.html  # new.html.erb
@@ -44,6 +45,7 @@ class DanceClassesController < ApplicationController
 
   def edit
     @dance_class = DanceClass.find(params[:id])
+    @dance_class.passes.build
   end
 
   def update

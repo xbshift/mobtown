@@ -21,4 +21,20 @@ class Pass < ActiveRecord::Base
       return self.limit - self.registrations.count
     end
   end
+
+  def paid_online
+    self.registrations.where(:how_paid => 'Stripe').collect{|r| r.amount_paid}.sum
+  end
+
+  def paid_by_card
+    self.registrations.where(:how_paid => 'Card').collect{|r| r.amount_paid}.sum
+  end
+
+  def paid_in_cash 
+    self.registrations.where(:how_paid => 'Cash').collect{|r| r.amount_paid}.sum
+  end
+
+  def paid_total
+    self.registrations.collect{|r| r.amount_paid}.sum
+  end
 end

@@ -7,7 +7,6 @@ class Event < ActiveRecord::Base
   has_many :passes, :as => :passable, :dependent => :destroy
 
   accepts_nested_attributes_for :occurrences, allow_destroy: true, reject_if: :blank_start
-
   accepts_nested_attributes_for :passes, allow_destroy: true, reject_if: :blank_pass
 
   def blank_start(attributes)
@@ -16,6 +15,7 @@ class Event < ActiveRecord::Base
 
   def blank_pass(attributes)
     attributes[:name].blank?
+    attributes[:price].blank?
   end
 
   scope :upcoming, joins(:occurrences).where('occurrences.start > ?', Time.now)
