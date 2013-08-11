@@ -19,20 +19,8 @@
             <p><%= dance_class.description.html_safe %></p>
           </div>
           <div class="signup-well span4">
-            <% if dance_class.student_price.blank?
-                 passes = [Pass.create(:description => dance_class.description,
-                                    :price => dance_class.price,
-                                    :name => 'Adult')]
-               else
-                 passes = [Pass.create(:description => dance_class.description,
-                                    :price => dance_class.price,
-                                    :name => 'Adult'), 
-                           Pass.create(:description => dance_class.description,
-                                    :price => dance_class.student_price,
-                                    :name => 'Student')] 
-               end %>
-            <% if not dance_class.price.nil? %>
-              <%= render :template => 'charges/new', :locals => {:passes => passes} %>
+            <% if not dance_class.passes.empty? %>
+              <%= render :template => 'charges/new', :locals => {:passes => dance_class.passes} %>
             <% else %>
               <p>Registration is not currently open. Check back later on, or <%= link_to 'email us', 'mailto:mobtownballroom@gmail.com' %>to enquire.</p>.
             <% end %>

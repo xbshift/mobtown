@@ -9,7 +9,7 @@
     <div class="tab-pane" id="tab-<%= pass.passable.id.to_s + '-' + pass.id.to_s %>">
     <% if not pass.soldout? %>
       <%= form_tag charges_path do %>
-        <%= pass.remaining.nil? ? '' : content_tag(:p, pluralize(pass.remaining, 'passes') + ' remaining', class: 'note')  %>
+        <%= pass.remaining.nil? ? '' : content_tag(:p, pluralize(pass.remaining, 'spot') + ' left', class: 'note')  %>
         <div>
           <%= pass.description.blank? ? '' : content_tag('p', pass.description) %>
           <%= fields_for pass.registrations.build do |r| %>

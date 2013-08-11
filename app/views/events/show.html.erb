@@ -1,7 +1,8 @@
 
 <div class="content">
   <h4>
-     <%= @event.occurrences.empty? ? 'Date TBA' : @event.occurrences[0].start.strftime('%b %d') + ': ' %><%= @event.title %>
+     <%= @event.occurrences.empty? ? '' : @event.occurrences[0].start.strftime('%b %d') + ': ' %>
+     <%= @event.title %>
   </h4>
 <%= logged_in? ? link_to("Edit or Destroy", edit_event_path(@event)) : '' %>
   <div class="row">

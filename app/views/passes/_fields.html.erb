@@ -1,7 +1,7 @@
 <fieldset>
   <%= f.input :name, as: 'string', placeholder: 'Name (e.g., Full Pass)' %>
+  <%= f.input :description, placeholder: 'Optional explanation' %>
   <%= f.input :price %>
-  <%= f.input :description %>
-  <%= f.input :limit, default: 100 %>
+  <%= f.input :limit, placeholder: 'If blank, unlimited.' %>
   <%= f.input :_destroy, as: :boolean, label: false, inline_label: 'Delete this entirely.' %>
 </fieldset>

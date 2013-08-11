@@ -4,3 +4,5 @@
  
 <%= link_to 'Destroy', @dance_class, :confirm => 'Pull the trigger?',
                                      :method => :delete %>
+
+<% content_for :title, 'Edit ' + @dance_class.name %>

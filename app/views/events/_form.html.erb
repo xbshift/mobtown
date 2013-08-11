@@ -15,20 +15,18 @@
   <%= f.input :photo, label: 'Carousel photo' %>
   <%= f.input :summary, placeholder: 'Short description.', input_html: {rows: 5, columns: 80}  %>
   <span class="help-block">This will be used as a caption on the home page. There is no strict length constraint, but be brief.</span>
-  <%= content_tag :div, id: 'occurrences' do %>
-    <%= content_tag :legend, 'When' %>
-    <%= f.simple_fields_for 'occurrences' do |o| %>
-      <%= render 'occurrence_fields', f: o %> 
-    <% end %>
+  <%= content_tag :legend, 'When' %>
+  <%= f.simple_fields_for 'occurrences' do |o| %>
+    <%= render 'occurrence_fields', f: o %> 
   <% end %>
   <%= content_tag :legend, 'Special Event' %>
   <%= f.check_box :special, label: 'Make this a special event.' %> Make this a Special Event.
   <p class="help-block">To create a page for this event, write below. It will be linked from the carousel and the calendar. To embed a video, click the Source button and paste in the code from YouTube.</p>
   <%= f.input :prose, :as => :ckeditor %>
   <%= content_tag :legend, 'Passes' %>
-    <%= f.simple_fields_for 'passes' do |pass| %>
-      <%= render 'pass_fields', f: pass %> 
-    <% end %>
+  <%= f.simple_fields_for 'passes' do |p| %>
+    <%= render 'passes/fields', f: p %>
+  <% end %>
   <%= f.submit %>
 <% end %>
 

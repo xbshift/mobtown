@@ -25,8 +25,23 @@
                 <%= content_tag(:strong, pass.registrations.count) %>
                 <%= pass.limit.blank? ? ' sold' : ' / ' + pass.limit.to_s + ' sold' %>
               <% end %>
-              <%= content_tag :td, number_to_currency(pass.registrations.collect{|r| r.amount_paid}.sum) + ' collected' %>
+              <%= content_tag :td, number_to_currency(pass.paid_online) + ' paid online' %>
+              <%= content_tag :td, number_to_currency(pass.paid_by_card) + ' card at bar' %>
+              <%= content_tag :td, number_to_currency(pass.paid_in_cash) + ' cash' %>
+              <%= content_tag :td, number_to_currency(pass.paid_total) + ' total' %>
               <%= pass.registrations.empty? ? content_tag(:td, 'No Registrants') : content_tag(:td, link_to('View Registration List', pass_registrations_path(pass), class: 'btn')) %>
+            </tr>
+          <% end %>
+          <% if event.passes.count > 1 %>
+            <tr>
+              <td>Totals</td>
+              <td></td>
+              <td></td>
+              <%= content_tag :td, number_to_currency(event.passes.collect{|p| p.paid_online}.sum) %>
+              <%= content_tag :td, number_to_currency(event.passes.collect{|p| p.paid_by_card}.sum) %>
+              <%= content_tag :td, number_to_currency(event.passes.collect{|p| p.paid_in_cash}.sum) %>
+              <%= content_tag :td, number_to_currency(event.passes.collect{|p| p.paid_total}.sum) %>
+              <td></td>
             </tr>
           <% end %>
           </table>
@@ -37,13 +52,12 @@
   </tbody>
 </table>
 <%= link_to content_tag(:i, '', class: 'icon-plus') + ' New Class', new_dance_class_path, class: 'btn pull-right' %>
-<h4>Classes</h4>
+<%= content_tag :h4, 'Classes' %>
 <table class='table ruled'>
   <tbody>
   <% @dance_classes.each do |dance_class| %>
     <%= content_tag :tr do %>
       <%= content_tag :td, link_to(content_tag(:h5, dance_class.name), edit_dance_class_path(dance_class)) %>
-      <%= content_tag :td, link_to(content_tag(:i, '', class: 'icon-trash'), dance_class, :confirm => 'Pull the trigger?', :method => :delete) %>
     <% end %>
   <% end %>
   </tbody>
