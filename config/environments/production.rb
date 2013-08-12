@@ -1,5 +1,10 @@
 Mobtown::Application.configure do
 
+  config.after_initialize do 
+    ENV['stripe_pk'] = AUTH['stripe']['pk_live']
+    ENV['stripe_sk'] = AUTH['stripe']['sk_live']
+  end
+
   # Add the fonts path
   config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
 

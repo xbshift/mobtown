@@ -22,6 +22,7 @@
 
 # Sensitive
 config/database.yml
+config/authentication.yml
 db/data.yml
 
 # Local assets
@@ -29,3 +30,6 @@ public/assets/*
 public/ckeditor_assets/*
 public/system/ckeditor_assets/*
 public/system/event_photo/*
+
+# Backup copies
+*.backup

@@ -1,5 +1,9 @@
 Mobtown::Application.configure do
 
+  config.after_initialize do 
+    ENV['stripe_pk'] = AUTH['stripe']['pk_test']
+    ENV['stripe_sk'] = AUTH['stripe']['sk_test']
+  end
 
   # Settings specified here will take precedence over those in config/application.rb
 
