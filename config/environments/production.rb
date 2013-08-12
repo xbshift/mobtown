@@ -3,6 +3,11 @@ Mobtown::Application.configure do
   config.after_initialize do 
     ENV['stripe_pk'] = AUTH['stripe']['pk_live']
     ENV['stripe_sk'] = AUTH['stripe']['sk_live']
+    Rails.configuration.stripe = {
+      :publishable_key => ENV['stripe_pk'],
+      :secret_key      => ENV['stripe_sk']
+    }
+    Stripe.api_key = Rails.configuration.stripe[:secret_key]
   end
 
   # Add the fonts path
