@@ -1,5 +1,5 @@
 class Pass < ActiveRecord::Base
-  attr_accessible :name, :price, :description, :limit, :registrations
+  attr_accessible :name, :price, :description, :limit, :session, :archived, :registrations
   belongs_to :passable, :polymorphic => true
   has_many :registrations
 
@@ -22,6 +22,15 @@ class Pass < ActiveRecord::Base
     end
   end
 
+  def few_left?
+    threshold = 10
+    if self.remaining.nil?
+      return false
+    elsif (self.remaining < threshold) and (self.remaining > 0)
+      return true
+    end
+  end
+
   def paid_online
     self.registrations.where(:how_paid => 'Stripe').collect{|r| r.amount_paid}.sum
   end
@@ -36,5 +45,17 @@ class Pass < ActiveRecord::Base
 
   def paid_total
     self.registrations.collect{|r| r.amount_paid}.sum
+  end
+
+  scope :active, where(:archived => false)
+
+  def status
+    if self.archived == true
+      return 'Archived'
+    elsif self.soldout?
+      return 'Sold Out'
+    else
+      return 'For Sale'
+    end
   end
 end
