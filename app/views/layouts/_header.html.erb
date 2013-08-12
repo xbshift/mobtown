@@ -34,7 +34,7 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Special Events <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <% @special_events.each do |special_event| %>
-              <li><%= link_to special_event.title, event_path(special_event) %></li>
+              <li><%= link_to special_event.name, event_path(special_event) %></li>
             <% end %>
           </ul>
       </ul>

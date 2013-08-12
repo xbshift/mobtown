@@ -3,7 +3,7 @@
   <tbody>
   <% @events.each do |event| %>
     <%= content_tag :tr do %>
-      <%= content_tag :td, link_to(event.title, edit_event_path(event)) %>
+      <%= content_tag :td, link_to(event.name, edit_event_path(event)) %>
       <%= content_tag :td, link_to(content_tag(:i, '', class: 'icon-trash'), event, :confirm => 'Pull the trigger?', :method => :delete) %>
     <% end %>
   <% end %>

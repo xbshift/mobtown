@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   extend FriendlyId
 
-  attr_accessible :ends_at, :expiration, :prose, :special, :starts_at, :summary, :title, :photo, :schedule, :link, :price, :student_price, :registration_switch, :occurrences_attributes, :passes_attributes
+  attr_accessible :ends_at, :expiration, :prose, :special, :starts_at, :summary, :name, :photo, :schedule, :link, :price, :student_price, :registration_switch, :occurrences_attributes, :passes_attributes
 
   has_many :occurrences, :dependent => :destroy
   has_many :passes, :as => :passable, :dependent => :destroy
@@ -24,7 +24,7 @@ class Event < ActiveRecord::Base
 
   scope :special, joins(:occurrences).where('events.special = ?', true)
 
-  friendly_id :title, use: [:slugged, :history]
+  friendly_id :name, use: [:slugged, :history]
 
   has_attached_file :photo, :styles => { :carousel => "700x450#",
                                          :small => "300x" },

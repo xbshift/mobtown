@@ -2,7 +2,7 @@
 <div class="content">
   <h4>
      <%= @event.occurrences.empty? ? '' : @event.occurrences[0].start.strftime('%b %d') + ': ' %>
-     <%= @event.title %>
+     <%= @event.name %>
   </h4>
 <%= logged_in? ? link_to("Edit or Destroy", edit_event_path(@event)) : '' %>
   <div class="row">
@@ -22,5 +22,5 @@
   </div>
 </div>
 
-<% content_for :title, @event.title %>
+<% content_for :title, @event.name %>
 <% content_for :og_image, request.protocol + request.host_with_port + @event.photo.url %>

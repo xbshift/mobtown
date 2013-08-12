@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130810203600) do
+ActiveRecord::Schema.define(:version => 20130812170720) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(:version => 20130810203600) do
   add_index "dance_classes", ["slug"], :name => "index_dance_classes_on_slug"
 
   create_table "events", :force => true do |t|
-    t.string   "title"
+    t.string   "name"
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.datetime "expiration"
@@ -109,12 +109,14 @@ ActiveRecord::Schema.define(:version => 20130810203600) do
     t.string   "name"
     t.decimal  "price",         :precision => 8, :scale => 2
     t.boolean  "available"
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+    t.datetime "created_at",                                                     :null => false
+    t.datetime "updated_at",                                                     :null => false
     t.string   "description"
     t.integer  "limit"
     t.integer  "passable_id"
     t.string   "passable_type"
+    t.string   "session"
+    t.boolean  "archived",                                    :default => false
   end
 
   create_table "posts", :force => true do |t|

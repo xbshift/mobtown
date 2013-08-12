@@ -13,7 +13,6 @@
   <%= f.input :name %>
   <%= f.input :category_id, collection: Category.all %>
   <div class="control-group"><div class="control-label">or create a new category called</div><div class="controls"><%= f.text_field :new_category_name %></div></div>
-  <%= f.input :session_dates, :label => "Session Dates & Meeting Times" %>
   <%= f.input :description, :as => :ckeditor %>
   <%= content_tag :legend, 'Passes' %>
   <%= f.simple_fields_for 'passes' do |p| %>

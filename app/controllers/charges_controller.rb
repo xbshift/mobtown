@@ -18,7 +18,7 @@ class ChargesController < ApplicationController
     charge = Stripe::Charge.create(
       :customer    => customer.id,
       :amount      => cents,
-      :description => pass.passable.title + ' ' + pass.name,
+      :description => pass.passable.name + ' ' + pass.name,
       :currency    => 'usd'
     )
 
