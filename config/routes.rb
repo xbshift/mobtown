@@ -30,6 +30,7 @@ Mobtown::Application.routes.draw do
   match '/war', to: 'application#login'
   match '/balls', to: 'application#login'
   match '/admin', to: 'application#login'
+  match '/bar', to: 'passes#index'
   match '/videos', to: 'static_pages#videos'
   resources :events do
     collection do
@@ -38,6 +39,9 @@ Mobtown::Application.routes.draw do
     resources :occurrences
   end
   resources :passes do
+    collection do
+      post :bulk_signup
+    end
     resources :registrations
   end
   resources :posts, :path => '/mob-blog'

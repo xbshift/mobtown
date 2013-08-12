@@ -58,4 +58,13 @@ class Pass < ActiveRecord::Base
       return 'For Sale'
     end
   end
+
+  def summary
+    s = self.passable.name
+    if not self.session.nil?
+      s += ' ' + self.session
+    end
+    s += ' ' + self.name
+    return s
+  end
 end
