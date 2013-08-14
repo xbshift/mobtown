@@ -1,5 +1,5 @@
 class RegistrationsController < ApplicationController
-  before_filter :authenticate
+  before_filter :authenticate, :except => [:create, :new]
 
   def new
   end
@@ -7,6 +7,7 @@ class RegistrationsController < ApplicationController
   def create
     @params = params
     @pass = Pass.find(params[:pass_id])
+    @amount = @pass.price*100 # in cents
     @email = params[:registration][:email]
     @name = params[:registration][:name]
     respond_to do |format|
