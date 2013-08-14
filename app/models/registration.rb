@@ -21,5 +21,12 @@ class Registration < ActiveRecord::Base
   validates_presence_of :name, :email
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
 
+  LIST_NAME = 'Email List'
+ 
+  def add_to_madmimi_email_list
+    mimi = MadMimi.new(AUTH[:madmimi][:username], AUTH[:madmimi][:api_key])
+    mimi.add_to_list(self.email, LIST_NAME)
+  end
+
   scope :not_void, where(:void => false)
 end

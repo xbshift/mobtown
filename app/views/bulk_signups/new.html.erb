@@ -3,6 +3,8 @@
 <div class="well">
 <%= f.input :name %>
 <%= f.input :email %>
+<p>We need your email to notify you in the event of an emergency cancelation. Otherwise, you'll never hear from us unless you explicitly opt in.</p>
+<label class="checkbox"><%= check_box_tag :opt_in %>Opt in to our mailing list.</label>
 <div class="form_row">
     <label for="how_paid">Payment Method</label>
     <% ['Card', 'Cash', 'Tab'].each do |how_paid| %>

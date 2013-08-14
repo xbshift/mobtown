@@ -6,6 +6,7 @@ class ChargesController < ApplicationController
     @email = params[:registration][:email]
     @student = params[:registration][:student]
     @pass_id = params[:pass_id]
+    @opt_in = params[:opt_in]
   end
 
   def create
@@ -37,6 +38,9 @@ class ChargesController < ApplicationController
     registration.amount_paid = @amount
     registration.how_paid = 'Stripe'
     registration.save
+    if params[:opt_in] == 'true'
+      registration.add_to_madmimi_email_list
+    end
 
     respond_to do |format|
       format.js

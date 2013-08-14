@@ -18,10 +18,13 @@ class BulkSignupsController < ApplicationController
       r.how_paid = params[:bulk_signup][:how_paid]
       r.name = @name
       r.email = @email
+    end
     @total = @registrations.collect{|r| r.amount_paid.to_f}.sum
     if not @registrations.each(&:save)
       render :action => 'new'
     end
+    if params[:opt_in] == '1'
+      @registrations.first.add_to_madmimi_email_list
     end
   end
 
