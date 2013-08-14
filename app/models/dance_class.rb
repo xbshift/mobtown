@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: dance_classes
+#
+#  id            :integer          not null, primary key
+#  name          :string(255)
+#  description   :text
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  price         :decimal(8, 2)
+#  student_price :decimal(8, 2)
+#  session_dates :string(255)
+#  slug          :string(255)
+#  category_id   :integer
+#
+
 class DanceClass < ActiveRecord::Base
   attr_accessible :name, :description, :category, :price, :student_price, :session_dates, :category_id, :new_category_name, :passes_attributes
 
