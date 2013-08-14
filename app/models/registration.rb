@@ -1,8 +1,9 @@
 class Registration < ActiveRecord::Base
-  attr_accessible :name, :email, :amount_paid, :how_paid
+  attr_accessible :name, :email, :amount_paid, :how_paid, :void
   belongs_to :pass
 
-  validates :name, :presence => "We need a name to identify you at the door."
-  validates :email, :presence => "We need an email address to contact you in case of cancelation. We will not email or unless you explicitly opt in to receive mailings."
+  validates_presence_of :name, :email
+  validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
 
+  scope :not_void, where(:void => false)
 end

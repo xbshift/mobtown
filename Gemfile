@@ -10,6 +10,8 @@ gem 'friendly_id'
 gem 'yaml_db'
 gem 'oauth'
 gem 'stripe'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
 
 gem 'capistrano'
 gem 'rvm-capistrano'

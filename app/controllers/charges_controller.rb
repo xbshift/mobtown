@@ -1,10 +1,13 @@
 class ChargesController < ApplicationController
+  respond_to :html, :js, :json
 
   def new
   end
 
+  def payment
+  end
+
   def create
-    pass = Pass.find(params[:pass_id])
  
     customer = Stripe::Customer.create(
       :email => params[:registration][:email],

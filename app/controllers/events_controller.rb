@@ -31,6 +31,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @charge = Charge.new
     @event = Event.find(params[:id])
     respond_to do |format|
       format.html  # show.html.erb

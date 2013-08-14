@@ -7,7 +7,7 @@ class Pass < ActiveRecord::Base
     if self.limit.nil?
       return false
     end
-    if self.limit > self.registrations.count
+    if self.limit > self.registrations.not_void.count
       return false
     else
       return true
@@ -18,7 +18,7 @@ class Pass < ActiveRecord::Base
     if self.limit.nil?
       return nil
     else
-      return self.limit - self.registrations.count
+      return self.limit - self.registrations.not_void.count
     end
   end
 
@@ -32,19 +32,23 @@ class Pass < ActiveRecord::Base
   end
 
   def paid_online
-    self.registrations.where(:how_paid => 'Stripe').collect{|r| r.amount_paid}.sum
+    self.registrations.not_void.where(:how_paid => 'Stripe').collect{|r| r.amount_paid}.sum
   end
 
   def paid_by_card
-    self.registrations.where(:how_paid => 'Card').collect{|r| r.amount_paid}.sum
+    self.registrations.not_void.where(:how_paid => 'Card').collect{|r| r.amount_paid}.sum
   end
 
   def paid_in_cash 
-    self.registrations.where(:how_paid => 'Cash').collect{|r| r.amount_paid}.sum
+    self.registrations.not_void.where(:how_paid => 'Cash').collect{|r| r.amount_paid}.sum
+  end
+
+  def paid_on_tab
+    self.registrations.not_void.where(:how_paid => 'Tab').collect{|r| r.amount_paid}.sum
   end
 
   def paid_total
-    self.registrations.collect{|r| r.amount_paid}.sum
+    self.registrations.not_void.collect{|r| r.amount_paid}.sum
   end
 
   scope :active, where(:archived => false)

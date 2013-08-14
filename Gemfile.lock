@@ -70,6 +70,10 @@ GEM
     ckeditor (4.0.2)
       mime-types
       orm_adapter
+    client_side_validations (3.2.6)
+    client_side_validations-simple_form (2.0.1)
+      client_side_validations (~> 3.2.0)
+      simple_form (~> 2.0.3)
     cocaine (0.4.2)
     coderay (1.0.8)
     coffee-rails (3.2.2)
@@ -261,6 +265,8 @@ DEPENDENCIES
   capistrano-unicorn
   capybara (= 1.1.2)
   ckeditor
+  client_side_validations
+  client_side_validations-simple_form
   coffee-rails (= 3.2.2)
   exception_notification
   friendly_id
