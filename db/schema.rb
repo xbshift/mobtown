@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130812214205) do
+ActiveRecord::Schema.define(:version => 20130814184500) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(:version => 20130812214205) do
     t.string   "passable_type"
     t.string   "session"
     t.boolean  "archived",                                    :default => false
+    t.decimal  "student_price", :precision => 8, :scale => 2
   end
 
   create_table "posts", :force => true do |t|
@@ -137,6 +138,7 @@ ActiveRecord::Schema.define(:version => 20130812214205) do
     t.datetime "created_at",                                                   :null => false
     t.datetime "updated_at",                                                   :null => false
     t.boolean  "void",                                      :default => false
+    t.boolean  "student",                                   :default => false
   end
 
   create_table "schedule_exceptions", :force => true do |t|

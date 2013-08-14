@@ -1,9 +1,10 @@
 <p>Great, we'll have your name at the door. Click this button to pay up, and you'll be good to go.</p>
 
 <%= form_tag charges_path, remote: true do %>
-  <%= submit_tag 'Pay by Card', id: 'stripe', disable_with: 'Wait for it....' %> 
+  <%= submit_tag 'Pay by Card', id: 'stripe', class: 'btn btn-dirtydog', disable_with: 'Wait for it....' %> 
   <%= hidden_field_tag 'registration[name]', @name %>
   <%= hidden_field_tag 'registration[email]', @email %>
+  <%= hidden_field_tag 'registration[student]', @student %>
   <%= hidden_field_tag 'pass_id', @pass.id %>
 <% end %>
 

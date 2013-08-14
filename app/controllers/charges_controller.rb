@@ -4,19 +4,26 @@ class ChargesController < ApplicationController
   def new
     @name = params[:registration][:name]
     @email = params[:registration][:email]
+    @student = params[:registration][:student]
     @pass_id = params[:pass_id]
   end
 
   def create
     @pass = Pass.find(params[:pass_id])
+    
+    student = params[:registration][:student]
+    description = params[:registration][:name]
+    if student == 'true'
+      description += ' (student)'
+    end
  
     customer = Stripe::Customer.create(
       :email => params[:registration][:email],
-      :description => params[:registration][:name],
+      :description => description,
       :card  => params[:stripeToken]
     )
-
-    @amount = @pass.price
+   
+    @amount = student == 'true' ? @pass.student_price : @pass.price
     cents = (@amount*100).to_i
 
     charge = Stripe::Charge.create(

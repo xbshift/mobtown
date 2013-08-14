@@ -11,6 +11,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  void        :boolean          default(FALSE)
+#  student     :boolean          default(FALSE)
 #
 
 require 'spec_helper'

@@ -8,7 +8,7 @@ $('#tab-<%= @pass.passable.id.to_s %>-<%= @pass.id.to_s %>').html('<%= j render 
       StripeCheckout.open({
         key:         '<%= Rails.configuration.stripe[:publishable_key] %>',
         address:     false,
-        amount:      <%= @amount %>,
+        amount:      <%= @cents %>,
         currency:    'usd',
         name:        '<%= @pass.passable.name %>',
         description: '<%= @pass.name %>',
