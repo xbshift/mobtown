@@ -20,7 +20,7 @@
           </div>
           <div class="signup-well span4">
             <% if not dance_class.passes.empty? %>
-              <%= render :template => 'charges/new', :locals => {:passes => dance_class.passes} %>
+              <%= render :template => 'registrations/new', :locals => {:passes => dance_class.passes} %>
             <% else %>
               <p>Registration is not currently open. Check back later on, or <%= link_to 'email us', 'mailto:mobtownballroom@gmail.com' %>to enquire.</p>.
             <% end %>
