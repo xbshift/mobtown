@@ -8,6 +8,7 @@ class RegistrationsController < ApplicationController
     @params = params
     @pass = Pass.find(params[:pass_id])
     @email = params[:registration][:email]
+    @opt_in = params[:opt_in]? 'true' : 'false'
     @name = params[:registration][:name]
     @student = params[:registration][:student]
     @amount = @student == 'true' ? @pass.student_price : @pass.price

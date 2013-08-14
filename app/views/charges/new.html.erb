@@ -5,8 +5,9 @@
   <%= hidden_field_tag 'registration[name]', @name %>
   <%= hidden_field_tag 'registration[email]', @email %>
   <%= hidden_field_tag 'registration[student]', @student %>
+  <%= hidden_field_tag 'opt_in', @opt_in %>
   <%= hidden_field_tag 'pass_id', @pass.id %>
 <% end %>
 
 <p>Your credit card information is transmitted over a secure connection. We at Mobtown never handle it, and no one stores it.</p>
-<%= link_to image_tag('powered-by-stripe.png'), 'https://stripe.com' %>
+<%= link_to image_tag('powered-by-stripe.png', class: 'pull-right'), 'https://stripe.com' %>

@@ -12,6 +12,7 @@ gem 'oauth'
 gem 'stripe'
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
+gem 'madmimi'
 
 gem 'capistrano'
 gem 'rvm-capistrano'

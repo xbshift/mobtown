@@ -18,7 +18,7 @@
           <%= f.input :email %>
         </div>
         <p>We need your email to notify you in the event of an emergency cancelation. Otherwise, you'll never hear from us unless you explicitly opt in.</p>
-        <label class="checkbox"><%= check_box_tag :opt_in  %>Opt in to our mailing list.</label>
+        <label class="checkbox"><%= check_box_tag :opt_in %>Opt in to our mailing list.</label>
         <% if pass.student_price.blank? %>
           <div>Price <%= number_to_currency(pass.price) %></div>
           <%= f.input :student, as: :hidden, default: false %>
