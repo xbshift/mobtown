@@ -1,0 +1,46 @@
+  <h4>Register</h4>
+  <ul class="nav nav-pills" id="<%= passes.first.passable.id %>-passes">
+  <% passes.active.each do |pass| %>
+    <li><a href="#tab-<%= pass.passable.id.to_s + '-' + pass.id.to_s %>" data-toggle="tab"><%= pass.name %></a></li>
+  <% end %>
+  </ul>
+  <div class="tab-content">
+  <% passes.active.each do |pass| %>
+    <div class="tab-pane" id="tab-<%= pass.passable.id.to_s + '-' + pass.id.to_s %>">
+    <% if not pass.soldout? %>
+      <%= simple_form_for [pass, pass.registrations.build], remote: true, validate: true, html: {id: 'pass-' + pass.id.to_s + '-form'} do |f| %>
+        <%= pass.few_left? ? content_tag(:p, pluralize(pass.remaining, 'spot') + ' left', class: 'note') : '' %>
+        <div>
+          <%= pass.session.blank? ? '' : content_tag('div', 'Session: ' + pass.session) %>
+          <%= pass.description.blank? ? '' : content_tag('div', pass.description) %>
+          <%= hidden_field_tag :pass_id, pass.id %>
+          <%= f.input :name %>
+          <%= f.input :email %>
+        </div>
+        <p>We need your email to notify you in the event of an emergency cancelation. Otherwise, you'll never hear from us unless you explicitly opt in.</p>
+        <label class="checkbox"><%= check_box_tag :opt_in  %>Opt in to our mailing list.</label>
+        <div>Price <%= number_to_currency(pass.price) %></div>
+        <%= f.submit 'Register & Pay' %> 
+      <% end %>
+    <% else %>
+      <p>These passes are sold out.</p>
+    <% end %>
+    </div>
+  <% end %>
+  </div>
+
+  <% passes.each do |pass| %>
+    <% content_for :javascript do %>
+      <script>
+        $('#tab-<%= pass.passable.id.to_s + '-' + pass.id.to_s %> a').click(function(e) {
+          e.preventDefault();
+          $(this).tab('show');
+        })
+        $('#<%= pass.passable.id.to_s %>-passes a:first').tab('show');
+
+        document.getElementById("classes-nav-element").className += "active";
+
+        ClientSideValidations.callbacks.form.pass(document.getElementById('pass-' + <%= pass.id.to_s %> + '-form'), document.getElementById('pass-' + <%= pass.id.to_s %> + '-form').className += 'passingggg');
+      </script>
+    <% end %>
+  <% end %>

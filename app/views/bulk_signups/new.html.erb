@@ -1,0 +1,26 @@
+<h4>Register for Classes & Special Events</h4>
+<%= simple_form_for @bulk_signup, :validate => true do |f| %>
+<div class="well">
+<%= f.input :name %>
+<%= f.input :email %>
+<div class="form_row">
+    <label for="how_paid">Payment Method</label>
+    <% ['Card', 'Cash', 'Tab'].each do |how_paid| %>
+      <%= f.radio_button :how_paid, how_paid %>
+      <%= how_paid.humanize %>
+    <% end %>
+</div>
+</div>
+
+<% @passes.each do |pass| %>
+  <%= check_box_tag "pass_ids[]", pass.id, false %>
+  <%= pass.summary %>
+  <%= text_field_tag "amount_paid[" + pass.id.to_s + "]", number_to_currency(pass.price, unit: '') %>
+  <%= pass.few_left? ? pluralize(pass.remaining, 'spot') + ' left' : '' %>
+  <%= pass.soldout? ? 'SOLD OUT' : '' %>
+  <br />
+<% end %>
+
+<%= f.submit "Register" %>
+
+<% end %> 

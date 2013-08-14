@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130812170720) do
+ActiveRecord::Schema.define(:version => 20130812214205) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -134,8 +134,9 @@ ActiveRecord::Schema.define(:version => 20130812170720) do
     t.decimal  "amount_paid", :precision => 8, :scale => 2
     t.string   "how_paid"
     t.integer  "pass_id"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                                                   :null => false
+    t.datetime "updated_at",                                                   :null => false
+    t.boolean  "void",                                      :default => false
   end
 
   create_table "schedule_exceptions", :force => true do |t|

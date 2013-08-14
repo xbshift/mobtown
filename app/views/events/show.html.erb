@@ -11,7 +11,7 @@
         <%= raw @event.prose.blank? ? @event.summary : @event.prose %>
       </div>
       <div class="signup-well span4">
-        <%= render :template => 'charges/new', :locals => {:passes => @event.passes} %>
+        <%= render :template => 'registrations/new', :locals => {:passes => @event.passes} %>
       </div>
     <% else %>
       <div class="span12">

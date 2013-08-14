@@ -371,3 +371,9 @@ table.ruled {
   line-height: 10px;
   color: #444444;
 }
+
+.field_with_errors {
+  input[type="text"] {
+    background-color: #FFAAAA;
+  }
+}

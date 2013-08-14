@@ -29,6 +29,7 @@ class DanceClassesController < ApplicationController
   end
 
   def index
+    @charge = Charge.new
     @category_id = params.has_key?(:category) ? params[:category] : 2 
     @category = Category.find(@category_id)
     @dance_classes = @category.dance_classes
@@ -65,6 +66,7 @@ class DanceClassesController < ApplicationController
   end
 
   def show
+    @charge = Charge.new
     @category = DanceClass.find(params[:id]).category
     @dance_classes = @category.dance_classes
     @tab = '[href="#tab-' + params[:id] + '"]'
