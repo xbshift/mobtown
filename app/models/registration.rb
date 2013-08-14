@@ -11,10 +11,11 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  void        :boolean          default(FALSE)
+#  student     :boolean          default(FALSE)
 #
 
 class Registration < ActiveRecord::Base
-  attr_accessible :name, :email, :amount_paid, :how_paid, :void
+  attr_accessible :name, :email, :amount_paid, :how_paid, :void, :student
   belongs_to :pass
 
   validates_presence_of :name, :email

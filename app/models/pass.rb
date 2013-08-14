@@ -15,10 +15,11 @@
 #  passable_type :string(255)
 #  session       :string(255)
 #  archived      :boolean          default(FALSE)
+#  student_price :decimal(8, 2)
 #
 
 class Pass < ActiveRecord::Base
-  attr_accessible :name, :price, :description, :limit, :session, :archived, :registrations
+  attr_accessible :name, :price, :student_price, :description, :limit, :session, :archived, :registrations
   belongs_to :passable, :polymorphic => true
   has_many :registrations
 

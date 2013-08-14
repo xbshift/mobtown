@@ -15,6 +15,7 @@
 #  passable_type :string(255)
 #  session       :string(255)
 #  archived      :boolean          default(FALSE)
+#  student_price :decimal(8, 2)
 #
 
 require 'spec_helper'

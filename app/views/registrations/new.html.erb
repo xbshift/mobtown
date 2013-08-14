@@ -19,8 +19,13 @@
         </div>
         <p>We need your email to notify you in the event of an emergency cancelation. Otherwise, you'll never hear from us unless you explicitly opt in.</p>
         <label class="checkbox"><%= check_box_tag :opt_in  %>Opt in to our mailing list.</label>
-        <div>Price <%= number_to_currency(pass.price) %></div>
-        <%= f.submit 'Register & Pay' %> 
+        <% if pass.student_price.blank? %>
+          <div>Price <%= number_to_currency(pass.price) %></div>
+          <%= f.input :student, as: :hidden, default: false %>
+        <% else %>
+          <%= f.input :student, as: :radio, collection: [['Adult ' + number_to_currency(pass.price), false], ['Student ' + number_to_currency(pass.student_price), true]], label: false %>
+        <% end %>
+        <%= f.submit 'Register & Pay', class: 'btn btn-dirtydog' %> 
       <% end %>
     <% else %>
       <p>These passes are sold out.</p>

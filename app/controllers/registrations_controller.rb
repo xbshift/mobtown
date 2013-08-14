@@ -7,9 +7,11 @@ class RegistrationsController < ApplicationController
   def create
     @params = params
     @pass = Pass.find(params[:pass_id])
-    @amount = @pass.price*100 # in cents
     @email = params[:registration][:email]
     @name = params[:registration][:name]
+    @student = params[:registration][:student]
+    @amount = @student == 'true' ? @pass.student_price : @pass.price
+    @cents = (@amount*100).to_i
     respond_to do |format|
       format.js
     end

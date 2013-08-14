@@ -5,6 +5,7 @@
   <% end %>
   <%= f.input :description, placeholder: 'Optional explanation' %>
   <%= f.input :price %>
+  <%= f.input :student_price, placeholder: 'If blank, no discount.' %>
   <%= f.input :limit, placeholder: 'If blank, unlimited.' %>
   <%= f.input :archived, as: :boolean, label: false, inline_label: 'Archive: The pass and its registration records are retained, but visitors will not see this pass on the site.' %>
 </fieldset>
