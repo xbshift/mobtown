@@ -41,6 +41,7 @@ class ChargesController < ApplicationController
     if params[:opt_in] == 'true'
       registration.add_to_madmimi_email_list
     end
+    registration.backup
 
     respond_to do |format|
       format.js

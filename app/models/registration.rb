@@ -28,5 +28,19 @@ class Registration < ActiveRecord::Base
     mimi.add_to_list(self.email, LIST_NAME)
   end
 
+  SPREADSHEET_KEY = '0AkD-SC7mV8hedGI5OHVJTVhwYVUxTjA4VWVISWRyWnc'
+
+  def backup
+    session = GoogleDrive.login(AUTH[:google][:username], AUTH[:google][:password])
+    ws = session.spreadsheet_by_key(SPREADSHEET_KEY).worksheets[0]
+    last_row = ws.rows.count
+    entry = [self.pass.passable.name, self.pass.name, self.name, self.email, self.amount_paid, self.how_paid, created_at.strftime("%d %b. %Y %H:%M"), self.student]
+    puts entry
+    for col in 0..entry.length
+      ws[last_row + 1, col + 1] = entry[col]
+    end
+    ws.save
+  end
+
   scope :not_void, where(:void => false)
 end

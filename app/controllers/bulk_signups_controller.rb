@@ -23,6 +23,7 @@ class BulkSignupsController < ApplicationController
     if not @registrations.each(&:save)
       render :action => 'new'
     end
+    @registrations.each(&:backup)
     if params[:opt_in] == '1'
       @registrations.first.add_to_madmimi_email_list
     end
