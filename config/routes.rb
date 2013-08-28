@@ -43,6 +43,10 @@ Mobtown::Application.routes.draw do
       post :bulk_signup
     end
     resources :registrations do
+      collection do
+        post :checkout
+        post :charge
+      end
       member do
         get :void
         get :unvoid
