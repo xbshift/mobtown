@@ -12,6 +12,8 @@ class RegistrationsController < ApplicationController
     @pass_id = params[:pass_id]
     @pass = Pass.find(@pass_id)
     @opt_in = params[:opt_in]
+    @amount = @student == 'true' ? @pass.student_price : @pass.price
+    @cents = (@amount*100).to_i
 
     respond_to do |format|
       format.js
