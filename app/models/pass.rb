@@ -83,6 +83,10 @@ class Pass < ActiveRecord::Base
     end
   end
 
+  def id_string
+    self.passable.id.to_s + '-' + self.id.to_s
+  end
+
   def summary
     s = self.passable.name
     if not self.session.nil?

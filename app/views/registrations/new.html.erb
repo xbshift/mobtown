@@ -8,7 +8,7 @@
   <% passes.active.each do |pass| %>
     <div class="tab-pane" id="tab-<%= pass.passable.id.to_s + '-' + pass.id.to_s %>">
     <% if not pass.soldout? %>
-      <%= simple_form_for [pass, pass.registrations.build], url: checkout_pass_registrations_path(pass), remote: true, validate: true, html: {id: 'pass-' + pass.id.to_s + '-form'} do |f| %>
+      <%= simple_form_for [pass, pass.registrations.build], url: checkout_pass_registrations_path(pass), remote: true, validate: true, html: {id: 'form-' + pass.id_string } do |f| %>
         <%= pass.few_left? ? content_tag(:p, pluralize(pass.remaining, 'spot') + ' left', class: 'note') : '' %>
         <div>
           <%= pass.session.blank? ? '' : content_tag('div', 'Session: ' + pass.session) %>
