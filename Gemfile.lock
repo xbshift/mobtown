@@ -116,7 +116,10 @@ GEM
     httparty (0.10.0)
       multi_json (~> 1.0)
       multi_xml
+<<<<<<< HEAD
     httpauth (0.2.0)
+=======
+>>>>>>> decb9a9f860c1efb1fac5d6321483bf77ae55867
     i18n (0.6.1)
     ice_cube (0.9.3)
     journey (1.0.4)
@@ -127,8 +130,11 @@ GEM
       jquery-rails
       railties (>= 3.1.0)
     json (1.7.6)
+<<<<<<< HEAD
     jwt (0.1.8)
       multi_json (>= 1.5)
+=======
+>>>>>>> decb9a9f860c1efb1fac5d6321483bf77ae55867
     kgio (2.8.0)
     libnotify (0.5.9)
     libv8 (3.3.10.4)
@@ -147,7 +153,10 @@ GEM
     mime-types (1.19)
     multi_json (1.5.0)
     multi_xml (0.5.1)
+<<<<<<< HEAD
     multipart-post (1.2.0)
+=======
+>>>>>>> decb9a9f860c1efb1fac5d6321483bf77ae55867
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -157,6 +166,7 @@ GEM
       net-ssh (>= 1.99.1)
     nokogiri (1.5.6)
     oauth (0.4.7)
+<<<<<<< HEAD
     oauth2 (0.9.2)
       faraday (~> 0.8)
       httpauth (~> 0.2)
@@ -164,6 +174,8 @@ GEM
       multi_json (~> 1.0)
       multi_xml (~> 0.5)
       rack (~> 1.2)
+=======
+>>>>>>> decb9a9f860c1efb1fac5d6321483bf77ae55867
     orm_adapter (0.4.0)
     paperclip (3.4.0)
       activemodel (>= 3.0.0)
