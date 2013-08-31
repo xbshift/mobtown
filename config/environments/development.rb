@@ -10,6 +10,7 @@ Mobtown::Application.configure do
     Stripe.api_key = Rails.configuration.stripe[:secret_key]
   end
 
+  ENV['log_spreadsheet_key'] = '0AkD-SC7mV8hedGI5OHVJTVhwYVUxTjA4VWVISWRyWnc'
 
   # Settings specified here will take precedence over those in config/application.rb
 
