@@ -20,10 +20,10 @@ Mobtown::Application.configure do
   config.assets.precompile += %w( ie6.css ie7.css )
   config.assets.precompile += ['ckeditor/*']
 
-  config.middleware.use ExceptionNotifier,
-    :email_prefix => "[Mobtown Ballroom Exception] ",
-    :sender_address => %{"Exception Notifier" <support@mobtownballroom.com>},
-    :exception_recipients => %w{daniel.b.allan@gmail.com}
+  # config.middleware.use ExceptionNotifier,
+  #  :email_prefix => "[Mobtown Ballroom Exception] ",
+  #  :sender_address => %{"Exception Notifier" <support@mobtownballroom.com>},
+  #  :exception_recipients => %w{daniel.b.allan@gmail.com}
 
   # Settings specified here will take precedence over those in config/application.rb
 
