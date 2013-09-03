@@ -21,7 +21,7 @@ gem 'rvm-capistrano'
 gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
   :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 
-gem 'exception_notification', :require => 'exception_notifier'
+# gem 'exception_notification', :require => 'exception_notifier'
 
 # gem 'will_paginate',  '~> 3.0.3'
 # gem 'bootstrap-will_paginate', "~> 0.0.7"

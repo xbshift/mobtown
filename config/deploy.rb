@@ -297,6 +297,7 @@ namespace :deploy do
     run "ln -nfs #{deploy_to}/shared/configs/initializers/setup_mail.rb #{release_path}/config/initializers/setup_mail.rb"
     run "ln -nfs #{deploy_to}/shared/configs/initializers/mailchimp.rb #{release_path}/config/initializers/mailchimp.rb"
     run "ln -nfs #{deploy_to}/shared/configs/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{deploy_to}/shared/configs/authentication.yml #{release_path}/config/authentication.yml"
   end
 
   # Invoked during initial deployment
