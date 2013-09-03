@@ -9,12 +9,14 @@ class ApplicationController < ActionController::Base
 
   def login
     authenticate
+    @events = Event.all
+    @dance_classes = DanceClass.all
   end
 
   protected
     def authenticate
       authenticate_or_request_with_http_basic do |username, password|
-        username == USER_ID && password == PASSWORD
+        username == AUTH[:admin_user] && password == AUTH[:admin_password]
       end
     end
 

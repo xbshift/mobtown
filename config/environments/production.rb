@@ -1,5 +1,17 @@
 Mobtown::Application.configure do
 
+  config.after_initialize do 
+    ENV['stripe_pk'] = AUTH['stripe']['pk_live']
+    ENV['stripe_sk'] = AUTH['stripe']['sk_live']
+    Rails.configuration.stripe = {
+      :publishable_key => ENV['stripe_pk'],
+      :secret_key      => ENV['stripe_sk']
+    }
+    Stripe.api_key = Rails.configuration.stripe[:secret_key]
+  end
+
+  ENV['log_spreadsheet_key'] = '0AkD-SC7mV8hedGdRbmxMU2xVVkdaalRseGZ0WVRsUXc'
+
   # Add the fonts path
   config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
 

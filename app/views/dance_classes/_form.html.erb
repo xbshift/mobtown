@@ -12,13 +12,11 @@
   <% end %>
   <%= f.input :name %>
   <%= f.input :category_id, collection: Category.all %>
-  or create a new category called:
-  <%= f.text_field :new_category_name %>
-  <%= f.input :session_dates, :label => "Session Dates & Meeting Times" %>
+  <div class="control-group"><div class="control-label">or create a new category called</div><div class="controls"><%= f.text_field :new_category_name %></div></div>
   <%= f.input :description, :as => :ckeditor %>
-  <%= f.input :price %>
-  <%= f.input :student_price %>
-
+  <%= content_tag :legend, 'Passes' %>
+  <%= f.simple_fields_for 'passes' do |p| %>
+    <%= render 'passes/fields', f: p %>
+  <% end %>
   <%= f.submit %>
-
 <% end %>

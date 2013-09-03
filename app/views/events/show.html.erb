@@ -1,24 +1,17 @@
 
 <div class="content">
   <h4>
-     <%= @event.occurrences.empty? ? 'Date TBA' : @event.occurrences[0].start.strftime('%b %d') + ': ' %><%= @event.title %>
+     <%= @event.occurrences.empty? ? '' : @event.occurrences[0].start.strftime('%b %d') + ': ' %>
+     <%= @event.name %>
   </h4>
+<%= logged_in? ? link_to("Edit or Destroy", edit_event_path(@event)) : '' %>
   <div class="row">
-    <% if @event.registration_switch? %>
+    <% if not @event.passes.empty? %>
       <div class="span8">
         <%= raw @event.prose.blank? ? @event.summary : @event.prose %>
       </div>
       <div class="signup-well span4">
-        <h5>Pricing</h5>
-         <% if not @event.student_price.blank? %>
-          <ul>
-            <li>Adult <%= number_to_currency(@event.price) %></li>
-            <li>Student <%= number_to_currency(@event.student_price) %></li>
-          </ul>
-        <% else %>
-          <p><%= number_to_currency(@event.price) %></p>
-        <% end %>
-        <%= render :partial => 'application/paypal', :locals => {:item => @event} %>
+        <%= render :template => 'registrations/new', :locals => {:passes => @event.passes} %>
       </div>
     <% else %>
       <div class="span12">
@@ -29,8 +22,5 @@
   </div>
 </div>
 
-<% if logged_in? %>
-  <p class='war-room'><%= link_to "Edit or Destroy", edit_event_path(@event) %></p>
-<% end %>
-<% content_for :title, @event.title %>
+<% content_for :title, @event.name %>
 <% content_for :og_image, request.protocol + request.host_with_port + @event.photo.url %>

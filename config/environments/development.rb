@@ -1,5 +1,16 @@
 Mobtown::Application.configure do
 
+  config.after_initialize do 
+    ENV['stripe_pk'] = AUTH['stripe']['pk_test']
+    ENV['stripe_sk'] = AUTH['stripe']['sk_test']
+    Rails.configuration.stripe = {
+      :publishable_key => ENV['stripe_pk'],
+      :secret_key      => ENV['stripe_sk']
+    }
+    Stripe.api_key = Rails.configuration.stripe[:secret_key]
+  end
+
+  ENV['log_spreadsheet_key'] = '0AkD-SC7mV8hedGI5OHVJTVhwYVUxTjA4VWVISWRyWnc'
 
   # Settings specified here will take precedence over those in config/application.rb
 

@@ -3,6 +3,7 @@ class DanceClassesController < ApplicationController
 
   def new
     @dance_class = DanceClass.new
+    @dance_class.passes.build
  
     respond_to do |format|
       format.html  # new.html.erb
@@ -28,6 +29,7 @@ class DanceClassesController < ApplicationController
   end
 
   def index
+    @charge = Charge.new
     @category_id = params.has_key?(:category) ? params[:category] : 2 
     @category = Category.find(@category_id)
     @dance_classes = @category.dance_classes
@@ -44,6 +46,7 @@ class DanceClassesController < ApplicationController
 
   def edit
     @dance_class = DanceClass.find(params[:id])
+    @dance_class.passes.build
   end
 
   def update
@@ -63,6 +66,7 @@ class DanceClassesController < ApplicationController
   end
 
   def show
+    @charge = Charge.new
     @category = DanceClass.find(params[:id]).category
     @dance_classes = @category.dance_classes
     @tab = '[href="#tab-' + params[:id] + '"]'

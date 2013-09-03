@@ -355,3 +355,25 @@ figcaption {
 select.student {
    width: 100%;
 }
+
+table.ruled {
+  border-color: #888888;
+  tr {
+    height: 2em;
+    td {
+      border-color: #888888;
+    }
+  }
+}
+
+.note {
+  font-size: 13px;
+  line-height: 10px;
+  color: #444444;
+}
+
+.field_with_errors {
+  input[type="text"] {
+    background-color: #FFAAAA;
+  }
+}

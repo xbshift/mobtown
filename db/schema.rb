@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130430235141) do
+ActiveRecord::Schema.define(:version => 20130814184500) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(:version => 20130430235141) do
   add_index "dance_classes", ["slug"], :name => "index_dance_classes_on_slug"
 
   create_table "events", :force => true do |t|
-    t.string   "title"
+    t.string   "name"
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.datetime "expiration"
@@ -104,6 +104,22 @@ ActiveRecord::Schema.define(:version => 20130430235141) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "passes", :force => true do |t|
+    t.integer  "event_id"
+    t.string   "name"
+    t.decimal  "price",         :precision => 8, :scale => 2
+    t.boolean  "available"
+    t.datetime "created_at",                                                     :null => false
+    t.datetime "updated_at",                                                     :null => false
+    t.string   "description"
+    t.integer  "limit"
+    t.integer  "passable_id"
+    t.string   "passable_type"
+    t.string   "session"
+    t.boolean  "archived",                                    :default => false
+    t.decimal  "student_price", :precision => 8, :scale => 2
+  end
+
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.boolean  "publish"
@@ -111,6 +127,18 @@ ActiveRecord::Schema.define(:version => 20130430235141) do
     t.string   "slug"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "registrations", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.decimal  "amount_paid", :precision => 8, :scale => 2
+    t.string   "how_paid"
+    t.integer  "pass_id"
+    t.datetime "created_at",                                                   :null => false
+    t.datetime "updated_at",                                                   :null => false
+    t.boolean  "void",                                      :default => false
+    t.boolean  "student",                                   :default => false
   end
 
   create_table "schedule_exceptions", :force => true do |t|

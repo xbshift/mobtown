@@ -19,18 +19,11 @@
             <p><%= dance_class.description.html_safe %></p>
           </div>
           <div class="signup-well span4">
-            <h5>Current Session</h5>
-            <p><%= dance_class.session_dates %></p>
-            <h5>Pricing</h5>
-            <% if not dance_class.student_price.blank? %>
-              <ul>
-                <li>Adult <%= number_to_currency(dance_class.price) %></li>
-                <li>Student <%= number_to_currency(dance_class.student_price) %></li>
-              </ul>
+            <% if not dance_class.passes.empty? %>
+              <%= render :template => 'registrations/new', :locals => {:passes => dance_class.passes} %>
             <% else %>
-              <p><%= number_to_currency(dance_class.price) %></p>
+              <p>Registration is not currently open. Check back later on, or <%= link_to 'email us', 'mailto:mobtownballroom@gmail.com' %>to enquire.</p>.
             <% end %>
-<%= render :partial => 'application/paypal', :locals => {:item => dance_class} %>
           </div>
         <% if logged_in? %>
           <p class='war-room'>War Room: <%= link_to 'Edit or Destroy', edit_dance_class_path(dance_class) %></p>

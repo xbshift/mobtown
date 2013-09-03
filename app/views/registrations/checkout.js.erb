@@ -1,0 +1,20 @@
+$('#tab-<%= @pass.id_string %>').html('<%= j render partial: 'checkout' %>')
+    $('#stripe').click(function(){
+      var token = function(res){
+        var $input = $('<input type=hidden name=stripeToken />').val(res.id);
+        $('#form-<%= @pass.id_string %>').append($input).submit();
+      };
+
+      StripeCheckout.open({
+        key:         '<%= Rails.configuration.stripe[:publishable_key] %>',
+        address:     false,
+        amount:      <%= @cents %>,
+        currency:    'usd',
+        name:        '<%= @pass.passable.name %>',
+        description: '<%= @pass.name %>',
+        panelLabel:  'Checkout',
+        token:       token
+      });
+
+      return false;
+    });

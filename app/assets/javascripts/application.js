@@ -17,6 +17,8 @@
 //= require bootstrap-datepicker
 //= require jquery-ui-sliderAccess
 //= require jquery-ui-timepicker-addon
+//= require rails.validations
+//= require rails.validations.simple_form
 //= require ckeditor/init
 //= require_tree .
 $('.date_picker').datetimepicker();

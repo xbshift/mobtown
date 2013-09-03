@@ -1,0 +1,7 @@
+<%= @name %> is registered for:
+<ul>
+<% @registrations.each do |r| %>
+  <%= content_tag :li, r.pass.summary + ' (' + number_to_currency(r.amount_paid) + ')' %>
+<% end %>
+</ul>
+<p><%= number_to_currency(@total) %> paid by <%= @registrations.first.how_paid %>

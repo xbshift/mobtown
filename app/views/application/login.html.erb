@@ -1,14 +1,110 @@
-<div class="row-fluid">
-  <div class="span4 center">
-    <p>You're in.</p>
-    <%= image_tag "dr_strangelove.jpg" %>
-  </div>
-  <div class="span8">
-    <h5>The Big Board</h5>
-    <ul>
-      <li><%= link_to 'Manage Events', manage_events_path %></li>
-      <li><%= link_to 'New Class', new_dance_class_path %></li>
-      <li><%= link_to 'New Mob Blog Post', new_post_path %></li>
-    </ul>
-  </div>
-</div>
+<%= link_to content_tag(:i, '', class: 'icon-plus') + ' New Event', new_event_path, class: 'btn pull-right' %>
+<%= content_tag(:h4, 'Events') %>
+<table class='table ruled table-hover'>
+  <tbody>
+  <% @events.sort_by{|e| -e.passes.active.count}.each do |event| %>
+    <%= content_tag :tr do %>
+      <%= content_tag :td do %>
+        <%= link_to(content_tag(:h5, event.name), edit_event_path(event)) %>
+        <% if event.occurrences.empty? %>
+          <p class='note'>No scheduled occurrences. This event is dormant, kept for future reuse.</p>
+        <% else %>
+          <p class='note'>Scheduled <%= event.occurrences.collect{|o| o.start}.to_sentence %> 
+          </p>
+        <% end %>
+        <% if event.passes.empty? %>
+          <p class='note'>No passes</p>
+        <% else %>
+           
+          <table class='table-bordered ruled'>
+          <% event.passes.sort_by{|p| [-p.price, p.name]}.each do |pass| %>
+            <tr>
+              <%= content_tag :td, pass.name %>
+              <%= content_tag :td, number_to_currency(pass.price) %>
+              <%= content_tag :td  do %>
+                <%= content_tag(:strong, pass.registrations.count) %>
+                <%= pass.limit.blank? ? ' sold' : ' / ' + pass.limit.to_s + ' sold' %>
+              <% end %>
+              <%= content_tag :td, number_to_currency(pass.paid_online) + ' online' %>
+              <%= content_tag :td, number_to_currency(pass.paid_by_card) + ' by card' %>
+              <%= content_tag :td, number_to_currency(pass.paid_in_cash) + ' in cash' %>
+              <%= content_tag :td, number_to_currency(pass.paid_in_cash) + ' on tab' %>
+              <%= content_tag :td, number_to_currency(pass.paid_total) + ' total' %>
+              <%= pass.registrations.empty? ? content_tag(:td, 'No Registrants') : content_tag(:td, link_to('View Registration List', pass_registrations_path(pass), class: 'btn')) %>
+              <%= content_tag :td, pass.status %>
+            </tr>
+          <% end %>
+          <% if event.passes.count > 1 %>
+            <tr>
+              <td>Totals</td>
+              <td></td>
+              <td></td>
+              <%= content_tag :td, number_to_currency(event.passes.collect{|p| p.paid_online}.sum) %>
+              <%= content_tag :td, number_to_currency(event.passes.collect{|p| p.paid_by_card}.sum) %>
+              <%= content_tag :td, number_to_currency(event.passes.collect{|p| p.paid_in_cash}.sum) %>
+              <%= content_tag :td, number_to_currency(event.passes.collect{|p| p.paid_on_tab}.sum) %>
+              <%= content_tag :td, number_to_currency(event.passes.collect{|p| p.paid_total}.sum) %>
+              <td></td>
+              <td></td>
+            </tr>
+          <% end %>
+          </table>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+<br />
+<%= link_to content_tag(:i, '', class: 'icon-plus') + ' New Class', new_dance_class_path, class: 'btn pull-right' %>
+<%= content_tag :h4, 'Classes' %>
+<table class='table ruled table-hover'>
+  <tbody>
+  <% @dance_classes.sort_by{|d| [d.created_at, -d.passes.active.count]}.each do |event| %>
+    <%= content_tag :tr do %>
+      <%= content_tag :td do %>
+        <%= link_to(content_tag(:h5, event.name), edit_event_path(event)) %>
+        <% if event.passes.empty? %>
+          <p class='note'>No passes</p>
+        <% else %>
+
+          <table class='table-bordered ruled'>
+          <% event.passes.sort_by{|p| [-p.price, p.name]}.each do |pass| %>
+            <tr>
+              <%= content_tag :td, pass.name %>
+              <%= content_tag :td, number_to_currency(pass.price) %>
+              <%= content_tag :td  do %>
+                <%= content_tag(:strong, pass.registrations.count) %>
+                <%= pass.limit.blank? ? ' sold' : ' / ' + pass.limit.to_s + ' sold' %>
+              <% end %>
+              <%= content_tag :td, number_to_currency(pass.paid_online) + ' online' %>
+              <%= content_tag :td, number_to_currency(pass.paid_by_card) + ' by card' %>
+              <%= content_tag :td, number_to_currency(pass.paid_in_cash) + ' in cash' %>
+              <%= content_tag :td, number_to_currency(pass.paid_in_cash) + ' on tab' %>
+              <%= content_tag :td, number_to_currency(pass.paid_total) + ' total' %>
+              <%= pass.registrations.empty? ? content_tag(:td, 'No Registrants') : content_tag(:td, link_to('View Registration List', pass_registrations_path(pass), class: 'btn')) %>
+              <%= content_tag :td, pass.status %>
+            </tr>
+          <% end %>
+          <% if event.passes.count > 1 %>
+            <tr>
+              <td>Totals</td>
+              <td></td>
+              <td></td>
+              <%= content_tag :td, number_to_currency(event.passes.collect{|p| p.paid_online}.sum) %>
+              <%= content_tag :td, number_to_currency(event.passes.collect{|p| p.paid_by_card}.sum) %>
+              <%= content_tag :td, number_to_currency(event.passes.collect{|p| p.paid_in_cash}.sum) %>
+              <%= content_tag :td, number_to_currency(event.passes.collect{|p| p.paid_on_tab}.sum) %>
+              <%= content_tag :td, number_to_currency(event.passes.collect{|p| p.paid_total}.sum) %>
+              <td></td>
+              <td></td>
+            </tr>
+          <% end %>
+          </table>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+<%= link_to content_tag(:i, '', class: 'icon-plus') + ' New Mob Blog Post', new_post_path, class: 'btn' %>

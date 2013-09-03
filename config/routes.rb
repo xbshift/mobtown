@@ -30,6 +30,7 @@ Mobtown::Application.routes.draw do
   match '/war', to: 'application#login'
   match '/balls', to: 'application#login'
   match '/admin', to: 'application#login'
+  match '/bar', to: 'bulk_signups#new'
   match '/videos', to: 'static_pages#videos'
   resources :events do
     collection do
@@ -37,8 +38,25 @@ Mobtown::Application.routes.draw do
     end
     resources :occurrences
   end
+  resources :passes do
+    collection do
+      post :bulk_signup
+    end
+    resources :registrations do
+      collection do
+        post :checkout
+        post :charge
+      end
+      member do
+        get :void
+        get :unvoid
+      end
+    end
+  end
   resources :posts, :path => '/mob-blog'
   resources :feature_boxes
+  resources :charges
+  resources :bulk_signups
 
   match '/acquire', to: 'static_pages#acquire'
   match '/yelp-example', to: 'static_pages#yelp_example'

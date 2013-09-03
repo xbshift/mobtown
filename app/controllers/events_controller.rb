@@ -17,6 +17,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @event.occurrences.build
+    @event.passes.build
   end
 
   def create
@@ -30,6 +31,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @charge = Charge.new
     @event = Event.find(params[:id])
     respond_to do |format|
       format.html  # show.html.erb
@@ -39,6 +41,7 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
     @event.occurrences.build
+    @event.passes.build
   end
 
   def update

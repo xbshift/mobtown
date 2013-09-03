@@ -18,3 +18,5 @@ hash = JSON.parse access_token.get(path).body
 
 <%= link_to image_tag('tiny-yelp-icon.png'), 'https://www.yelp.com' %> 
 <%= link_to image_tag(hash['rating_img_url']) + ' ' + hash['review_count'].to_s + ' reviews', hash['url'] %>
+
+<% rescue SocketError %>
