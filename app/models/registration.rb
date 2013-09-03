@@ -38,6 +38,9 @@ class Registration < ActiveRecord::Base
       ws[last_row + 1, col + 1] = entry[col]
     end
     ws.save
+    rescue
+      pass
+    end
   end
 
   scope :not_void, where(:void => false)
