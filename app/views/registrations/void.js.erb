@@ -1,1 +1,2 @@
-$('#registration-' + @registration.id.to_s).children().addClass('void');
+$('#registration-' + '<%= @registration.id.to_s %>').children().addClass('void');
+$('#registration-' + '<%= @registration.id.to_s %> a').attr('href', '<%= unvoid_pass_registration_path(@registration.pass.id, @registration.id) %>').html('Un-void');

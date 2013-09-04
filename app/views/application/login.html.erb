@@ -22,7 +22,7 @@
               <%= content_tag :td, pass.name %>
               <%= content_tag :td, number_to_currency(pass.price) %>
               <%= content_tag :td  do %>
-                <%= content_tag(:strong, pass.registrations.count) %>
+                <%= content_tag(:strong, pass.registrations.not_void.count) %>
                 <%= pass.limit.blank? ? ' sold' : ' / ' + pass.limit.to_s + ' sold' %>
               <% end %>
               <%= content_tag :td, number_to_currency(pass.paid_online) + ' online' %>
@@ -74,7 +74,7 @@
               <%= content_tag :td, pass.name %>
               <%= content_tag :td, number_to_currency(pass.price) %>
               <%= content_tag :td  do %>
-                <%= content_tag(:strong, pass.registrations.count) %>
+                <%= content_tag(:strong, pass.registrations.not_void.count) %>
                 <%= pass.limit.blank? ? ' sold' : ' / ' + pass.limit.to_s + ' sold' %>
               <% end %>
               <%= content_tag :td, number_to_currency(pass.paid_online) + ' online' %>
