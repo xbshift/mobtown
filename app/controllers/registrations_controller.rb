@@ -83,12 +83,18 @@ class RegistrationsController < ApplicationController
     @registration = Registration.find(params[:id])
     @registration.void = true
     @registration.save
+    respond_to do |format|
+      format.js
+    end
   end
 
   def unvoid
     @registration = Registration.find(params[:id])
     @registration.void = false
     @registration.save
+    respond_to do |format|
+      format.js
+    end
   end 
 
 end

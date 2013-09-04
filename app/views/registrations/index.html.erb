@@ -8,14 +8,17 @@
     <th>Time</th>
   </thead>
   <tbody>
-  <% @registrations.each do |r| %>
-    <tr>
-    <%= content_tag :td, r.name %>
-    <%= content_tag :td, r.email %>
-    <%= content_tag :td, number_to_currency(r.amount_paid) %>
-    <%= content_tag :td, r.how_paid %>
-    <%= content_tag :td, r.created_at.strftime("%d %b. %Y %H:%M") %>
-    </tr>
+  <% @registrations.sort_by{|r| r.void ? -1 : 0}.each do |r| %>
+    <%= content_tag :tr, id: 'registration-'+ r.id.to_s do %>
+      <%= content_tag :td, r.name %>
+      <%= content_tag :td, r.email %>
+      <%= content_tag :td, number_to_currency(r.amount_paid) %>
+      <%= content_tag :td, r.how_paid %>
+      <%= content_tag :td, r.created_at.strftime("%d %b. %Y %H:%M") %>
+      <%= content_tag :td do %>
+        <%= link_to 'Void', void_pass_registration_path(r.pass.id, r.id), class: 'btn', remote: true %>
+      <% end %>
+    <% end %>
   <% end %>
   </tbody>
 </table>
