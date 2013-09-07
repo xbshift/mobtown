@@ -28,7 +28,7 @@
               <%= content_tag :td, number_to_currency(pass.paid_online) + ' online' %>
               <%= content_tag :td, number_to_currency(pass.paid_by_card) + ' by card' %>
               <%= content_tag :td, number_to_currency(pass.paid_in_cash) + ' in cash' %>
-              <%= content_tag :td, number_to_currency(pass.paid_in_cash) + ' on tab' %>
+              <%= content_tag :td, number_to_currency(pass.paid_on_tab) + ' on tab' %>
               <%= content_tag :td, number_to_currency(pass.paid_total) + ' total' %>
               <%= pass.registrations.empty? ? content_tag(:td, 'No Registrants') : content_tag(:td, link_to('View Registration List', pass_registrations_path(pass), class: 'btn')) %>
               <%= content_tag :td, pass.status %>
@@ -63,7 +63,7 @@
   <% @dance_classes.sort_by{|d| [d.created_at, -d.passes.active.count]}.each do |event| %>
     <%= content_tag :tr do %>
       <%= content_tag :td do %>
-        <%= link_to(content_tag(:h5, event.name), edit_event_path(event)) %>
+        <%= link_to(content_tag(:h5, event.name), edit_dance_class_path(event)) %>
         <% if event.passes.empty? %>
           <p class='note'>No passes</p>
         <% else %>
@@ -80,7 +80,7 @@
               <%= content_tag :td, number_to_currency(pass.paid_online) + ' online' %>
               <%= content_tag :td, number_to_currency(pass.paid_by_card) + ' by card' %>
               <%= content_tag :td, number_to_currency(pass.paid_in_cash) + ' in cash' %>
-              <%= content_tag :td, number_to_currency(pass.paid_in_cash) + ' on tab' %>
+              <%= content_tag :td, number_to_currency(pass.paid_on_tab) + ' on tab' %>
               <%= content_tag :td, number_to_currency(pass.paid_total) + ' total' %>
               <%= pass.registrations.empty? ? content_tag(:td, 'No Registrants') : content_tag(:td, link_to('View Registration List', pass_registrations_path(pass), class: 'btn')) %>
               <%= content_tag :td, pass.status %>
