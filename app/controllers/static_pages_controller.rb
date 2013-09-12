@@ -16,9 +16,6 @@ class StaticPagesController < ApplicationController
   def map
   end
 
-  def staff 
-  end
-
   def mob_mentality
   end
 
