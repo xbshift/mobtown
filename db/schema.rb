@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130814184500) do
+ActiveRecord::Schema.define(:version => 20130910222854) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -158,5 +158,18 @@ ActiveRecord::Schema.define(:version => 20130814184500) do
   end
 
   add_index "schedule_recurrences", ["event_id"], :name => "index_schedule_recurrences_on_event_id"
+
+  create_table "staff", :force => true do |t|
+    t.string   "name"
+    t.text     "bio"
+    t.string   "email"
+    t.integer  "order"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
 
 end

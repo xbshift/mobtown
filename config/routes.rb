@@ -16,7 +16,6 @@ Mobtown::Application.routes.draw do
   match '/venue', to: 'static_pages#venue'
   match '/the-location', to: 'static_pages#venue'
   match '/map', to: 'static_pages#map'
-  match '/staff', to: 'static_pages#staff'
   match '/mobmentality', to: 'static_pages#mob_mentality'
   match '/mob-mentality', to: 'static_pages#mob_mentality'
   match '/dances', to: 'static_pages#dances'
@@ -32,6 +31,7 @@ Mobtown::Application.routes.draw do
   match '/admin', to: 'application#login'
   match '/bar', to: 'bulk_signups#new'
   match '/videos', to: 'static_pages#videos'
+  resources :staff, :except => [:show]
   resources :events do
     collection do
       get :manage

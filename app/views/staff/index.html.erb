@@ -1,0 +1,35 @@
+<div class="tabbable">
+  <% if logged_in? %>
+    <div class="pull-right"><%= link_to content_tag(:span, '', class: 'icon-white icon-plus-sign') + ' Add Staff...', new_staff_path, class: 'btn btn-dirtydog' %></div>
+  <% end %>
+  <ul class="nav nav-tabs" id="staff">
+  <% @staff.each do |s| %>
+    <%= content_tag :li do %>
+      <%= link_to s.name, '#' + s.name.parameterize, data: {toggle: 'tab'} %>
+    <% end %>
+  <% end %>
+  </ul>
+  <div class="tab-content">
+  <% @staff.each do |s| %>
+    <%= content_tag :div, id: s.name.parameterize, class: 'tab-pane' do %>
+      <%= image_tag(s.photo.url(:small), class: 'bio-pic img-rounded') %>
+      <%= content_tag :p, raw(s.bio) %>
+      <%= content_tag :div, link_to(s.email, 'mailto:' + s.email) %>
+      <% if logged_in? %>
+        <div><%= link_to content_tag(:span, '', class: 'icon-edit icon-white') + ' Edit', edit_staff_path(s), class: 'btn btn-dirtydog' %></div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<% content_for :javascript do %>
+  <script>
+  $('#staff a').click(function(e) {
+    e.preventDefault();
+    $(this).tab('show');
+  })
+
+  $('#staff a:first').tab('show');
+  </script>
+<% end %>
+<% content_for :title, 'Staff' %>

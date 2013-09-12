@@ -30,6 +30,7 @@ public/assets/*
 public/ckeditor_assets/*
 public/system/ckeditor_assets/*
 public/system/event_photo/*
+public/system/staff_photo/*
 
 # Backup copies
 *.backup
