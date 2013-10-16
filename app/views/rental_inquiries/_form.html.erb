@@ -1,0 +1,11 @@
+<%= simple_form_for @rental_inquiry, validate: true do |f| %>
+  <%= f.input 'name' %>
+  <%= f.input 'email' %>
+  <%= f.input 'phone' %>
+  <%= f.input 'description' %>
+  <%= f.input 'when' %>
+  <%= f.input 'guest_count' %>
+  <%= f.input 'budget' %>
+  <%= f.input 'details' %>
+  <%= f.submit 'Submit Inquiry' %>
+<% end %>

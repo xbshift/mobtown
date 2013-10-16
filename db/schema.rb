@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130910222854) do
+ActiveRecord::Schema.define(:version => 20130924151241) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -139,6 +139,19 @@ ActiveRecord::Schema.define(:version => 20130910222854) do
     t.datetime "updated_at",                                                   :null => false
     t.boolean  "void",                                      :default => false
     t.boolean  "student",                                   :default => false
+  end
+
+  create_table "rental_inquiries", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "description"
+    t.string   "when"
+    t.integer  "guest_count"
+    t.integer  "budget"
+    t.text     "details"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "schedule_exceptions", :force => true do |t|

@@ -1,3 +1,8 @@
+<div>
+<%= content_tag(:h4, 'Rental Inquiries') %>
+<%= content_tag :p, 'Latest rental inquiry received on ' + @latest_rental_inquiry %>
+<%= link_to 'View Rental Inquiries', rental_inquiries_path, class: 'btn' %>
+</div>
 <%= link_to content_tag(:i, '', class: 'icon-plus') + ' New Event', new_event_path, class: 'btn pull-right' %>
 <%= content_tag(:h4, 'Events') %>
 <table class='table ruled table-hover'>

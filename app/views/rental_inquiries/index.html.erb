@@ -1,0 +1,23 @@
+<%= content_tag :h4, 'Rental Inquiries' %>
+
+<table class='table ruled table-striped'>
+<tbody>
+<% @rental_inquiries.each do |r| %>
+  <%= content_tag :tr do %>
+  <td>
+    <%= content_tag :p, content_tag(:em, 'Received ' + r.created_at.strftime('%m/%d/%Y')) %>
+    <%= r.name %>
+    <%= r.email %>
+    <%= r.phone %> 
+    <%= content_tag :p, r.description %> 
+    <%= content_tag :p, 'When: ' + r.when %> 
+    <%= content_tag :p, r.guest_count.to_s + ' guests'  %>
+    <%= content_tag :p, 'Budget: ' + number_to_currency(r.budget) %>
+    <%= content_tag :p, r.details %>
+  </td>
+  <% end %> 
+<% end %>
+</tbody>
+</table>
+
+<% content_for :title, 'Rental Inquiries' %>

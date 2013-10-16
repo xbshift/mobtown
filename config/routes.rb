@@ -53,6 +53,7 @@ Mobtown::Application.routes.draw do
       end
     end
   end
+  resources :rental_inquiries
   resources :posts, :path => '/mob-blog'
   resources :feature_boxes
   resources :charges
