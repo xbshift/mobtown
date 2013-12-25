@@ -13,4 +13,9 @@ module ApplicationHelper
     end
   end
 
+  # prints numeric date, as in 12/25/2013
+  def shortDate(obj)
+    obj.strftime("%m/%d/%Y")
+  end
+
 end

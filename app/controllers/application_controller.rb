@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     authenticate
     @events = Event.all
     @dance_classes = DanceClass.all
-    @latest_rental_inquiry = RentalInquiry.order('created_at DESC').first.created_at.strftime("%m/%d/%Y")
+    @latest_rental_inquiry = RentalInquiry.order('created_at DESC').first
   end
 
   protected
